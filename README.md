@@ -1,23 +1,23 @@
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
 # Anti-Framework
 
-### Ultramodern DOM UI Development
+### Ultramodern JavaScript Anti-Framework
 
-Anti-Framework is a UI framework that takes an anti approach to the riged nature of frameworks like React, Vue, Angular and Svelte.
+Anti-Framework is a UI library that takes an anti approach to the nature of frameworks like React, Vue, Angular and Svelte.
 
-- No JSX:         Anti uses template-literals to define DOM nodes
-- No Virtual-DOM: Anti does not use a VDOM, which means it can perform better
-- No compiler/ transpiler required 
-- No dependencies
-- High performance ideal for mobile
-- Decoupled events: Both global and element event listeners are decoupled from DOM mutations 
-- Separation of concerns: Logic and semantics are separated
-- Less than 5kb minified
-- Minimalistic but capable API
-- A modern approach to UI development
+- **No JSX**:Anti uses template-literals to define DOM nodes
+- **No Virtual-DOM**: Anti does not use a VDOM, which means it can perform better
+- **No compiler needed** 
+- **No dependencies**
+- **High performance**: ideal for mobile
+- **Decoupled events**: Both global and element event listeners are decoupled from DOM mutations 
+- **Separation of Concerns**: Logic and semantics are separated
+- **Lightweight**: Less than 5kb minified
+- **Minimalistic**
+- **Scalable**: Solves real-world problems without inventing new ones
 
-## Useless Example
-Hello World is not a useful example for demonstrating UI frameworks but here it is:
+## Useless Hello World Example (For the birds)
+Although this is a small amount of code it does not demonstrate the power
 ```javascript
 <div id="root"></div> // .html
 

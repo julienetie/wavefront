@@ -16,8 +16,6 @@ Anti-Framework is a UI framework that takes an anti approach to the riged nature
 - Minimalistic but capable API
 - A modern approach to UI development
 
-
-
 ## Useless Example
 Hello World is not a useful example for demonstrating UI frameworks but here it is:
 ```javascript
@@ -32,10 +30,10 @@ helloView({greeting: 'Hello World!')
 ```
 ## Features 
 
-### Logic-less View
+### Logic-less Views
 Anti is a simple string-based DOM engine that uses template-literals for generating DOM nodes. The values you place inside template-literal placeholders `${}` will result into a string _(this is just standard JavaScript)_. Putting logic inside template-literal placeholders will cause a mess and break the semantic and visual nature of markup like HTML and SVG. Therefore all values are to be evaluated before being passed into a template function.
 
-### Viewless Controller
+### Viewless Controllers
 Your components should be separated by view/s and controller _(files or directories)_. The logic of your components only reside in the controller module/s. Markup is not defined within the controller, only in the view. The controller should import view-functions to instantiate with required values.
 You can also separate event logic into event _(files or directories) as an extension to your controller logic.
 
@@ -60,3 +58,24 @@ For data-critical UIs it is important to use the sanitiser before reading direct
 
 ### Sanitiser
 For safely reading directly from potentially dangerous parts of the DOM. This is your responsibility.
+
+### String-based UI manipulation
+You will notice there are no APIs for manipulating data or control flow when rendering. This is because Anti is a string-based DOM engine.
+Because JavaScript has very strong string manipulation capablities, this makes Anti the most powerful UI framework for manipulating DOM elements.
+
+### No environment dependencies
+With Anti we are going back to the basics
+- Anti can work directly in the browser using the `<script...` tag
+- NPM usage is not mandatory
+- Bundlers are not mandatory
+- Babel and TypeScrpt are not needed 
+
+## Support
+Anti-Framework supports all modern browsers beyond IE11
+
+## TBA (External libraries) 
+- Router
+- Static generator
+- State Management System
+
+Copyright 2022 © Julien Etienne, Vanslang 

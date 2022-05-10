@@ -3,6 +3,8 @@
 
 ### Ultramodern JavaScript Anti-Framework
 
+[![Standard-Js](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
+
 Anti-Framework is a UI library that takes an anti approach to the nature of frameworks like [React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte) and [jQuery](https://github.com/jquery/jquery).
 
 - **No JSX**:Anti uses template-literals to define DOM nodes
@@ -16,6 +18,15 @@ Anti-Framework is a UI library that takes an anti approach to the nature of fram
 - **Minimalistic**
 - **Scalable**: Solves real-world problems without inventing new ones
 - **Easy customization**: Anti was made with the intention of forking and customization.  
+
+## Install 
+```bash
+npm install anti-framework
+```
+or 
+```html
+<script src="anti-framework.js"></srcipt>
+```
 
 ## Hello World Example _(For the birds)_
 ```javascript
@@ -69,6 +80,9 @@ Because JavaScript has very strong string manipulation capablities, this makes A
 
 ## Support
 Anti-Framework supports all modern browsers beyond IE11
+
+## Style
+The Anti codebase and examples use [Standard](https://github.com/standard/standard) for code conformancy. 
 
 ## TBA (External libraries) 
 - Router

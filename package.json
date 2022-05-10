@@ -1,0 +1,22 @@
+{
+  "name": "anti-framework",
+  "version": "1.0.0",
+  "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
+  "main": "anti-framework.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julienetie/anti-framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julienetie/anti-framework/issues"
+  },
+  "homepage": "https://github.com/julienetie/anti-framework#readme",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
+}

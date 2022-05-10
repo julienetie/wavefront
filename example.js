@@ -1,27 +1,23 @@
-import { 
-	insertInto, 
-	listenTo, 
-	insertSlate, 
-	mutate, 
-	removeSlate, 
-	removeListener, 
-	removeWithin, 
-	remove, 
-	createDelegate,
-	suspect,
-	trigger,
-	removeDelegate
+import {
+  insertInto,
+  listenTo,
+  insertSlate,
+  mutate,
+  removeSlate,
+  removeListener,
+  removeWithin,
+  remove,
+  createDelegate,
+  suspect,
+  trigger,
+  removeDelegate
 } from './anti-framework.js'
-
-
 
 /*
 VIEW */
-const linkView = insertInto('#root', ({title, href}) => `<a data-link href="${href}"><h1>${title}</h1></a>`)
+const linkView = insertInto('#root', ({ title, href }) => `<a data-link href="${href}"><h1>${title}</h1></a>`)
 
-
-const writeOverLinkView = insertInto('#root', ({text, href}) => `<a data-something-else href="#${href}"><h1>H1<div>${text}</div>H12</h1></a>`)
-
+const writeOverLinkView = insertInto('#root', ({ text, href }) => `<a data-something-else href="#${href}"><h1>H1<div>${text}</div>H12</h1></a>`)
 
 /*
 CONTROLLER */
@@ -29,8 +25,8 @@ const ref = 'Some name'
 
 // Create and insert linkView
 const params = {
-	title: 'Test',
-	href: '#test'
+  title: 'Test',
+  href: '#test'
 }
 linkView(params)
 
@@ -41,36 +37,35 @@ listenTo('[data-link]', 'click', ({
   console.log('click', target.parentElement.href)
 })
 
-// Write over linkView 
+// Write over linkView
 const params2 = {
-	text: 'This is a div',
-	href: '#test123'
+  text: 'This is a div',
+  href: '#test123'
 }
 writeOverLinkView(params2, ref)
 
-
 insertSlate(ref, {
-	text: 'The text has changed',
-	href: 'http://google.com'
+  text: 'The text has changed',
+  href: 'http://google.com'
 })
 
 const params3 = {
-	text: '333333333333333',
-	href: 'http://google.co.uk'
+  text: '333333333333333',
+  href: 'http://google.co.uk'
 }
 
 insertSlate(ref, params3, (el) => {
-	console.log(el)
-	el.style.background = 'red'
-	el.style.width = '5rem'
-	el.style.height = '5rem'
-	el.style.display = 'block'
-	return el
+  console.log(el)
+  el.style.background = 'red'
+  el.style.width = '5rem'
+  el.style.height = '5rem'
+  el.style.display = 'block'
+  return el
 })
 
 mutate('#root', el => {
-	el.querySelector('a').style.background = 'lime'
-	console.log('eeee', el)
+  el.querySelector('a').style.background = 'lime'
+  console.log('eeee', el)
 })
 
 // Listen to clicks on data-link
@@ -89,16 +84,13 @@ createDelegate('#root > a', 'click', e => console.log(`What is going on ${e}`))
 
 let count = 0
 document.addEventListener('click', (e) => {
-	if(suspect(e.target).equals('#root > a')) {
-		trigger('#root > a', 'click', e)
-	}
-	count++
-	if(count > 3) {
-		removeDelegate('#root > a', 'click')
-	}
+  if (suspect(e.target).equals('#root > a')) {
+    trigger('#root > a', 'click', e)
+  }
+  count++
+  if (count > 3) {
+    removeDelegate('#root > a', 'click')
+  }
 })
-
-
-
 
 window.removeSlate = removeSlate

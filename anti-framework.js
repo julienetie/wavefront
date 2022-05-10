@@ -1,5 +1,19 @@
-const {isArray} = Array
+/*
+    e Y8b     Y88b Y88 88P'888'Y88 888 
+   d8b Y8b     Y88b Y8 P'  888  'Y 888 
+  d888b Y8b   b Y88b Y     888     888 
+ d888888888b  8b Y88b      888     888 
+d8888888b Y8b 88b Y88b     888     888 
 
+Licensed under the Apache License Version 2.0
+Copyright 2022 © Julien Etienne, Vanslang */
+
+const {isArray} = Array
+const {body} = document
+
+/* 
+The `_store` object is the single origin for globally 
+shared data and state across the ANIT codebase */ 
 const _store = {
   delegatedEvents: new Map(),
   template: document.createElement('template'),
@@ -13,21 +27,21 @@ const _store = {
 If traversing from `document` is a problem you should be using a 
 virtual-list to manage off-screen DOM elements */
 const query = selector => document.querySelector(selector)
-const queryAll = selector => [...document.querySelectorAll(selector)]
 
-// Removes all child nodes not just children
+
+/*
+Removes all child nodes of a given parent */
 const removeChildNodes = parent => {
   while (parent.hasChildNodes()) {
     parent.removeChild(parent.lastChild)
   }
 }
 
-// Gets a list of all ancestors up to the body
+
+/*
+Creates a list of ancestors for a given descendent and stops before the body tag */
 const getAncestors = (el) => {
-  const ancestors = [el],
-    {
-      body
-    } = document
+  const ancestors = [el]
   while (el.parentElement !== body) {
     el = el.parentElement;
     ancestors.push(el)
@@ -35,7 +49,6 @@ const getAncestors = (el) => {
   if(ancestors.length > 99) {
     console.warn(`Child ${el} is excessively nested with over 100 parents. This may cause performance concerns`)  
   }
-  
   return ancestors
 }
 
@@ -75,6 +88,11 @@ const removeDescendentEvents = (el, inner) => {
 } 
 
 
+/* 
+When params are provided `null`, `NaN` and `undefined` values will be replaced 
+by a blank spaced string. When a denylist and replacement word is additionally provided
+param's values will be treated as strings and matching results will be replaced by the 
+replacement word */
 const safeguardParams = (params, denylistPattern, replaceWord) => {
   console.log('denylistPattern',denylistPattern)
   if(denylistPattern) {
@@ -103,7 +121,6 @@ const safeguardParams = (params, denylistPattern, replaceWord) => {
 
 
 /*
-
 A closure that requres `params` to create and insert markup */
 const insertInto = (selector, templateHandler) => {
    const el = query(selector)
@@ -136,11 +153,9 @@ const insertInto = (selector, templateHandler) => {
   }
 }
 
+
 /*
-  - insertSlate(ref) // Inserts the last rendered slate
-  - insertSlate(ref, params) // Inserts slate but with new parameters 
-  - insertSlate(ref, sandbox) // Mutate the slate before inserting  
-*/
+Inserts the last stored slate into it's referenced DOM position */
 const insertSlate = (ref, paramsSandbox, sandbox) => {
     if(!_store.slates[ref]) {
       console.log(`Slate ${ref} does not exist`)
@@ -189,11 +204,16 @@ let sandboxHandler
 }
 
 
+/*
+Allows the DOM to be directly mutated within a scope */
 const mutate = (selector, templateHandler) => {
   const el = query(selector)
   templateHandler(el)
 } 
 
+
+/*
+Removes a slate by reference */
 const removeSlate = (ref) => {
   if(_store.slates[ref]) {
     delete _store.slates[ref]

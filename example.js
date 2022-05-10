@@ -1,4 +1,17 @@
-import { insertInto, listenTo, insertSlate, mutate, removeSlate, removeListener } from './anti-framework.js'
+import { 
+	insertInto, 
+	listenTo, 
+	insertSlate, 
+	mutate, 
+	removeSlate, 
+	removeListener, 
+	removeWithin, 
+	remove, 
+	createDelegate,
+	suspect,
+	trigger,
+	removeDelegate
+} from './anti-framework.js'
 
 
 
@@ -68,5 +81,24 @@ listenTo('h1 > div', 'mouseover', ({
 })
 
 removeListener('h1 > div', 'mouseover')
+
+removeWithin('h1')
+remove('h1')
+
+createDelegate('#root > a', 'click', e => console.log(`What is going on ${e}`))
+
+let count = 0
+document.addEventListener('click', (e) => {
+	if(suspect(e.target).equals('#root > a')) {
+		trigger('#root > a', 'click', e)
+	}
+	count++
+	if(count > 3) {
+		removeDelegate('#root > a', 'click')
+	}
+})
+
+
+
 
 window.removeSlate = removeSlate

@@ -1,4 +1,7 @@
+const {isArray} = Array
+
 const _store = {
+  delegatedEvents: new Map(),
   template: document.createElement('template'),
   slates: {},
   singleEvents: new WeakMap(),
@@ -39,10 +42,11 @@ const getAncestors = (el) => {
 
 /*
 Removes all events from descendent elements of a given element */
-const removeDescendentEvents = (el) => {
+const removeDescendentEvents = (el, inner) => {
+  const startPosition = inner ? 0 : -1
   const eventsToRemove = _store.singleEventsAncestors.reduce((acc, entry, i) => {
     // Looks thought each singleEventsAncestor for a match
-    if (entry.indexOf(el) > -1) {
+    if (entry.indexOf(el) > startPosition) {
 
       // Accumilates the first element (the descendent) of each match
       acc.push(entry[0])
@@ -71,13 +75,39 @@ const removeDescendentEvents = (el) => {
 } 
 
 
+const safeguardParams = (params, denylistPattern, replaceWord) => {
+  console.log('denylistPattern',denylistPattern)
+  if(denylistPattern) {
+    let paramsJSON = JSON.stringify(params)
+    const foundDeniedWords = paramsJSON.match(denylistPattern)
+    if(foundDeniedWords) {
+      console.warn(`Denied pattern ${denylistPattern} was found in ${JSON.stringify(params)}`)
+      foundDeniedWords.forEach(deniedWord => {
+       paramsJSON = paramsJSON.replace(new RegExp(deniedWord, 'g'), replaceWord)
+      })    
+    }
+    return JSON.parse(paramsJSON)
+  } 
+  
+  Object.entries(params).map(([key, value])=> {
+    switch(true) {
+        case value === undefined:
+        case value === null:    
+        case Object.is(value, NaN):
+           params[key] = ' '
+        break
+    }
+  })
+  return params
+}
+
+
 /*
 
 A closure that requres `params` to create and insert markup */
 const insertInto = (selector, templateHandler) => {
    const el = query(selector)
-  return (params, ref) => {
-   
+  return (params, ref, denylistPattern, replaceWord) => {
 
     // Missing element
     if(!el) {
@@ -85,12 +115,15 @@ const insertInto = (selector, templateHandler) => {
       return
     }
 
+    // 
+    const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
+
     // Create markup 
-    const markup = templateHandler(params)
+    const markup = templateHandler(cleanedParams)
 
     // Store copy of markup
     if (ref) {
-      _store.slates[ref] = {templateHandler, params, selector}
+      _store.slates[ref] = {templateHandler, cleanedParams, selector}
     }
 
     if (el.children.length > 0) {
@@ -198,18 +231,62 @@ const removeWithin = selector => {
   const el = query(selector)
   if (el.children.length > 0) {
       // Remove all nested events
-      removeDescendentEvents(el)
+      removeDescendentEvents(el, 'inner')
       // Remove all children 
       removeChildNodes(el)
+  }
+  return el
+}
+
+const remove = selector => {
+  removeWithin(selector)
+  // @todo remove self event
+  .remove()
+}
+
+// getSlate('ref', () =>{}) // Gets the stlate as a string, return to modify  
+
+const createDelegate = (selector, event, eventHandler) => {
+  const el = query(selector)
+   const delegatedSelector = _store.delegatedEvents.get(selector)
+
+   const eventObject = {
+      event,
+      eventHandler
+    }
+
+   if(delegatedSelector) {
+  //@todo if includes delegate  
+      const updatedEvents = delegatedSelector.push(eventObject)
+      _store.delegatedEvents.set(selector, updatedEvents)
+   
+   } else { 
+    _store.delegatedEvents.set(selector, [eventObject])
+   }
+}
+
+const suspect = el => ({
+  equals: selector => el === query(selector),
+  closest: selector => el.closest(selector) === query(selector),
+  contains: selector => !!el.querySelector(selector) 
+})
+
+const trigger = (selector, event, e) => {
+  const events = _store.delegatedEvents.get(selector)
+  if(events) {
+    const match = events.find(eventObject => eventObject.event === event)
+    match && match.eventHandler(e)
   }
 }
 
 
-// createDelegate('#selector', 'event', handler)
-
-// triggerDelegate('#selector', 'event')
-
-// removeDelegate('#selector', 'event') 
+const removeDelegate = (selector, event) => {
+  let events = _store.delegatedEvents.get(selector)
+  if(events) {
+    events = events.filter(eventObject => eventObject.event !== event)
+     _store.delegatedEvents.set(selector, events)
+  }
+} 
 
 /*
 
@@ -256,5 +333,11 @@ export {
   mutate,
   removeSlate,
   removeListener,
-  removeWithin
+  removeWithin,
+  remove,
+  createDelegate,
+  suspect,
+  trigger,
+  removeDelegate,
+  safeguardParams
 }

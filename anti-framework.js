@@ -8,7 +8,6 @@ d8888888b Y8b 88b Y88b     888     888
 Licensed under the Apache License Version 2.0
 Copyright 2022 © Julien Etienne, Vanslang */
 
-const { isArray } = Array
 const { body } = document
 
 /*
@@ -66,7 +65,7 @@ const removeDescendentEvents = (el, inner) => {
   }, [])
 
   // Remove events
-  eventsToRemove.map(boundedElement => {
+  eventsToRemove.forEach(boundedElement => {
     _store.singleEvents.get(boundedElement).forEach(eventObject => {
       const {
         event,
@@ -101,7 +100,7 @@ const safeguardParams = (params, denylistPattern, replaceWord) => {
     return JSON.parse(paramsJSON)
   }
 
-  Object.entries(params).map(([key, value]) => {
+  Object.entries(params).forEach(([key, value]) => {
     switch (true) {
       case value === undefined:
       case value === null:
@@ -137,7 +136,7 @@ const insertInto = (selector, templateHandler) => {
 
     if (el.children.length > 0) {
       // Remove all nested events
-  		removeDescendentEvents(el)
+      removeDescendentEvents(el)
       // Remove all children
       removeChildNodes(el)
     }
@@ -169,16 +168,14 @@ const insertSlate = (ref, paramsSandbox, sandbox) => {
     case paramsSandbox === null:
       el.insertAdjacentHTML('afterbegin', templateHandler(defaultParams))
       break
-
-      break
     case typeof paramsSandbox === 'object' && typeof sandbox === 'function':
       newParams = paramsSandbox
       sandboxHandler = sandbox
-    case typeof paramsSandbox === 'function':
-      sandboxHandler || paramsSandbox
+    case typeof paramsSandbox === 'function': {
+      sandboxHandler = sandboxHandler || paramsSandbox
       const markup = templateHandler(newParams || defaultParams)
       const templateContainer = document.createElement('div')
-      console.log(_store.template)
+
       _store.template.append(templateContainer)
       templateContainer.insertAdjacentHTML('afterbegin', markup)
 
@@ -187,8 +184,8 @@ const insertSlate = (ref, paramsSandbox, sandbox) => {
       const modifiedTemp = sandboxHandler(temp, defaultParams)
       el.insertAdjacentElement('afterbegin', modifiedTemp)
       templateContainer.remove()
-      break
-    case typeof paramsSandbox === 'object' :
+    } break
+    case typeof paramsSandbox === 'object':
       el.insertAdjacentHTML('afterbegin', templateHandler(paramsSandbox))
       break
   }
@@ -248,7 +245,7 @@ const removeWithin = selector => {
 
 const remove = selector => {
   removeWithin(selector)
-  // @todo remove self event
+    // @todo remove self event
     .remove()
 }
 
@@ -259,7 +256,6 @@ const getSlate = ref => {
 }
 
 const createDelegate = (selector, event, eventHandler) => {
-  const el = query(selector)
   const delegatedSelector = _store.delegatedEvents.get(selector)
 
   const eventObject = {
@@ -268,7 +264,7 @@ const createDelegate = (selector, event, eventHandler) => {
   }
 
   if (delegatedSelector) {
-  // @todo if includes delegate
+    // @todo if includes delegate
     const updatedEvents = delegatedSelector.push(eventObject)
     _store.delegatedEvents.set(selector, updatedEvents)
   } else {
@@ -299,7 +295,6 @@ const removeDelegate = (selector, event) => {
 }
 
 /*
-
 Add single event listener */
 const listenTo = (selector, event, eventHandler, options) => {
   const el = query(selector)
@@ -332,10 +327,11 @@ const dismiss = (selector) => {
   removeDescendentEvents(el)
 }
 
-console.log(_store)
-setTimeout(() => {
-  console.log(_store)
-}, 8000)
+// console.log(_store)
+// setTimeout(() => {
+//   console.log(_store)
+// }, 8000)
+
 export {
   insertInto,
   listenTo,
@@ -349,5 +345,7 @@ export {
   suspect,
   trigger,
   removeDelegate,
-  safeguardParams
+  safeguardParams,
+  getSlate,
+  dismiss
 }

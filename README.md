@@ -15,6 +15,7 @@ Anti-Framework is a UI library that takes an anti approach to the nature of fram
 - **Lightweight**: Less than 5kb minified
 - **Minimalistic**
 - **Scalable**: Solves real-world problems without inventing new ones
+- **Easy customization**: Anti was made with the intention of forking and customization.  
 
 ## Hello World Example _(For the birds)_
 ```javascript

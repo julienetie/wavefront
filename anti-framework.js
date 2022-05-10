@@ -87,7 +87,6 @@ by a blank spaced string. When a denylist and replacement word is additionally p
 param's values will be treated as strings and matching results will be replaced by the
 replacement word */
 const safeguardParams = (params, denylistPattern, replaceWord) => {
-  console.log('denylistPattern', denylistPattern)
   if (denylistPattern) {
     let paramsJSON = JSON.stringify(params)
     const foundDeniedWords = paramsJSON.match(denylistPattern)

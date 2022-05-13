@@ -89,4 +89,58 @@ The Anti codebase and examples use [Standard](https://github.com/standard/standa
 - Static generator
 - State Management System
 
-Copyright 2022 © Julien Etienne, Vanslang 
+## Concepts
+
+### Collarge Development _(Overlaying)_ 
+When using frameworks like React and Angular you will typically make changes to the UI by setting different states as well as flow control logic within the component semantics.
+
+Anti uses a _Collarge Development_ style, which allows you to overlay changes for any DOM selector of your choice, similar to how collarge artwork is produced in the physical world. This means you generally do not need to be concerned about component hierarchy or managing hidden state changes when building or manipulating the UI.
+
+The beauty of event-delegation is that you can change any part of the page without being concerend about overwriting an event. There are some cases where event-delegation is not possible or less intuitive when compared to using direct-events.
+
+The reason you don't have to worry about what you overwrite in Anti is because direct-events are automatically removed on DOM mutations made within the Anti API.
+
+So there is zero component hierarchy model in Anti, which means complete creative freedom and maximum maintainability.
+
+### Params
+This is simply the the ability to provide an object literal of values to a view-function. This allows the logic of a view-function to live outside of the semantics which is very different to DSLs like JSX which enourages you to pollute semantics with logic. 
+
+To re-iterate, params are just but object lietrals with values. They should always be named  `params`
+
+### Slate
+A slate is an internal variable that stores the state of the last DOM mutation of a given view-function.
+
+Previously we talked about how Anti use a _Collarge_ style to allow you to manipulae the DOM without constraints. But this could cause some concerns.
+- If you overwrite part of the DOM you may lose the previous state and if your `params` are abritrary or unpredictable you may lose them forever.
+- You could store that state manually but that will require more boileplate code
+- If you try to read from the DOM, a the user, extension or vunerability could have made security compromises beforehand.
+
+A slate is a representation of the last state of an applied collarge. It contributes to:
+- Integrity: If you are working on a sensitive part of your app (e.g. contact form, login, user input etc) you should be using the slate to prevent unwarranted external changes.
+- Security: You can use the slate when you want to read or evaluate a copy of what was last applied to the DOM by yourself.
+
+Each view-function has one slate which is updaed on each applied collarge. The markup of a slate is stored in memory as a string.
+
+### Delegates 
+A delegate is a virtual event target to help minimise the boilerplate logic of event-delegation mangement.
+- You can create a delegate for any selector using `createDelegate(...)`
+- You can detect a delegate conditinoally using `suspect(...)` and determine if the target is equal, contained or closest to another element.
+- You can call a delegate's handler using `trigger(...)`
+- You can remove delegates using `removeDelegate`
+
+This minimalistic API was not intended to be a technical masterpiece but it is a viable solution that avoids tight coupling to make event management light-weight and maintainable. Because of this flexability you can manage delegated events in any part of the app and even trigger events from unrelated places.
+
+Anti has no intention to mask and polish things in JavaScript that are simple and work well. Therefore you can use the native `addEventListener` for global events _(document and window events only)`
+
+### Sanitize 
+It's inevitable that you must be able to read from the active DOM for various user inputs and interactions. Anti has an encapsulated way to do this using the `mutate(...)` method. 
+Anti has a buti-in security linter which ensures that you use the `santizer(...)` when reading from a DOM element via the `mutate` function. 
+- Mutate will understand the argument name and ensure that there are no left hand assignments to other variables without the use of the santizer.
+- Mutate will also understand if that argument is being used as an argument for another function
+- Mutate will warn about assigning exernal variables, the warning can be surprsessd with an annotation 
+
+The linter ensures that the DOM is read safely without any additional plugins or IDEs. This allows you to freely work directly with the DOM without unecessary or costly restrictions.
+
+The sanitizer removes dangerous content from a string.
+
+### Safeguarding

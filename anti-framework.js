@@ -135,11 +135,46 @@ const insertInto = (selector, templateHandler) => {
 
     if (el.children.length > 0) {
       // Remove all nested events
-      removeDescendentEvents(el)
+      removeDescendentEvents(el, 'inner')
       // Remove all children
       removeChildNodes(el)
     }
     el.insertAdjacentHTML('afterbegin', markup)
+  }
+}
+
+/*
+A closure that requres `params` to create and insert markup */
+const replaceWith = (selector, templateHandler) => {
+  const el = query(selector)
+  return (params, ref, denylistPattern, replaceWord) => {
+    // Missing element
+    if (!el) {
+      console.error(`Cannot find element ${selector}`)
+      return
+    }
+
+    //
+    const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
+
+    // Create markup
+    const markup = templateHandler(cleanedParams)
+
+    // Store copy of markup
+    if (ref) {
+      _store.slates[ref] = { templateHandler, cleanedParams, selector }
+    }
+
+    if (el.children.length > 0) {
+      // Remove all nested events
+      removeDescendentEvents(el)
+    }
+    const templateContainer = document.createElement('div')
+    _store.template.append(templateContainer)
+    templateContainer.insertAdjacentHTML('afterbegin', markup)
+    const temp = templateContainer.firstElementChild
+    el.replaceWith(temp)
+    templateContainer.remove() 
   }
 }
 
@@ -186,6 +221,65 @@ const insertSlate = (ref, paramsSandbox, sandbox) => {
     } break
     case typeof paramsSandbox === 'object':
       el.insertAdjacentHTML('afterbegin', templateHandler(paramsSandbox))
+      break
+  }
+}
+
+
+/*
+replaces the last stored slate into it's referenced DOM position */
+const replaceWithSlate = (ref, paramsSandbox, sandbox) => {
+  if (!_store.slates[ref]) {
+    console.log(`Slate ${ref} does not exist`)
+  }
+
+  // Get the slate
+  const { templateHandler, selector, params: defaultParams } = _store.slates[ref]
+  const el = query(selector)
+
+  if (el.children.length > 0) {
+    // Remove all nested events
+    removeDescendentEvents(el)
+    // Remove all children
+    removeChildNodes(el)
+  }
+  let newParams
+  let sandboxHandler
+
+  const templateContainer = document.createElement('div')
+  _store.template.append(templateContainer)
+  templateContainer.insertAdjacentHTML('afterbegin', markup)
+  const temp = templateContainer.firstElementChild
+
+
+  switch (true) {
+    case paramsSandbox === undefined:
+    case paramsSandbox === null:
+      el.insertAdjacentHTML('afterbegin', templateHandler(defaultParams))
+
+      el.replaceWith(temp)
+      templateContainer.remove() 
+      break
+    case typeof paramsSandbox === 'object' && typeof sandbox === 'function':
+      newParams = paramsSandbox
+      sandboxHandler = sandbox
+    case typeof paramsSandbox === 'function': {
+      sandboxHandler = sandboxHandler || paramsSandbox
+      const markup = templateHandler(newParams || defaultParams)
+     // const templateContainer = document.createElement('div')
+
+      _store.template.append(templateContainer)
+      templateContainer.insertAdjacentHTML('afterbegin', markup)
+
+      const temp2 = templateContainer.firstElementChild
+
+      const modifiedTemp = sandboxHandler(temp2, defaultParams)
+      el.replaceWith(modifiedTemp)
+      templateContainer.remove()
+    } break
+    case typeof paramsSandbox === 'object':
+      el.replaceWith(temp)
+      templateContainer.remove() 
       break
   }
 }
@@ -326,15 +420,22 @@ const dismiss = (selector) => {
   removeDescendentEvents(el)
 }
 
+const sanitize = string => {
+
+  return string
+}
+
 // console.log(_store)
 // setTimeout(() => {
 //   console.log(_store)
 // }, 8000)
 
 export {
+  replaceWith,
   insertInto,
   listenTo,
   insertSlate,
+  // replaceWithSlate,
   mutate,
   removeSlate,
   removeListener,
@@ -346,5 +447,6 @@ export {
   removeDelegate,
   safeguardParams,
   getSlate,
-  dismiss
+  dismiss,
+  sanitize 
 }

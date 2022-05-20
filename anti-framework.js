@@ -434,6 +434,8 @@ const sanitize = string => {
 //   console.log(_store)
 // }, 8000)
 
+const empty = ''
+
 export {
   replaceWith,
   insertInto,
@@ -452,5 +454,6 @@ export {
   safeguardParams,
   getSlate,
   dismiss,
-  sanitize 
+  sanitize,
+  empty
 }

@@ -391,6 +391,10 @@ const removeDelegate = (selector, event) => {
 Add single event listener */
 const listenTo = (selector, event, eventHandler, options) => {
   const el = query(selector)
+  if(!el) {
+    console.error(`Invalid selector ${el}`)
+    return
+  }
   const storedEvents = _store.singleEvents.get(el)
   const events = storedEvents || []
 

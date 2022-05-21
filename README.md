@@ -1,23 +1,24 @@
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
-# Anti-Framework
+# Antee
 
-### Ultramodern JavaScript Anti-Framework
+### Ultramodern, boring JavaScript Antee-Framework
 
 [![Standard-Js](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
 
-Anti-Framework is a UI library that takes an anti approach to the nature of frameworks like [React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte) and [jQuery](https://github.com/jquery/jquery).
 
-- **No JSX**:Anti uses template-literals to define DOM nodes
-- **No Virtual-DOM**: Anti does not use a VDOM, which means it can perform better
+Antee aka _(Antee-Framework)_ is a UI library that takes an anti approach to the fundamentals of frameworks like [React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte), [Solid.js](https://www.solidjs.com/) and [jQuery](https://github.com/jquery/jquery).
+
+- **No JSX**:Antee uses template-literals to define DOM nodes
+- **No Virtual-DOM**: Antee does not use a VDOM, it queries the DOM 
 - **No compiler needed** 
 - **No dependencies**
 - **High performance**: ideal for mobile
 - **Decoupled events**: Both delegated and direct event listeners are decoupled from the DOM 
 - **Separation of Concerns**: Logic and semantics are separated
-- **Lightweight**: Less than 5kb minified
+- **Lightweight**: Less than 6kb minified
 - **Minimalistic**
 - **Scalable**: Solves real-world problems without inventing new ones
-- **Easy customization**: Anti was made with the intention of forking and customization.  
+- **Easy customization**: Antee was made with the intention of forking and customization.  
 
 ## Install 
 ```bash
@@ -25,14 +26,14 @@ npm install anti-framework
 ```
 or 
 ```html
-<script src="anti-framework.js"></srcipt>
+<script src="anti.js"></srcipt>
 ```
 
 ## Hello World Example _(For the birds)_
 ```javascript
-import { insertInto } from 'anti-framework'
+import { pasteInto } from 'antee'
 
-const helloView = insertInto('#root', ({greeting}) => `<h1>${greeting}</h1>`)
+const helloView = pasteInto('#root', ({greeting}) => `<h1>${greeting}</h1>`)
 
 helloView({greeting: 'Hello World!') // <div id="root"><h1>Hello World!</h1></div>
 ```
@@ -144,3 +145,10 @@ The linter ensures that the DOM is read safely without any additional plugins or
 The sanitizer removes dangerous content from a string.
 
 ### Safeguarding
+
+
+
+
+----
+### What does Antee stand for?
+"Antee" could refer to it's anti-framework-like traits or maybe it's size to power ratio resembling ants. The "tee" could be a nodd at Tee joints in plumbing for decoupling and intercepting. Or it could be the misspelling of a popular musican's past album. Choose your own adventure.

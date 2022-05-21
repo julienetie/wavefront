@@ -11,7 +11,7 @@ import {
   suspect,
   trigger,
   removeDelegate
-} from './anti-framework.js'
+} from './src/index.js'
 
 /*
 VIEW */

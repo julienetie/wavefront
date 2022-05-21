@@ -1,0 +1,34 @@
+<!doctype>
+<html>
+
+<head>
+    <title>Antii</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./node_modules/mocha/mocha.css" />
+    <script src="./node_modules/mocha/mocha.js"></script>
+    <script src="./node_modules/chai/chai.js"></script>
+    <script>
+        expect = chai.expect;
+    </script>
+</head>
+
+<body>
+    <!-- Collarge -->
+    <div id="paste-placeholder"></div>
+
+    <div id="mocha"></div>
+
+
+
+    <script>
+        mocha.setup({
+            ui: 'bdd'
+            asyncOnly: true
+        })
+
+        const { expect } = chai
+    </script>
+
+    <script type="module" src="./src/collarge.test.js" defer></script>
+    <script type="module"> mocha.run() </script>
+</body>

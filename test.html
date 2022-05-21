@@ -13,20 +13,14 @@
 </head>
 
 <body>
-    <!-- Collarge -->
-    <div id="paste-placeholder"></div>
-
     <div id="mocha"></div>
-
-
-
     <script>
         mocha.setup({
             ui: 'bdd'
             asyncOnly: true
         })
 
-        const { expect } = chai
+        const { expect, assert } = chai
     </script>
 
     <script type="module" src="./src/collarge.test.js" defer></script>

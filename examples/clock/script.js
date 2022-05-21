@@ -63,9 +63,8 @@ const clockView = insertInto('#root', ({minuteTicksStr, fiveMinuteTicksStr}) => 
 
 /* 
 clock.js */
-import { insertInto, empty, mutate } from "../../anti-framework.js"
+import { insertInto, empty, mutate, raf } from "../../anti-framework.js"
 // import { minuteTicksStr, fiveMinuteTicksStr } from 'ticks.js'
-const raf = window.requestAnimationFrame
 const fullDeg = 360
 
 const rotate = (selector, deg) => {

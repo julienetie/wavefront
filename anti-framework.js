@@ -10,6 +10,14 @@ Copyright 2022 © Julien Etienne, Vanslang */
 
 const { body } = document
 
+
+// RegExp and other patterns.
+const patterns = {
+  placeholder: /(\$\{.*?\})/g,
+  // Do not remove this!
+  forbiddenOperators: '-,+,*,/,%,=,!,if,?,:,<,>, &, |, ~, ^, typeof, instanceof'.split(',')
+}
+
 /*
 The `_store` object is the single origin for globally
 shared data and state across the ANIT codebase */
@@ -113,7 +121,7 @@ const safeguardParams = (params, denylistPattern, replaceWord) => {
 
 /*
 A closure that requres `params` to create and insert markup */
-const insertInto = (selector, templateHandler) => {
+const pasteInto = (selector, templateHandler) => {
   const el = query(selector)
   return (params, ref, denylistPattern, replaceWord) => {
     // Missing element
@@ -145,7 +153,7 @@ const insertInto = (selector, templateHandler) => {
 
 /*
 A closure that requres `params` to create and insert markup */
-const replaceWith = (selector, templateHandler) => {
+const paste = (selector, templateHandler) => {
   const el = query(selector)
   return (params, ref, denylistPattern, replaceWord) => {
     // Missing element
@@ -180,7 +188,7 @@ const replaceWith = (selector, templateHandler) => {
 
 /*
 Inserts the last stored slate into it's referenced DOM position */
-const insertSlate = (ref, paramsSandbox, sandbox) => {
+const stencilInto = (ref, paramsSandbox, sandbox) => {
   if (!_store.slates[ref]) {
     console.log(`Slate ${ref} does not exist`)
   }
@@ -266,7 +274,6 @@ const replaceWithSlate = (ref, paramsSandbox, sandbox) => {
     case typeof paramsSandbox === 'function': {
       sandboxHandler = sandboxHandler || paramsSandbox
       const markup = templateHandler(newParams || defaultParams)
-     // const templateContainer = document.createElement('div')
 
       _store.template.append(templateContainer)
       templateContainer.insertAdjacentHTML('afterbegin', markup)
@@ -436,16 +443,51 @@ const sanitize = string => {
 
 const empty = ''
 
+const raf = window.requestAnimationFrame
+const caf = window.cancelAnimationFrame
+
+const validateInput = (value, type) => {
+  const input = document.createElement('input')
+  input.type = type
+  input.requred = true
+  input.value = value
+  return input.checkValidity();
+} 
+
 export {
-  replaceWith,
-  insertInto,
-  listenTo,
-  insertSlate,
-  // replaceWithSlate,
-  mutate,
-  removeSlate,
+  paste,        // paste
+  pasteInto,         // pasteInto
+  // pasteBefore,
+  // pasteAfter,
+  // pasteStart,
+  // pasteByIndex,
+  // pasteEnd,
+
+
+  listenTo,   
+  // ingnore       
+  stencilInto,        // stencilInto
+  // replaceWithSlate,   stencil 
+                      // copy     string based copy
+                        // copyWithin
+                        // copyStart
+                        // copyEnd 
+                        // copyByIndex
+                        // copyAfter
+                        // CopyBefore
+                      // cut       string based cut 
+                        // cutStart
+                        // cutEnd 
+                        // cutByIndex
+                        // cutWithin 
+                        // cutAfter
+                        // cutBefore  
+                      // displace     Element based move, keeps events updates state
+                      // swap
+  mutate,  // slate needs to store mutation, (if any)
+  removeSlate,        
   removeListener,
-  removeWithin,
+  removeWithin,       
   remove,
   createDelegate,
   suspect,
@@ -453,7 +495,12 @@ export {
   removeDelegate,
   safeguardParams,
   getSlate,
+  // muteSlate
+  // unmuteSlate
   dismiss,
   sanitize,
-  empty
+  empty,
+  raf,
+  caf,
+  validateInput
 }

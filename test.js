@@ -1,7 +1,7 @@
 import {
-  insertInto,
+  pasteInto,
   listenTo,
-  insertSlate,
+  stencilInto,
   mutate,
   removeSlate,
   removeListener,
@@ -15,9 +15,9 @@ import {
 
 /*
 VIEW */
-const linkView = insertInto('#root', ({ title, href }) => `<a data-link href="${href}"><h1>${title}</h1></a>`)
+const linkView = pasteInto('#root', ({ title, href }) => `<a data-link href="${href}"><h1>${title}</h1></a>`)
 
-const writeOverLinkView = insertInto('#root', ({ text, href }) => `<a data-something-else href="#${href}"><h1>H1<div>${text}</div>H12</h1></a>`)
+const writeOverLinkView = pasteInto('#root', ({ text, href }) => `<a data-something-else href="#${href}"><h1>H1<div>${text}</div>H12</h1></a>`)
 
 /*
 CONTROLLER */
@@ -44,7 +44,7 @@ const params2 = {
 }
 writeOverLinkView(params2, ref)
 
-insertSlate(ref, {
+stencilInto(ref, {
   text: 'The text has changed',
   href: 'http://google.com'
 })
@@ -54,7 +54,7 @@ const params3 = {
   href: 'http://google.co.uk'
 }
 
-insertSlate(ref, params3, (el) => {
+stencilInto(ref, params3, (el) => {
   console.log(el)
   el.style.background = 'red'
   el.style.width = '5rem'

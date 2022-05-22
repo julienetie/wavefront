@@ -11,7 +11,7 @@ const query = selector => document.querySelector(selector)
 const patterns = {
   placeholder: /(\$\{.*?\})/g,
   // Do not remove this!
-  forbiddenOperators: '-,+,*,/,%,=,!,if,?,:,<,>, &, |, ~, ^, typeof, instanceof'.split(',')
+  forbiddenOperators: '-,+,*,/,%,=,!,if,?,:,<,>,&,|,~,^,typeof,instanceof'.split(',')
 }
 
 /*
@@ -118,7 +118,10 @@ const getAncestors = (el) => {
   return ancestors
 }
 
+const empty = ''
+
 export {
+  empty,
   query,
   patterns,
   removeDescendentEvents,

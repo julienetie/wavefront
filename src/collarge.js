@@ -1,11 +1,51 @@
 import { safeguardParams } from './safety.js'
-import { query, removeDescendentEvents, removeChildNodes } from './helpers.js'
+import { query, removeDescendentEvents, removeChildNodes, patterns, empty } from './helpers.js'
 import _store from './_store.js'
-
+const { placeholder, forbiddenOperators } = patterns
+const {min} = Math
 /*
 A closure that requres `params` to create and insert markup */
 const paste = (selector, templateHandler) => {
+    console.log('paste')
     const el = query(selector)
+
+    const templateHandlerStr = templateHandler.toString()
+    const placeholders = (templateHandlerStr.match(placeholder) || []).join(empty)
+
+    if(templateHandlerStr.startsWith('function')){
+        throw new SyntaxError(`'Declarative templates must be declared with an arrow function expression '=>'`)
+        return
+    }
+
+    const openingFunctionBodyIndex = templateHandlerStr.indexOf('{')
+    const arrowFunctionIndex = templateHandlerStr.indexOf('=>')
+    const returnStatementIndex = templateHandlerStr.indexOf('return')
+    const strDelimiters = ['`', '\'', '"'].map(delimiter => templateHandlerStr.indexOf(delimiter)).filter(v => v != -1)
+    const firstTickIndex = min(...strDelimiters)
+
+    // Arrow function with body
+    if(arrowFunctionIndex > 0 && arrowFunctionIndex < openingFunctionBodyIndex) {
+        console.log('returnStatementIndex',returnStatementIndex)
+        if(returnStatementIndex > openingFunctionBodyIndex) {
+
+            if(returnStatementIndex > 3 && firstTickIndex > returnStatementIndex) {
+                console.log('}~~~~~')
+                throw new SyntaxError(`'return' statements are not allowed in declarative templates.`)
+                return
+            }
+        }
+    }
+
+
+    if (placeholders !== empty) {
+        const culpritIndex = forbiddenOperators.findIndex(operator => placeholders.includes(operator))
+        if (culpritIndex > -1) {
+            const culprit = forbiddenOperators[culpritIndex]
+            throw new SyntaxError(`Operators are not allowed in declarative templates. '${culprit}' was found within 'declarativeTemplate'`)
+            return
+        }
+    }
+
     return (params, ref, denylistPattern, replaceWord) => {
         // Missing element
         if (!el) {
@@ -13,7 +53,7 @@ const paste = (selector, templateHandler) => {
             return
         }
 
-        //
+        // 
         const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
 
         // Create markup

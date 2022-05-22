@@ -30,17 +30,6 @@ import {
 } from './events.js'
 
 
-
-
-
-
-
-
-
-
-
-
-
 const sanitize = string => {
 
     return string
@@ -65,15 +54,13 @@ const validateInput = (value, type) => {
 }
 
 export {
-    paste,        // paste
-    pasteInto,         // pasteInto
+    paste,
+    pasteInto,
     // pasteBefore,
     // pasteAfter,
     // pasteStart,
     // pasteByIndex,
     // pasteEnd,
-
-
     listenTo,
     // ingnore       
     stencilInto,        // stencilInto

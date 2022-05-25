@@ -1,15 +1,15 @@
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
-# Antee
+# Antii
 
-### Ultramodern, boring JavaScript Antee-Framework
+### Ultramodern, boring JavaScript Antii-Framework
 
 [![Standard-Js](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
 
 
-Antee aka _(Antee-Framework)_ is a UI library that takes an anti approach to the fundamentals of frameworks like [React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte), [Solid.js](https://www.solidjs.com/) and [jQuery](https://github.com/jquery/jquery).
+Antii aka _(Antii-Framework)_ is a UI library that takes an anti approach to the fundamentals of frameworks like [React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte), [Solid.js](https://www.solidjs.com/) and [jQuery](https://github.com/jquery/jquery).
 
-- **No JSX**:Antee uses template-literals to define DOM nodes
-- **No Virtual-DOM**: Antee does not use a VDOM, it queries the DOM 
+- **No JSX**:Anti uses template-literals to define DOM nodes
+- **No Virtual-DOM**: Antii does not use a VDOM, it queries the DOM 
 - **No compiler needed** 
 - **No dependencies**
 - **High performance**: ideal for mobile
@@ -18,7 +18,7 @@ Antee aka _(Antee-Framework)_ is a UI library that takes an anti approach to the
 - **Lightweight**: Less than 6kb minified
 - **Minimalistic**
 - **Scalable**: Solves real-world problems without inventing new ones
-- **Easy customization**: Antee was made with the intention of forking and customization.  
+- **Easy customization**: Antii was made with the intention of forking and customization.  
 
 ## Install 
 ```bash
@@ -150,5 +150,5 @@ The sanitizer removes dangerous content from a string.
 
 
 ----
-### What does Antee stand for?
-"Antee" could refer to it's anti-framework-like traits or maybe it's size to power ratio resembling ants. The "tee" could be a nodd at Tee joints in plumbing for decoupling and intercepting. Or it could be the misspelling of a popular musican's past album. Choose your own adventure.
+### What does Antii stand for?
+"Antii" could refer to it's anti-framework-like traits or maybe it's size to power ratio resembling ants. The "tee" could be a nodd at Tee joints in plumbing for decoupling and intercepting. Or it could be the misspelling of a popular musican's past album. Choose your own adventure.

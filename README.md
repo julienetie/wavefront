@@ -1,5 +1,5 @@
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
-# Antii
+# ANTii
 
 ### Ultramodern, boring JavaScript Antii-Framework
 
@@ -152,3 +152,4 @@ The sanitizer removes dangerous content from a string.
 ----
 ### What does Antii stand for?
 "Antii" could refer to it's anti-framework-like traits or maybe it's size to power ratio resembling ants. The "tee" could be a nodd at Tee joints in plumbing for decoupling and intercepting. Or it could be the misspelling of a popular musican's past album. Choose your own adventure.
+

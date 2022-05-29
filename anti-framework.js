@@ -10,7 +10,6 @@
 
 // const { body } = document
 
-
 // // RegExp and other patterns.
 // const patterns = {
 //   placeholder: /(\$\{.*?\})/g,
@@ -182,7 +181,7 @@
 //     templateContainer.insertAdjacentHTML('afterbegin', markup)
 //     const temp = templateContainer.firstElementChild
 //     el.replaceWith(temp)
-//     templateContainer.remove() 
+//     templateContainer.remove()
 //   }
 // }
 
@@ -233,7 +232,6 @@
 //   }
 // }
 
-
 // /*
 // replaces the last stored slate into it's referenced DOM position */
 // const replaceWithSlate = (ref, paramsSandbox, sandbox) => {
@@ -259,14 +257,13 @@
 //   templateContainer.insertAdjacentHTML('afterbegin', markup)
 //   const temp = templateContainer.firstElementChild
 
-
 //   switch (true) {
 //     case paramsSandbox === undefined:
 //     case paramsSandbox === null:
 //       el.insertAdjacentHTML('afterbegin', templateHandler(defaultParams))
 
 //       el.replaceWith(temp)
-//       templateContainer.remove() 
+//       templateContainer.remove()
 //       break
 //     case typeof paramsSandbox === 'object' && typeof sandbox === 'function':
 //       newParams = paramsSandbox
@@ -286,7 +283,7 @@
 //     } break
 //     case typeof paramsSandbox === 'object':
 //       el.replaceWith(temp)
-//       templateContainer.remove() 
+//       templateContainer.remove()
 //       break
 //   }
 // }
@@ -452,7 +449,7 @@
 //   input.requred = true
 //   input.value = value
 //   return input.checkValidity();
-// } 
+// }
 
 // export {
 //   paste,        // paste
@@ -463,31 +460,30 @@
 //   // pasteByIndex,
 //   // pasteEnd,
 
-
-//   listenTo,   
-//   // ingnore       
+//   listenTo,
+//   // ingnore
 //   stencilInto,        // stencilInto
-//   // replaceWithSlate,   stencil 
+//   // replaceWithSlate,   stencil
 //                       // copy     string based copy
 //                         // copyWithin
 //                         // copyStart
-//                         // copyEnd 
+//                         // copyEnd
 //                         // copyByIndex
 //                         // copyAfter
 //                         // CopyBefore
-//                       // cut       string based cut 
+//                       // cut       string based cut
 //                         // cutStart
-//                         // cutEnd 
+//                         // cutEnd
 //                         // cutByIndex
-//                         // cutWithin 
+//                         // cutWithin
 //                         // cutAfter
-//                         // cutBefore  
+//                         // cutBefore
 //                       // displace     Element based move, keeps events updates state
 //                       // swap
 //   mutate,  // slate needs to store mutation, (if any)
-//   removeSlate,        
+//   removeSlate,
 //   removeListener,
-//   removeWithin,       
+//   removeWithin,
 //   remove,
 //   createDelegate,
 //   suspect,

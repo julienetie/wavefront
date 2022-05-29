@@ -9,30 +9,28 @@ Licensed under the Apache License Version 2.0
 Copyright 2022 © Julien Etienne, Vanslang */
 
 import {
-    paste,
-    pasteInto,
-    removeWithin,
-    remove,
-    mutate
+  paste,
+  pasteInto,
+  removeWithin,
+  remove,
+  mutate
 } from './collarge.js'
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
-import { query, stencilInto } from './helpers.js'
-import _store from './_store.js'
+import { stencilInto } from './helpers.js'
+// import _store from './_store.js'
 import {
-    listenTo,
-    dismiss,
-    createDelegate,
-    suspect,
-    trigger,
-    removeDelegate,
-    removeListener
+  listenTo,
+  dismiss,
+  createDelegate,
+  suspect,
+  trigger,
+  removeDelegate,
+  removeListener
 } from './events.js'
 
-
 const sanitize = string => {
-
-    return string
+  return string
 }
 
 // console.log(_store)
@@ -46,58 +44,58 @@ const raf = window.requestAnimationFrame
 const caf = window.cancelAnimationFrame
 
 const validateInput = (value, type) => {
-    const input = document.createElement('input')
-    input.type = type
-    input.requred = true
-    input.value = value
-    return input.checkValidity();
+  const input = document.createElement('input')
+  input.type = type
+  input.requred = true
+  input.value = value
+  return input.checkValidity()
 }
 
 export {
-    paste,
-    pasteInto,
-    // pasteBefore,
-    // pasteAfter,
-    // pasteStart,
-    // pasteByIndex,
-    // pasteEnd,
-    listenTo,
-    // ingnore       
-    stencilInto,        // stencilInto
-    stencil,
-    // copy     string based copy
-    // copyWithin
-    // copyStart
-    // copyEnd 
-    // copyByIndex
-    // copyAfter
-    // CopyBefore
-    // cut       string based cut 
-    // cutStart
-    // cutEnd 
-    // cutByIndex
-    // cutWithin 
-    // cutAfter
-    // cutBefore  
-    // displace     Element based move, keeps events updates state
-    // swap
-    mutate,  // slate needs to store mutation, (if any)
-    removeSlate,
-    removeListener,
-    removeWithin,
-    remove,
-    createDelegate,
-    suspect,
-    trigger,
-    removeDelegate,
-    safeguardParams,
-    getSlate,
-    // muteSlate
-    // unmuteSlate
-    dismiss,
-    sanitize,
-    empty,
-    raf,
-    caf,
-    validateInput
+  paste,
+  pasteInto,
+  // pasteBefore,
+  // pasteAfter,
+  // pasteStart,
+  // pasteByIndex,
+  // pasteEnd,
+  listenTo,
+  // ingnore
+  stencilInto, // stencilInto
+  stencil,
+  // copy     string based copy
+  // copyWithin
+  // copyStart
+  // copyEnd
+  // copyByIndex
+  // copyAfter
+  // CopyBefore
+  // cut       string based cut
+  // cutStart
+  // cutEnd
+  // cutByIndex
+  // cutWithin
+  // cutAfter
+  // cutBefore
+  // displace     Element based move, keeps events updates state
+  // swap
+  mutate, // slate needs to store mutation, (if any)
+  removeSlate,
+  removeListener,
+  removeWithin,
+  remove,
+  createDelegate,
+  suspect,
+  trigger,
+  removeDelegate,
+  safeguardParams,
+  getSlate,
+  // muteSlate
+  // unmuteSlate
+  dismiss,
+  sanitize,
+  empty,
+  raf,
+  caf,
+  validateInput
 }

@@ -47,8 +47,6 @@ const removeDescendentEvents = (el, inner) => {
   _store.singleEventsAncestors = _store.singleEventsAncestors.filter(Boolean)
 }
 
-
-
 /*
 Removes all child nodes of a given parent */
 const removeChildNodes = parent => {
@@ -109,11 +107,11 @@ Creates a list of ancestors for a given descendent and stops before the body tag
 const getAncestors = (el) => {
   const ancestors = [el]
   while (el.parentElement !== body) {
-      el = el.parentElement
-      ancestors.push(el)
+    el = el.parentElement
+    ancestors.push(el)
   }
   if (ancestors.length > 99) {
-      console.warn(`Child ${el} is excessively nested with over 100 parents. This may cause performance concerns`)
+    console.warn(`Child ${el} is excessively nested with over 100 parents. This may cause performance concerns`)
   }
   return ancestors
 }

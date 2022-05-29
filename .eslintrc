@@ -3,6 +3,7 @@
     "rules": {
         "no-fallthrough": [
             "off"
-        ]
+        ],
+        "quotes": [2, "single", { "allowTemplateLiterals": true }]
     }
 }

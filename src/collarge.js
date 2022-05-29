@@ -13,36 +13,31 @@ const paste = (selector, templateHandler) => {
   const placeholders = (templateHandlerStr.match(placeholder) || []).join(empty)
 
   if (templateHandlerStr.startsWith('function')) {
-    throw new SyntaxError(`'Declarative templates must be declared with an arrow function expression '=>'`)
-    return
+    throw new SyntaxError('\'Declarative templates must be declared with an arrow function expression \'=>\'')
   }
 
   const openingFunctionBodyIndex = templateHandlerStr.indexOf('{')
   const arrowFunctionIndex = templateHandlerStr.indexOf('=>')
   const returnStatementIndex = templateHandlerStr.indexOf('return')
-  const strDelimiters = ['`', '\'', '"'].map(delimiter => templateHandlerStr.indexOf(delimiter)).filter(v => v != -1)
+  const strDelimiters = ['`', '\'', '"'].map(delimiter => templateHandlerStr.indexOf(delimiter)).filter(v => v !== -1)
   const firstTickIndex = min(...strDelimiters)
 
   // Arrow function with body
   if (arrowFunctionIndex > 0 && arrowFunctionIndex < openingFunctionBodyIndex) {
     console.log('returnStatementIndex', returnStatementIndex)
     if (returnStatementIndex > openingFunctionBodyIndex) {
-
       if (returnStatementIndex > 3 && firstTickIndex > returnStatementIndex) {
         console.log('}~~~~~')
-        throw new SyntaxError(`'return' statements are not allowed in declarative templates.`)
-        return
+        throw new SyntaxError('\'return\' statements are not allowed in declarative templates.')
       }
     }
   }
-
 
   if (placeholders !== empty) {
     const culpritIndex = forbiddenOperators.findIndex(operator => placeholders.includes(operator))
     if (culpritIndex > -1) {
       const culprit = forbiddenOperators[culpritIndex]
       throw new SyntaxError(`Operators are not allowed in declarative templates. '${culprit}' was found within 'declarativeTemplate'`)
-      return
     }
   }
 

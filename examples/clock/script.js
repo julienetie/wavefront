@@ -1,8 +1,12 @@
 /*
 ticks.js */
+/*
+clock.js */
+import { insertInto, empty, mutate, raf } from '../../anti-framework.js'
+
 const makeDegList = (length, offset) => [...new Array(length)].map((value, i) => i * offset)
 const fiveMinuteTicksAngles = makeDegList(12, 30)
-const minuteTicksAngles = makeDegList(60, 6) 
+const minuteTicksAngles = makeDegList(60, 6)
 
 const fiveMinuteTicksStr = fiveMinuteTicksAngles.map(rotate => `
     <line 
@@ -15,7 +19,7 @@ const fiveMinuteTicksStr = fiveMinuteTicksAngles.map(rotate => `
         transform="rotate(${rotate})">
     </line>
 `).join(empty)
- 
+
 const minuteTicksStr = minuteTicksAngles.map(rotate => `
 <line 
     stroke="currentColor"
@@ -28,18 +32,16 @@ const minuteTicksStr = minuteTicksAngles.map(rotate => `
 </line>`
 ).join(empty)
 
-/* 
+/*
 export {
     fiveMinuteTicksStr,
     minuteTicksStr
 }
 */
 
-
-
 /*
 clock-view.js */
-const clockView = insertInto('#root', ({minuteTicksStr, fiveMinuteTicksStr}) => `
+const clockView = insertInto('#root', ({ minuteTicksStr, fiveMinuteTicksStr }) => `
     <div class="clock">
         <svg viewBox="0 0 200 200" width="95vh">
             <g transform="translate(100, 100)">
@@ -58,30 +60,24 @@ const clockView = insertInto('#root', ({minuteTicksStr, fiveMinuteTicksStr}) => 
         </svg>
     </div>
 `)
-
-
-
-/* 
-clock.js */
-import { insertInto, empty, mutate, raf } from "../../anti-framework.js"
 // import { minuteTicksStr, fiveMinuteTicksStr } from 'ticks.js'
 const fullDeg = 360
 
 const rotate = (selector, deg) => {
-    mutate(selector, el => el.setAttribute('transform', `rotate(${deg})`))
+  mutate(selector, el => el.setAttribute('transform', `rotate(${deg})`))
 }
 
 clockView({
-    minuteTicksStr,
-    fiveMinuteTicksStr  
+  minuteTicksStr,
+  fiveMinuteTicksStr
 })
 
 const loop = (timestamp) => {
-	const d = new Date()
-    rotate('#second', 6*d.getSeconds() + (6 * 0.001 * d.getMilliseconds()))  
-    rotate('#subsecond', fullDeg * 0.001 * d.getMilliseconds())  
-	rotate('#minute', 6*d.getMinutes())
-	rotate('#hour', 30*(d.getHours()%12) + d.getMinutes()/2)
-    raf(loop)
+  const d = new Date()
+  rotate('#second', 6 * d.getSeconds() + (6 * 0.001 * d.getMilliseconds()))
+  rotate('#subsecond', fullDeg * 0.001 * d.getMilliseconds())
+  rotate('#minute', 6 * d.getMinutes())
+  rotate('#hour', 30 * (d.getHours() % 12) + d.getMinutes() / 2)
+  raf(loop)
 }
 raf(loop)

@@ -1,4 +1,5 @@
 import {
+  paste,
   pasteInto,
   listenTo,
   stencilInto,

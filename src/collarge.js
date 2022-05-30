@@ -75,8 +75,10 @@ const paste = (selector, templateHandler) => {
 /*
 A closure that requres `params` to create and insert markup */
 const pasteInto = (selector, templateHandler) => {
+  selector = selector === '/' ? '#root' : selector
   const el = query(selector)
   return (params, ref, denylistPattern, replaceWord) => {
+    params = params || {}
     // Missing element
     if (!el) {
       console.error(`Cannot find element ${selector}`)

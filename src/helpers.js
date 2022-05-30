@@ -59,7 +59,7 @@ const removeChildNodes = parent => {
 Inserts the last stored slate into it's referenced DOM position */
 const stencilInto = (ref, paramsSandbox, sandbox) => {
   if (!_store.slates[ref]) {
-    console.log(`Slate ${ref} does not exist`)
+    console.log(`Slate ${ref} does not exist`)//
   }
 
   // Get the slate
@@ -111,17 +111,25 @@ const getAncestors = (el) => {
     ancestors.push(el)
   }
   if (ancestors.length > 99) {
-    console.warn(`Child ${el} is excessively nested with over 100 parents. This may cause performance concerns`)
+    console.warn(`Child ${el} is excessively nested with over 100 parents. This may cause performance concerns`)//
   }
   return ancestors
 }
 
 const empty = ''
 
+const sequence = (n, offset = 0, multiplier = 1) => {
+  let seq = [...Array(n + offset).keys()]
+  if (offset !== 0) seq.shift()
+  seq = multiplier === 1 ? seq : seq.map(value => value * multiplier)
+  return seq
+}
+
 export {
   empty,
   query,
   patterns,
+  sequence,
   removeDescendentEvents,
   removeChildNodes,
   stencilInto,

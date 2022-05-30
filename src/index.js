@@ -17,7 +17,7 @@ import {
 } from './collarge.js'
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
-import { stencilInto } from './helpers.js'
+import { stencilInto, sequence } from './helpers.js'
 // import _store from './_store.js'
 import {
   listenTo,
@@ -95,6 +95,7 @@ export {
   dismiss,
   sanitize,
   empty,
+  sequence,
   raf,
   caf,
   validateInput

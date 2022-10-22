@@ -19,11 +19,20 @@ body {
 
 .frame {
   background: greenyellow;
-  width: 600px;
+  width: 100%;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(6, 100px);
-  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: repeat(6, 4rem);
+  grid-template-rows: 4rem 4rem 4rem;
+  grid-auto-flow: column;
+}
+
+.boxes {
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 4rem);
+  grid-template-rows: 4rem 4rem 4rem;
   grid-auto-flow: column;
 }
 

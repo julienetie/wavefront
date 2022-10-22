@@ -53,7 +53,7 @@ const validateInput = (value, type) => {
 
 export {
   paste,
-  pasteInto,
+  pasteInto, // ✓
   // pasteBefore,
   // pasteAfter,
   // pasteStart,

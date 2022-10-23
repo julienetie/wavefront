@@ -51,7 +51,7 @@ describe('Collage API:', () => {
 
 describe('validateTemplateHandler:', () => {
   /*
-  These tests cannot be implicitly verfified, it must be tested with syntax (No DRY) */
+  These tests cannot be implicitly verfified, ideally they should be tested with syntax (Avoid DRY) */
   // -
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'-\'', () => {
     let hasError

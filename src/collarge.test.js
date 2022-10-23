@@ -1,18 +1,19 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste } from './collarge.js'
+import { paste, pasteInto } from './collarge.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
 // const { placeholder, forbiddenOperators } = patterns
 
 let pastePlaceholder
-describe('Collarge Paste:', () => {
+describe('Collage API:', () => {
   beforeEach(() => {
     document.body.insertAdjacentHTML('afterbegin', '<div id="paste-placeholder"></div>')
     pastePlaceholder = document.querySelector('#paste-placeholder')
   })
   afterEach(() => pastePlaceholder && pastePlaceholder.remove())
-  it('Should paste a H1 tage with text', () => {
+
+  it('Should paste a H1 tag with text', () => {
     const text = 'Collarge Paste'
     const h1View = paste('#paste-placeholder', ({ text }) => `
             <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
@@ -26,6 +27,29 @@ describe('Collarge Paste:', () => {
     expect(h1.textContent === text)
     expect(pastePlaceholder === null)
   })
+
+
+
+  it('Should pasteInto a H1 tag with text', () => {
+    const text = 'Collarge Paste'
+    const h1View = pasteInto('#paste-placeholder', ({ text }) => `
+            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+    )
+    h1View({ text })
+
+    
+    // const pastePlaceholder = document.querySelector('#paste-placeholder')
+    const h1 = pastePlaceholder.querySelector('#paste')
+    
+    expect(h1.tagName === 'H1')
+    // expect(h1.textContent === text)
+    expect(!!pastePlaceholder)
+
+  })
+})
+
+
+describe('validateTemplateHandler:', () => {
   /*
   These tests cannot be implicitly verfified, it must be tested with syntax (No DRY) */
   // -
@@ -39,6 +63,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'+\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 + 2}</span>`) } catch (err) {
@@ -49,6 +74,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'*\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 * 2}</span>`) } catch (err) {
@@ -59,6 +85,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'/\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 / 2}</span>`) } catch (err) {
@@ -69,6 +96,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'%\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 % 2}</span>`) } catch (err) {
@@ -79,6 +107,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'=\'', () => {
     let hasError
     let d // eslint-disable-line
@@ -90,6 +119,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'!\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${!2}</span>`) } catch (err) {
@@ -100,6 +130,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'?\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 ? 2 : 2}</span>`) } catch (err) { // eslint-disable-line
@@ -110,6 +141,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \':\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${{ test: 123 }}</span>`) } catch (err) {
@@ -120,6 +152,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'<\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 < 2}</span>`) } catch (err) { // eslint-disable-line
@@ -130,6 +163,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'>\'', () => {
     let hasError
     let d // eslint-disable-line
@@ -141,6 +175,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'&\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 & 2}</span>`) } catch (err) {
@@ -184,6 +219,7 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'typeof\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${typeof (2)}</span>`) } catch (err) {
@@ -235,4 +271,5 @@ describe('Collarge Paste:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
+
 })

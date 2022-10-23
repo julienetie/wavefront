@@ -3,12 +3,9 @@ import { query, removeDescendentEvents, removeChildNodes, patterns, empty } from
 import _store from './_store.js'
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
-/*
-A closure that requres `params` to create and insert markup */
-const paste = (selector, templateHandler) => {
-  console.log('paste')
-  const el = query(selector)
 
+
+const validateTemplateHandler = (templateHandler) => {
   const templateHandlerStr = templateHandler.toString()
   const placeholders = (templateHandlerStr.match(placeholder) || []).join(empty)
 
@@ -39,9 +36,21 @@ const paste = (selector, templateHandler) => {
       const culprit = forbiddenOperators[culpritIndex]
       throw new SyntaxError(`Operators are not allowed in declarative templates. '${culprit}' was found within 'declarativeTemplate'`)
     }
-  }
+  }  
+}
 
-  return (params, ref, denylistPattern, replaceWord) => {
+
+/*
+A closure that requres `params` to create and insert markup */
+const paster = type => (selector, templateHandler) => {
+  selector = selector === '/' ? '#root' : selector
+  const el = query(selector)
+
+  validateTemplateHandler(templateHandler)
+
+  return (params = {}, ref, denylistPattern, replaceWord) => {
+    const shouldPasteInto = type === 'pasteInto'
+
     // Missing element
     if (!el) {
       console.error(`Cannot find element ${selector}`)
@@ -58,11 +67,22 @@ const paste = (selector, templateHandler) => {
     if (ref) {
       _store.slates[ref] = { templateHandler, cleanedParams, selector }
     }
-
+    
     if (el.children.length > 0) {
       // Remove all nested events
-      removeDescendentEvents(el)
+      removeDescendentEvents(el, shouldPasteInto && 'inner')
+
+      if (shouldPasteInto) {
+        // Remove all children
+        removeChildNodes(el)
+      }
     }
+
+    if (shouldPasteInto) {
+      el.insertAdjacentHTML('afterbegin', markup)
+      return
+    }
+
     const templateContainer = document.createElement('div')
     _store.template.append(templateContainer)
     templateContainer.insertAdjacentHTML('afterbegin', markup)
@@ -72,39 +92,8 @@ const paste = (selector, templateHandler) => {
   }
 }
 
-/*
-A closure that requres `params` to create and insert markup */
-const pasteInto = (selector, templateHandler) => {
-  selector = selector === '/' ? '#root' : selector
-  const el = query(selector)
-  return (params, ref, denylistPattern, replaceWord) => {
-    params = params || {}
-    // Missing element
-    if (!el) {
-      console.error(`Cannot find element ${selector}`)
-      return
-    }
-
-    //
-    const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
-
-    // Create markup
-    const markup = templateHandler(cleanedParams)
-
-    // Store copy of markup
-    if (ref) {
-      _store.slates[ref] = { templateHandler, cleanedParams, selector }
-    }
-
-    if (el.children.length > 0) {
-      // Remove all nested events
-      removeDescendentEvents(el, 'inner')
-      // Remove all children
-      removeChildNodes(el)
-    }
-    el.insertAdjacentHTML('afterbegin', markup)
-  }
-}
+const paste = paster()
+const pasteInto = paster('pasteInto')
 
 const removeWithin = selector => {
   const el = query(selector)

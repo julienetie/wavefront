@@ -21,10 +21,8 @@ const validateTemplateHandler = (templateHandler) => {
 
   // Arrow function with body
   if (arrowFunctionIndex > 0 && arrowFunctionIndex < openingFunctionBodyIndex) {
-    console.log('returnStatementIndex', returnStatementIndex)
     if (returnStatementIndex > openingFunctionBodyIndex) {
       if (returnStatementIndex > 3 && firstTickIndex > returnStatementIndex) {
-        console.log('}~~~~~')
         throw new SyntaxError('\'return\' statements are not allowed in declarative templates.')
       }
     }

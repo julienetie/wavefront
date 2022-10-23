@@ -14,7 +14,7 @@ import {
   removeWithin,
   remove,
   mutate
-} from './collarge.js'
+} from './collage.js'
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
 import { stencilInto, sequence } from './helpers.js'

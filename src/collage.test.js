@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste, pasteInto } from './collarge.js'
+import { paste, pasteInto } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
@@ -14,7 +14,7 @@ describe('Collage API:', () => {
   afterEach(() => pastePlaceholder && pastePlaceholder.remove())
 
   it('Should paste a H1 tag with text', () => {
-    const text = 'Collarge Paste'
+    const text = 'Collage Paste'
     const h1View = paste('#paste-placeholder', ({ text }) => `
             <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
     )
@@ -31,7 +31,7 @@ describe('Collage API:', () => {
 
 
   it('Should pasteInto a H1 tag with text', () => {
-    const text = 'Collarge Paste'
+    const text = 'Collage Paste'
     const h1View = pasteInto('#paste-placeholder', ({ text }) => `
             <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
     )

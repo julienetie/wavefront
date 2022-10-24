@@ -45,7 +45,9 @@ const paster = type => (selector, templateHandler) => {
   const insertions = {
     pasteInto: 'afterbegin',
     pasteBefore: 'beforebegin',
-    pasteAfter: 'afterend'
+    pasteAfter: 'afterend',
+    pasteStart: 'afterbegin',
+    pasteEnd: 'beforeend',
   }
 
   validateTemplateHandler(templateHandler)
@@ -59,7 +61,7 @@ const paster = type => (selector, templateHandler) => {
       return
     }
 
-    //
+    // @todo Add comments
     const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
 
     // Create markup
@@ -99,6 +101,9 @@ const paste = paster()
 const pasteInto = paster('pasteInto')
 const pasteBefore = paster('pasteBefore')
 const pasteAfter = paster('pasteAfter')
+const pasteStart = paster('pasteStart')
+const pasteEnd = paster('pasteEnd')
+// const pasteByIndex = paster()
 
 const removeWithin = selector => {
   const el = query(selector)
@@ -129,6 +134,8 @@ export {
   pasteInto,
   pasteBefore,
   pasteAfter,
+  pasteStart,
+  pasteEnd,
   removeWithin,
   remove,
   mutate

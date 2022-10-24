@@ -12,6 +12,10 @@ import {
   paste,
   pasteInto,
   pasteBefore,
+  pasteAfter,
+  pasteStart,
+  // pasteByIndex,
+  pasteEnd,
   removeWithin,
   remove,
   mutate
@@ -56,10 +60,10 @@ export {
   paste,
   pasteInto,
   pasteBefore,
-  // pasteAfter,
-  // pasteStart,
+  pasteAfter,
+  pasteStart,
   // pasteByIndex,
-  // pasteEnd,
+  pasteEnd,
   listenTo,
   // ingnore
   stencilInto, // stencilInto

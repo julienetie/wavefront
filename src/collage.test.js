@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste, pasteInto, pasteBefore, pasteAfter } from './collage.js'
+import { paste, pasteInto, pasteBefore, pasteAfter, pasteStart, pasteEnd } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
@@ -16,7 +16,7 @@ describe('Collage API:', () => {
   it('Should paste a H1 tag with text', () => {
     const text = 'Collage Paste'
     const h1View = paste('#paste-placeholder', ({ text }) => `
-            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+            <h1 id="paste" >${text}</h1>`
     )
     h1View({ text })
 
@@ -31,7 +31,7 @@ describe('Collage API:', () => {
   it('Should pasteInto a H1 tag with text', () => {
     const text = 'Collage Paste'
     const h1View = pasteInto('#paste-placeholder', ({ text }) => `
-            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+            <h1 id="paste" >${text}</h1>`
     )
     h1View({ text })
 
@@ -45,7 +45,7 @@ describe('Collage API:', () => {
   it('Should pasteBefore a H1 tag with text', () => {
     const text = 'Collage Paste'
     const h1View = pasteBefore('#paste-placeholder', ({ text }) => `
-            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+            <h1 id="paste" >${text}</h1>`
     )
     h1View({ text })
     const elementInsertedBefore = pastePlaceholder.previousElementSibling
@@ -56,12 +56,34 @@ describe('Collage API:', () => {
   it('Should pasteAfter a H1 tag with text', () => {
     const text = 'Collage Paste'
     const h1View = pasteAfter('#paste-placeholder', ({ text }) => `
-            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+            <h1 id="paste">${text}</h1>`
     )
     h1View({ text })
-    const elementInsertedBefore = pastePlaceholder.nextElementSibling
-    expect(elementInsertedBefore.tagName).to.equal('H1')
-    expect(elementInsertedBefore.textContent).to.equal(text)
+    const elementInsertedAfter = pastePlaceholder.nextElementSibling
+    expect(elementInsertedAfter.tagName).to.equal('H1')
+    expect(elementInsertedAfter.textContent).to.equal(text)
+  })
+
+  it('Should pasteStart a H1 tag with text', () => {
+    const text = 'Collage Paste'
+    const h1View = pasteStart('#paste-placeholder', ({ text }) => `
+            <h1 id="paste">${text}</h1>`
+    )
+    h1View({ text })
+    const elementInsertedAtStart = pastePlaceholder.firstElementChild
+    expect(elementInsertedAtStart.tagName).to.equal('H1')
+    expect(elementInsertedAtStart.textContent).to.equal(text)
+  })
+
+  it('Should pasteEnd a H1 tag with text', () => {
+    const text = 'Collage Paste'
+    const h1View = pasteEnd('#paste-placeholder', ({ text }) => `
+            <h1 id="paste">${text}</h1>`
+    )
+    h1View({ text })
+    const elementInsertedAtEnd = pastePlaceholder.lastElementChild
+    expect(elementInsertedAtEnd.tagName).to.equal('H1')
+    expect(elementInsertedAtEnd.textContent).to.equal(text)
   })
 })
 
@@ -69,6 +91,21 @@ describe('validateTemplateHandler:', () => {
   /*
   These tests cannot be implicitly verfified, ideally they should be tested with syntax (Avoid DRY) */
   // -
+  it('Should paste a H1 tag containing an attribute with forbidden operators', () => {
+    const text = 'Collage Paste'
+    const h1View = paste('#paste-placeholder', ({ text }) => `
+            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+    )
+    h1View({ text })
+
+    const h1 = document.querySelector('#paste')
+    const pastePlaceholder = document.querySelector('#paste-placeholder')
+
+    expect(h1.tagName).to.equal('H1')
+    expect(h1.textContent).to.equal(text)
+    expect(pastePlaceholder).to.equal(null)
+  })
+
   it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'-\'', () => {
     let hasError
     try { paste('#paste-placeholder', () => `<span>${2 - 2}</span>`) } catch (err) {

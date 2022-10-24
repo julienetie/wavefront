@@ -38,11 +38,18 @@ const validateTemplateHandler = (templateHandler) => {
 }
 
 
+
 /*
 A closure that requres `params` to create and insert markup */
 const paster = type => (selector, templateHandler) => {
   selector = selector === '/' ? '#root' : selector
   const el = query(selector)
+
+  const insertions = {
+    pasteInto: 'afterbegin',
+    pasteBefore: 'beforebegin',
+    pasteAfter: 'afterend'
+  }
 
   validateTemplateHandler(templateHandler)
 
@@ -76,8 +83,9 @@ const paster = type => (selector, templateHandler) => {
       }
     }
 
-    if (shouldPasteInto) {
-      el.insertAdjacentHTML('afterbegin', markup)
+    const insertion = insertions[type]
+    if (insertion) {
+      el.insertAdjacentHTML(insertion, markup)
       return
     }
 
@@ -92,6 +100,7 @@ const paster = type => (selector, templateHandler) => {
 
 const paste = paster()
 const pasteInto = paster('pasteInto')
+const pasteBefore = paster('pasteBefore')
 
 const removeWithin = selector => {
   const el = query(selector)
@@ -120,6 +129,7 @@ const mutate = (selector, templateHandler) => {
 export {
   paste,
   pasteInto,
+  pasteBefore,
   removeWithin,
   remove,
   mutate

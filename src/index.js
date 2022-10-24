@@ -11,6 +11,7 @@ Copyright 2022 © Julien Etienne, Vanslang */
 import {
   paste,
   pasteInto,
+  pasteBefore,
   removeWithin,
   remove,
   mutate
@@ -53,8 +54,8 @@ const validateInput = (value, type) => {
 
 export {
   paste,
-  pasteInto, // ✓
-  // pasteBefore,
+  pasteInto,
+  pasteBefore,
   // pasteAfter,
   // pasteStart,
   // pasteByIndex,

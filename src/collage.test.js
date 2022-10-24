@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste, pasteInto } from './collage.js'
+import { paste, pasteInto, pasteBefore } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
@@ -23,9 +23,9 @@ describe('Collage API:', () => {
     const h1 = document.querySelector('#paste')
     const pastePlaceholder = document.querySelector('#paste-placeholder')
 
-    expect(h1.tagName === 'H1')
-    expect(h1.textContent === text)
-    expect(pastePlaceholder === null)
+    expect(h1.tagName).to.equal('H1')
+    expect(h1.textContent).to.equal(text)
+    expect(pastePlaceholder).to.equal(null)
   })
 
 
@@ -37,15 +37,25 @@ describe('Collage API:', () => {
     )
     h1View({ text })
 
-    
-    // const pastePlaceholder = document.querySelector('#paste-placeholder')
     const h1 = pastePlaceholder.querySelector('#paste')
     
-    expect(h1.tagName === 'H1')
-    // expect(h1.textContent === text)
-    expect(!!pastePlaceholder)
+    expect(h1.tagName).to.equal('H1')
+    expect(h1.textContent).to.equal(text)
+    expect(pastePlaceholder.firstElementChild).to.equal(h1)
 
   })
+
+  it('Should pasteBefore a H1 tag with text', () => {
+    const text = 'Collage Paste'
+    const h1View = pasteBefore('#paste-placeholder', ({ text }) => `
+            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+    )
+    h1View({ text })
+    const elementInsertedBefore = pastePlaceholder.previousElementSibling
+    expect(elementInsertedBefore.tagName).to.equal('H1')
+    expect(elementInsertedBefore.textContent).to.equal(text)
+  })
+
 })
 
 

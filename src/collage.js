@@ -4,7 +4,6 @@ import _store from './_store.js'
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
 
-
 const validateTemplateHandler = (templateHandler) => {
   const templateHandlerStr = templateHandler.toString()
   const placeholders = (templateHandlerStr.match(placeholder) || []).join(empty)
@@ -34,10 +33,8 @@ const validateTemplateHandler = (templateHandler) => {
       const culprit = forbiddenOperators[culpritIndex]
       throw new SyntaxError(`Operators are not allowed in declarative templates. '${culprit}' was found within 'declarativeTemplate'`)
     }
-  }  
+  }
 }
-
-
 
 /*
 A closure that requres `params` to create and insert markup */
@@ -72,7 +69,7 @@ const paster = type => (selector, templateHandler) => {
     if (ref) {
       _store.slates[ref] = { templateHandler, cleanedParams, selector }
     }
-    
+
     if (el.children.length > 0) {
       // Remove all nested events
       removeDescendentEvents(el, shouldPasteInto && 'inner')

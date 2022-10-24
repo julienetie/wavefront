@@ -28,8 +28,6 @@ describe('Collage API:', () => {
     expect(pastePlaceholder).to.equal(null)
   })
 
-
-
   it('Should pasteInto a H1 tag with text', () => {
     const text = 'Collage Paste'
     const h1View = pasteInto('#paste-placeholder', ({ text }) => `
@@ -38,11 +36,10 @@ describe('Collage API:', () => {
     h1View({ text })
 
     const h1 = pastePlaceholder.querySelector('#paste')
-    
+
     expect(h1.tagName).to.equal('H1')
     expect(h1.textContent).to.equal(text)
     expect(pastePlaceholder.firstElementChild).to.equal(h1)
-
   })
 
   it('Should pasteBefore a H1 tag with text', () => {
@@ -55,9 +52,7 @@ describe('Collage API:', () => {
     expect(elementInsertedBefore.tagName).to.equal('H1')
     expect(elementInsertedBefore.textContent).to.equal(text)
   })
-
 })
-
 
 describe('validateTemplateHandler:', () => {
   /*
@@ -281,5 +276,4 @@ describe('validateTemplateHandler:', () => {
     }
     if (!hasError) throw Error('No error thrown')
   })
-
 })

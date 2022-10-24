@@ -4,7 +4,9 @@
   "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
   "main": "anti-framework.js",
   "scripts": {
-    "test": "./node_modules/.bin/http-server -p=3333 --s | ./node_modules/.bin/mocha-chrome http://127.0.0.1:3333/test.html --ignore-exceptions"
+    "test": "./node_modules/.bin/http-server -p=3333 --s | ./node_modules/.bin/mocha-chrome http://127.0.0.1:3333/test.html --ignore-exceptions",
+    "lint": "./node_modules/.bin/eslint src/",
+    "lint:fix": "./node_modules/.bin/eslint src/ --fix"
   },
   "repository": {
     "type": "git",

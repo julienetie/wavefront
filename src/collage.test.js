@@ -73,6 +73,7 @@ describe('Collage API:', () => {
     const elementInsertedAtStart = pastePlaceholder.firstElementChild
     expect(elementInsertedAtStart.tagName).to.equal('H1')
     expect(elementInsertedAtStart.textContent).to.equal(text)
+    // @todo, check child elements are preserved
   })
 
   it('Should pasteEnd a H1 tag with text', () => {
@@ -84,6 +85,7 @@ describe('Collage API:', () => {
     const elementInsertedAtEnd = pastePlaceholder.lastElementChild
     expect(elementInsertedAtEnd.tagName).to.equal('H1')
     expect(elementInsertedAtEnd.textContent).to.equal(text)
+    // @todo, check child elements are preserved
   })
 })
 

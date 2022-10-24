@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste, pasteInto, pasteBefore } from './collage.js'
+import { paste, pasteInto, pasteBefore, pasteAfter } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
@@ -49,6 +49,17 @@ describe('Collage API:', () => {
     )
     h1View({ text })
     const elementInsertedBefore = pastePlaceholder.previousElementSibling
+    expect(elementInsertedBefore.tagName).to.equal('H1')
+    expect(elementInsertedBefore.textContent).to.equal(text)
+  })
+
+  it('Should pasteAfter a H1 tag with text', () => {
+    const text = 'Collage Paste'
+    const h1View = pasteAfter('#paste-placeholder', ({ text }) => `
+            <h1 id="paste" data-patterns="-,+,*,/,%,=,!,?,:,<,>,&,|,~,^,typeof,instanceof">${text}</h1>`
+    )
+    h1View({ text })
+    const elementInsertedBefore = pastePlaceholder.nextElementSibling
     expect(elementInsertedBefore.tagName).to.equal('H1')
     expect(elementInsertedBefore.textContent).to.equal(text)
   })

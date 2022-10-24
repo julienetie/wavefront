@@ -98,6 +98,7 @@ const paster = type => (selector, templateHandler) => {
 const paste = paster()
 const pasteInto = paster('pasteInto')
 const pasteBefore = paster('pasteBefore')
+const pasteAfter = paster('pasteAfter')
 
 const removeWithin = selector => {
   const el = query(selector)
@@ -127,6 +128,7 @@ export {
   paste,
   pasteInto,
   pasteBefore,
+  pasteAfter,
   removeWithin,
   remove,
   mutate

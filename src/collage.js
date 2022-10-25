@@ -103,11 +103,10 @@ const pasteBefore = paster('pasteBefore')
 const pasteAfter = paster('pasteAfter')
 const pasteStart = paster('pasteStart')
 const pasteEnd = paster('pasteEnd')
-// const pasteByIndex = paster()
 
 const removeWithin = selector => {
   const el = query(selector)
-  if (el.children.length > 0) {
+  if (el && el.children.length > 0) {
     // Remove all nested events
     removeDescendentEvents(el, 'inner')
     // Remove all children
@@ -117,9 +116,14 @@ const removeWithin = selector => {
 }
 
 const remove = selector => {
-  removeWithin(selector)
-    // @todo remove self event
-    .remove()
+  const el = query(selector)
+  if (el) {
+    // Remove all nested events
+    removeDescendentEvents(el)
+    // Remove all children
+    removeChildNodes(el)
+  }
+  el.remove()
 }
 
 /*

@@ -6,7 +6,8 @@ import {
   pasteAfter,
   pasteStart,
   pasteEnd,
-  removeWithin
+  removeWithin,
+  remove
 } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
@@ -97,16 +98,30 @@ describe('Collage API:', () => {
   })
 
   it('removeWithin: Should remove all internal nodes', () => {    
-    const h1View = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
+    const wrapper = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
       <span >${text1}</span>
       <span >${text2}</span>
       <span >${text3}</span>
     `)
-    h1View({ text1: 'one', text2: 'two', text3: 'three' })
+    wrapper({ text1: 'one', text2: 'two', text3: 'three' })
     removeWithin('#paste-placeholder')
 
     expect(document.querySelector('#paste-placeholder')).to.not.equal(null)
     expect(document.querySelector('#paste-placeholder').firstElementChild).to.equal(null)
+    // @todo check removed events
+  })
+
+  it('remove: Should remove a given element', () => {    
+    const wrapper = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
+      <span >${text1}</span>
+      <span >${text2}</span>
+      <span >${text3}</span>
+    `)
+    wrapper({ text1: 'one', text2: 'two', text3: 'three' })
+    remove('#paste-placeholder')
+
+    expect(document.querySelector('#paste-placeholder')).to.equal(null)
+    // @todo check removed events
   })
 })
 

@@ -1,5 +1,13 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { paste, pasteInto, pasteBefore, pasteAfter, pasteStart, pasteEnd } from './collage.js'
+import { 
+  paste,
+  pasteInto,
+  pasteBefore,
+  pasteAfter,
+  pasteStart,
+  pasteEnd,
+  removeWithin
+} from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
@@ -86,6 +94,19 @@ describe('Collage API:', () => {
     expect(elementInsertedAtEnd.tagName).to.equal('H1')
     expect(elementInsertedAtEnd.textContent).to.equal(text)
     // @todo, check child elements are preserved
+  })
+
+  it('removeWithin: Should remove all internal nodes', () => {    
+    const h1View = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
+      <span >${text1}</span>
+      <span >${text2}</span>
+      <span >${text3}</span>
+    `)
+    h1View({ text1: 'one', text2: 'two', text3: 'three' })
+    removeWithin('#paste-placeholder')
+
+    expect(document.querySelector('#paste-placeholder')).to.not.equal(null)
+    expect(document.querySelector('#paste-placeholder').firstElementChild).to.equal(null)
   })
 })
 

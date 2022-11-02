@@ -7,7 +7,8 @@ import {
   pasteStart,
   pasteEnd,
   removeWithin,
-  remove
+  remove,
+  mutate
 } from './collage.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
@@ -122,6 +123,15 @@ describe('Collage API:', () => {
 
     expect(document.querySelector('#paste-placeholder')).to.equal(null)
     // @todo check removed events
+  })
+
+  it('mutate: Should modify an element directly', () => {    
+    const content = 'content'
+    mutate('#paste-placeholder', el => {
+      el.textContent = content
+    })
+
+    expect(document.querySelector('#paste-placeholder').textContent).to.equal(content)
   })
 })
 

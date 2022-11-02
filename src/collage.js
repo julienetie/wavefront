@@ -142,5 +142,5 @@ export {
   pasteEnd,
   removeWithin,
   remove,
-  mutate
+  mutate,
 }

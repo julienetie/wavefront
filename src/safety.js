@@ -20,21 +20,13 @@ const safeguardParams = (params, denylistPattern, replaceWord) => {
     switch (true) {
       case value === undefined:
       case value === null:
-      case Object.is(value, NaN):
+      case Number.isNaN(value):
         params[key] = ' '
         break
     }
   })
   return params
 }
-
-// const sanitizeURL = text => {
-//     if (isJavaScriptProtocol.test(url)) {
-//         throw new Error(
-//             'React has blocked a javascript: URL as a security precaution.',
-//         );
-//     }
-// }
 
 /**
  * @license

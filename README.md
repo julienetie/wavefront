@@ -1,4 +1,5 @@
 
+
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
 # Wavefront
 
@@ -6,30 +7,66 @@
 
 [![Standard-Js](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
 
+Wavefront is an ultramodern front-end JavaScript framework for building superlative user interfaces without the theatrics found in popular JavaScript frameworks.
 
-Wavefront is an ultramodern UI library that deviates from common JavaScript framework norms found in:  
-[React](https://github.com/facebook/react), [Vue](https://github.com/vuejs/vue), [Angular](https://github.com/angular/angular), [Svelte](https://github.com/sveltejs/svelte) and [Solid.js](https://www.solidjs.com/).
+### Not your grandma's JavaScript framework
+We do things a little bit different here.
 
-- **Anti JSX**: Wavefront uses template-literal strings to define DOM nodes
-- **Anti Virtual-DOM**: Wavefront does not use a VDOM, it queries the DOM 
-- **Anti compiler**:  The code you see in your text editor is the source code 
-- **Anti dependencies**  
-- **High performance**: Anti-over-engineering 
-- **Decoupled events**: The management of delegated and direct events are decoupled from the DOM
+
+- **No JSX**: Wavefront uses template-literal strings to define DOM nodes
+- **No Virtual-DOM**: Wavefront does not use a VDOM, it queries the DOM
+- **No Compiler**:  The code you develop with is your source code 
+- **No Dependencies**  
+- **High Performance**: Over-engineering is the bane of front-end development 
+- **Decoupled Events**: Delegated and direct events are decoupled from the DOM
 - **Separation of Concerns**: Logic and semantics are separated
 - **Lightweight**: Less than 6kb minified
 - **Minimalistic**
 - **Scalable**: Solves real-world problems without inventing new ones
-- **Easy customization**: Fork and customize without losing sleep
+- **Easy Customization**: Fork and customize without losing sleep
+
+## Philosophy
+Here are the core principles of Wavefront.
+### Native Natural Organic ECMAScript
+For quite some time it has not been necessary to transpile JavaScript.
+ Major modern browsers support at least: 
+- 98.2% of ECMAScript 2015 (6) 
+- 98.8% of ECMAScript 2016+
+
+ECMAScript support is exceptionally good. Where ECMAScript and W3C features are inconsistent, they can be added manually and individually polyfilled to keep your project's footprint low.
+
+### Zero JavaScript build-time during development
+Development build are extremely fast for large and small projects as there is zero build-time for JavaScript source code. Wavefront uses a PostCSS for Nesting which on runs on affected stylesheet distribution flies. You can expect a fairly large project to build in miliseconds not seconds. When nesting support improves development will be officially instantaneous.
+
+### Collarging
+Wavefront uses a technique called "Collaging". In the real world, a collage artist would layer pictures to create collage art. Wavefront follows this simple ideology allowing you to build, place and update components anywhere on the page without rules or restrictions. The beauty of this is that there is no concept of component hierarchy. 
+
+### The Removal of Decedents Event   
+Wavefront utilises Event-delegation, allows events to propagate to a listener on the document or window object. Event-delegation is not always possible, therefore event listeners are sometimes placed directly onto elements. Wavefront will eradicate descendent event listeners before their elements are written over.
+
+### Trusted Types | Sanitization | Escaping | Scoped Passthrough
+Wavefront enforces Trusted Types and Sanitiztion on supported browsers to reduce or eliminate XSS vector attacks on DOM sinks. Primitive values inserted into a template are escaped by default. The Sanitizer API is used to allow Markup from external sources. Developer defined parts of a UI are not santized and rely on private scoping for Trusted Types. Wavefront combines all 4 strategies for optimal performance and security.
+
+### Slates 
+
+### Stamping
+ 
 
 ## Install 
-```bash
-npm install wavefront
-```
-or 
+Import the wavefront library (-m --minified, -s --sourcemap, -i --install)
+`npx wavefront -i <destination>`
+
+Include wavefront as the first script to run on the page to ensure CPS security. 
 ```html
-<script src="wavefront.js"></srcipt>
+<script type="module" src="wavefront.min.js"></srcipt>
 ```
+Wavefront will conditionally fetch necessary polyfills for unsupported browsers. _(See polyfill list)_
+
+Alternatively you can create a Wavefront boilerplate.
+`npx wavefront <project-name>`
+
+Which can be launched for development using
+`npm start`
 
 ## Hello World Example _(For the birds)_
 ```javascript

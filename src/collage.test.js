@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, Element */
-import { 
+import {
   paste,
   pasteInto,
   pasteBefore,
@@ -19,7 +19,7 @@ let pastePlaceholder
 describe('Collage API:', () => {
   beforeEach(() => {
     document.body.insertAdjacentHTML('afterbegin', '<div id="paste-placeholder"></div>')
-    pastePlaceholder = document.querySelector('#paste-placeholder')
+    pastePlaceholder = document.body.querySelector('#paste-placeholder')
   })
   afterEach(() => pastePlaceholder && pastePlaceholder.remove())
 
@@ -98,7 +98,7 @@ describe('Collage API:', () => {
     // @todo, check child elements are preserved
   })
 
-  it('removeWithin: Should remove all internal nodes', () => {    
+  it('removeWithin: Should remove all internal nodes', () => {
     const wrapper = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
       <span >${text1}</span>
       <span >${text2}</span>
@@ -112,7 +112,7 @@ describe('Collage API:', () => {
     // @todo check removed events
   })
 
-  it('remove: Should remove a given element', () => {    
+  it('remove: Should remove a given element', () => {
     const wrapper = pasteInto('#paste-placeholder', ({ text1, text2, text3 }) => `
       <span >${text1}</span>
       <span >${text2}</span>
@@ -125,7 +125,7 @@ describe('Collage API:', () => {
     // @todo check removed events
   })
 
-  it('mutate: Should modify an element directly', () => {    
+  it('mutate: Should modify an element directly', () => {
     const content = 'content'
     mutate('#paste-placeholder', el => {
       el.textContent = content
@@ -136,6 +136,11 @@ describe('Collage API:', () => {
 })
 
 describe('validateTemplateHandler:', () => {
+  beforeEach(() => {
+    document.body.insertAdjacentHTML('afterbegin', '<div id="paste-placeholder"></div>')
+    pastePlaceholder = document.body.querySelector('#paste-placeholder')
+  })
+  afterEach(() => pastePlaceholder && pastePlaceholder.remove(), pastePlaceholder = null)
   /*
   These tests cannot be implicitly verfified, ideally they should be tested with syntax (Avoid DRY) */
   // -

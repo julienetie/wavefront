@@ -66,6 +66,7 @@ The Collage function is a [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation) 
 
 ### Other considerations
 - **Shorthand root selector**: A _selector_ value of `'/'` is shorthand for `#root` . Root is the outer most element of the page.
+- **Safeguarding of non-values**: Non-values like `null`, `undefined` and`NaN` cannot slip though the cracks. By default they will be rendered as an empty string.
 - **Trusted Types**: DOM sinks are protected by [Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API) in supported browsers.
 - **Escaping**: Primitive variables are escaped by default 
 - **Sanitization**: Variables prefixed with `$$$` are sanitized using the native Sanitizer API with its default configuration.

@@ -40,7 +40,7 @@ inlineNotice({ text:  '<strong>Notice</strong>: You are using an unsupported bro
 
 Wavefront works in a similar manner to how you would layer images to create collage art in the real-world. Consider the DOM as a state machine which represents the current state of the UI. 
 
-Wavefront does not use a virtual DOM and does not depend on reading the DOM. The _declarativeTemplates_ you define can be reused in innumerable ways with the capability of retain various state when use of **_slates_**.
+Wavefront does not use a virtual DOM and does not depend on reading the DOM. The _declarativeTemplates_ you define can not only be layered anywhere on the page but can also be reused in innumerable ways as well as retained when using [**_slates_**](#).
 
 ### Logicless Templates
 Wavefront enforces a separation of logic and presentation. Separating visual building blocks from a logical system is a profound quality that is appreciated in many forms of engineering. This does not only separate concerns but also allows for people with different skillsets to have more focus on their specific tasks and goals. 
@@ -106,3 +106,33 @@ The pasteStart() function will paste a new DOM subtree inside at the beginning o
 ### pasteEnd()
 The pasteEnd() function will paste a new DOM subtree inside at the end of a given selector.
 > _Non destructive_
+
+### pasteByIndex()
+TBA
+
+### remove()
+#### `remove(selector)`
+•  selector _`String`_
+
+The remove() function will remove all descendent events and elements aswell as removing the given selector and it's own events.
+```javascript
+remove('#mulit-line-notice')
+```
+> _Destructive_
+
+### removeWithin()
+The removeWithin() function removed all descendent events and elements but preserves the selector and it's events. 
+> _Destructive_
+
+### mutate()
+#### `mutate(selector, templateHandler)`
+•  selector _`String`_ •  templateHandler _`Function`_
+
+The mutate() function exposes a DOM element to be directly mutated within a function scope.
+```javascript
+mutate('#mulit-line-notice', el =>  `
+	el.textContent = 'Hello World'
+)
+```
+> _Destructive_
+

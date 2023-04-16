@@ -3,9 +3,12 @@ The collage API helps to you layer parts of your UI.
 
 - [Understanding The Collage API](#Understanding-the-Collage-API)
 - [The Collage API](#The-Collage-API)
-  - [paste()](#paste())
-  - [pasteInto()](#pasteInto())
-  - [pasteAfter()](#pasteAfter())
+  - [paste()](#paste)
+  - [pasteInto()](#pasteInto)
+  - [pasteAfter()](#pasteAfter)
+  - [pasteBefore()](#pasteBefore)
+  - [pasteStart()](#pasteStart)
+  - [pasteEnd()](#pasteEnd)
 ## Understanding The Collage API
 Let's first look at the **_paste()_** function to gain a fundamental understanding.
 

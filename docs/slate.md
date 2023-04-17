@@ -1,11 +1,28 @@
 # Slate API
-The Slate API allows you to manage and use stored stencils
+> Functions for logging, manipulating and applying stored stencils
 
-- [Understanding The Slate API](#Understanding-the-Slate-API)
-- [The Slate API](#The-Slate-API)
+#### [Slate Functions](#Slate-Functions)
+> Slates Methods 
+  - [applySlate()](#applySlate)
+  - [copySlate()](#copySlate)
   - [getSlate()](#getSlate)
+  - [logSlate()](#logSlate)
   - [removeSlate()](#removeSlate)
-
+___
+> Set Methods 
+  - [set.concat()](#set.concat)
+  - [set.difference()](#set.difference)
+  - [set.intersect()](#set.intersect)
+  - [set.symmetricDifference()](#set.symmetricDifference)
+  - [set.union()](#set.union)
+  - [set.<setoperation>().to()](#to)
+  - [set.<setoperation>().apply()](#apply)
+___
+#### [Obscuring Operators](#Obscuring-Operators)
+  - [Obscure Line](#Obscure-Line)
+  - [Obscure Character](#Obscure-character)
+  
+<!--
 ## Understanding The Slate API
 
 A slate is an object that consists of:
@@ -51,9 +68,7 @@ set.<setoperation>().to(ref)  // write to a new or existing slate
 `¬` Ignore character: Ignores a character in the set operation
 ```
 ---
-The Slate API
-## The Collage API
-
+## The Slate API
 ### logSlate()
 #### `logSlate(...ref)`
 •  ref _`String`_ •  
@@ -62,4 +77,4 @@ The logSlate() function will log given slates.
 ```javascript
  logSlate('sidebar', 'footer') // Logs the sidebar and footer slates
 ```
-
+-->

@@ -50,3 +50,16 @@ set.<setoperation>().to(ref)  // write to a new or existing slate
 `|` Ignore line: Ignores a line in the a set operation 
 `¬` Ignore character: Ignores a character in the set operation
 ```
+---
+The Slate API
+## The Collage API
+
+### logSlate()
+#### `logSlate(...ref)`
+•  ref _`String`_ •  
+
+The logSlate() function will log given slates.
+```javascript
+ logSlate('sidebar', 'footer') // Logs the sidebar and footer slates
+```
+

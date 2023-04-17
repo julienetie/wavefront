@@ -9,12 +9,14 @@
   - [logSlate()](#logSlate)
   - [removeSlate()](#removeSlate)
 ___
-> Set Methods 
+> Set Operations 
   - [set.concat()](#set.concat)
   - [set.difference()](#set.difference)
   - [set.intersect()](#set.intersect)
   - [set.symmetricDifference()](#set.symmetricDifference)
   - [set.union()](#set.union)
+ 
+> Set Actions 
   - [set.\<setOperation\>().to()](#to)
   - [set.\<setOperation\>().apply()](#apply)
 ___

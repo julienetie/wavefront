@@ -131,25 +131,28 @@ The removeWithin() function removed all descendent events and elements but prese
 
 The mutate() function exposes a DOM element to be directly mutated within a function scope.
 ```javascript
-mutate('#mulit-line-notice', el =>  `
+mutate('#mulit-line-notice', (el, listEvents) =>  {
+	console.log(listEvents()) // A list of events belonging to the selector
 	el.style.background = 'red'
-)
+})
 ```
 You can mutate a ref and update the DOM at the same time.
 Below will expose the stencil element. The modified element is returned which will update both the slate and the DOM.
 
 ```javascript
-mutate('#mulit-line-notice', ref, el =>  `
+mutate(ref, el =>  {
+	console.log(listEvents()) // A list of events belonging to the selector
 	el.style.background = 'lime'
 	return el
-)
+})
 ````
 The `sterelize()` function will sanitize primitive values and will return a Trusted Type which can be used for DOM sinks. 
 ```javascript
-mutate('#mulit-line-notice', ref, el =>  `
-	el.textContent = sterelize('Hello World')
+mutate(ref, el =>  {
+	console.log(listEvents()) // A list of events belonging to the selector
+        el.textContent = sterelize('Hello World')
 	return el
-)
+})
 ```
 > _Destructive_
 

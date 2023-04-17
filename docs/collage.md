@@ -58,11 +58,12 @@ All variables prefixed with `$$$` are sanitized using the native Sanitizer API w
 ### The Collage Function
 The Collage function is a [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation) function that is returned when creating a _declarativeTemplate_.
 
-### `collage(props = {}, ref, denyListPattern, replaceWord)`  
+### `collage(props = {}, {ref, denyListPattern, replaceWord, temp})`  
  - **_props_** - _`Object`_: An object of props (primitive values or other declarative templates). In the code example above, _text_ is a _prop_.
  - **_ref_** - _`String`_ : A given reference that stores a copy of the _declarativeTemplate_ to a a place in memory called a slate.	 
  - **_denyListPattern_** - _`RegExp`_ : A regex pattern of words to ignore.
  - **_replaceWord_** - _`String`_ : A replacement value for each denied word.
+ - **_temp_** - _`boolean`_ : If true it will not render but will be stored to a slate of a given `ref`. Default is `false`
 
 ### Other considerations
 - **Shorthand root selector**: A _selector_ value of `'/'` is shorthand for `#root` . Root is the outer most element of the page.

@@ -1,3 +1,12 @@
+
+Alter will: 
+- Update the DOM directly
+- Optonally, lazily update a corresponding slate
+
+```javascript 
+alter('selector', ref) // Updates both the DOM and the slate (lazily)
+```
+
 ```javascript
 // Get attribute
 alter('selector')

@@ -15,8 +15,8 @@ ___
   - [set.intersect()](#set.intersect)
   - [set.symmetricDifference()](#set.symmetricDifference)
   - [set.union()](#set.union)
-  - [set.<setoperation>().to()](#to)
-  - [set.<setoperation>().apply()](#apply)
+  - [set.\<setOperation\>().to()](#to)
+  - [set.\<setOperation\>().apply()](#apply)
 ___
 #### [Obscuring Operators](#Obscuring-Operators)
   - [Obscure Line](#Obscure-Line)

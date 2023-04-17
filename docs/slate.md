@@ -31,7 +31,6 @@ Underlying API
 
 getSlate(ref) // Returns an object showing the last slate { stencil, cleanProps, selector, collageType, invokeType, denyListWords, replaceWord }
 logSlate(ref) // logs the lsate
-const {el} = getSlate(ref)
 
 copySlate(ref, ref)  // Shorthand for setSlate(ref, getSlate(ref))
 applySlate(ref) // Renders the slate to it's selector

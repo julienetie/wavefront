@@ -15,6 +15,78 @@ import {
 
 // const { placeholder, forbiddenOperators } = patterns
 
+let d // eslint-disable-line
+const invalidList = [
+  {
+    invalidDT: () => `<span>${2 - 2}</span>`,
+    operator: '-'
+  },
+  {
+    invalidDT: () => `<span>${2 + 2}</span>`,
+    operator: '+'
+  },
+  {
+    invalidDT: () => `<span>${2 * 2}</span>`,
+    operator: '*'
+  },
+  {
+    invalidDT: () => `<span>${2 / 2}</span>`,
+    operator: '/'
+  },
+  {
+    invalidDT: () => `<span>${2 % 2}</span>`,
+    operator: '%'
+  },
+  {
+    invalidDT: () => `<span>${d = 2}</span>`,
+    operator: '='
+  },
+  {
+    invalidDT: () => `<span>${!2}</span>`,
+    operator: '!'
+  },
+  {
+    invalidDT: () => `<span>${2 ? 2 : 2}</span>`,
+    operator: '?'
+  },
+  {
+    invalidDT: () => `<span>${{ test: 123 }}</span>`,
+    operator: ':'
+  },
+  {
+    invalidDT: () => `<span>${2 < 2}</span>`,
+    operator: '<'
+  },
+  {
+    invalidDT: () => `<span>${2 > 2}</span>`,
+    operator: '>'
+  },
+  {
+    invalidDT: () => `<span>${2 & 2}</span>`,
+    operator: '&'
+  },
+  {
+    invalidDT: () => `<span>${2 | 2}</span>`,
+    operator: '|'
+  },
+  {
+    invalidDT: () => `<span>${~2}</span>`,
+    operator: '~'
+  },
+  {
+    invalidDT: () => `<span>${2 ^ 2}</span>`,
+    operator: '^'
+  },
+  {
+    invalidDT: () => `<span>${typeof (2)}</span>`,
+    operator: 'typeof'
+  },
+  {
+    invalidDT: () => `<span>${2 instanceof Element}</span>`,
+    operator: 'instanceof'
+  }
+]
+
 let pastePlaceholder
 describe('Collage API:', () => {
   beforeEach(() => {
@@ -159,193 +231,17 @@ describe('validateTemplateHandler:', () => {
     expect(pastePlaceholder).to.equal(null)
   })
 
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'-\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 - 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'-\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'+\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 + 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'+\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'*\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 * 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'*\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'/\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 / 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'/\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'%\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 % 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'%\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'=\'', () => {
-    let hasError
-    let d // eslint-disable-line
-    try { paste('#paste-placeholder', () => `<span>${d = 2}</span>`) } catch (err) { // eslint-disable-line
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'=\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'!\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${!2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'!\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'?\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 ? 2 : 2}</span>`) } catch (err) { // eslint-disable-line
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'?\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \':\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${{ test: 123 }}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \':\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'<\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 < 2}</span>`) } catch (err) { // eslint-disable-line
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'<\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'>\'', () => {
-    let hasError
-    let d // eslint-disable-line
-    try { paste('#paste-placeholder', () => `<span>${2 > 2}</span>`) } catch (err) { // eslint-disable-line
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'>\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'&\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 & 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'&\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'|\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 | 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'|\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'~\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${~2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'~\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'^\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 ^ 2}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'^\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'typeof\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${typeof (2)}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'typeof\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
-  })
-
-  it('Should throw a SyntaxError when a declarative template\'s placeholder contains \'instanceof\'', () => {
-    let hasError
-    try { paste('#paste-placeholder', () => `<span>${2 instanceof Element}</span>`) } catch (err) {
-      hasError = err
-      expect(err).to.have.property('message',
-        'Operators are not allowed in declarative templates. \'instanceof\' was found within \'declarativeTemplate\''
-      )
-    }
-    if (!hasError) throw Error('No error thrown')
+  invalidList.forEach(({ invalidDT, operator }) => {
+    it(`Should throw a SyntaxError when a declarative template\'s placeholder contains \'${operator}\'`, () => {
+      let hasError
+      try { paste('#paste-placeholder', invalidDT) } catch (err) {
+        hasError = err
+        expect(err).to.have.property('message',
+          `Operators are not allowed in declarative templates. \'${operator}\' was found within \'declarativeTemplate\'`
+        )
+      }
+      if (!hasError) throw Error('No error thrown')
+    })
   })
 
   it('Should throw a SyntaxError when a declarative template is declared using \'function\' syntax\'', () => {

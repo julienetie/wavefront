@@ -2,7 +2,7 @@
 > Functions for logging, manipulating and applying stored stencils
 
 #### [Slate Functions](#Slate-Functions)
-> Slates Methods 
+> Slate Methods 
   - [applySlate()](#applySlate)
   - [copySlate()](#copySlate)
   - [getSlate()](#getSlate)
@@ -15,7 +15,7 @@ ___
   - [set.intersect()](#set.intersect)
   - [set.symmetricDifference()](#set.symmetricDifference)
   - [set.union()](#set.union)
- 
+___
 > Set Actions 
   - [set.\<setOperation\>().to()](#to)
   - [set.\<setOperation\>().apply()](#apply)

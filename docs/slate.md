@@ -9,13 +9,26 @@ The Slate API allows you to manage and use stored declarativeTemplates
 
 ## Understanding The Slate API
 
+A slate is an object that consists of:
+- stencil: _`readonly`_ (previously template handler/ delcarativeTemplate)
+- cleanProps: The inital params that were rendered or last updated (always cleaned)
+- selector: Where it belongs in the DOM
+- collageType: The collage API used to insert it into the DOM `paste`|`pasteAfter` etc
+- el: A detatched DOM element
+- invokeType: _immediate | late | lazy_ | null
+- denyListWords
+- reaplceWord
 
+Underlying API
 
+- updateSlate
 
 
 ```javascript
 
-getSlate(ref) // Returns an object showing the last slate { templateHandler, cleanedParams, selector }
+getSlate(ref) // Returns an object showing the last slate { stencil, cleanProps, selector, collageType, el, invokeType, denyListWords, replaceWord }
+const {el} = getSlate(ref)
+
 setSlate(ref, slate)  // Sets a new or existing slate using a templateHandler, cleanedParams and selector
 copySlate(ref, ref)  // Shorthand for setSlate(ref, getSlate(ref))
 applySlate(ref) // Renders the slate to it's selector

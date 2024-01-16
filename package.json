@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
   "main": "anti-framework.js",
+  "type": "module",
   "scripts": {
     "test": "./node_modules/.bin/http-server -p=3333 --s | ./node_modules/.bin/mocha-chrome http://127.0.0.1:3333/test.html --ignore-exceptions",
     "lint": "./node_modules/.bin/eslint src/",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/julienetie/anti-framework#readme",
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "chai": "^4.3.6",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",

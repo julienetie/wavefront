@@ -1,5 +1,5 @@
 # Collage API
-The collage API helps to you layer parts of your UI.
+The Collage API helps to you layer parts of your UI.
 
 - [Understanding The Collage API](#Understanding-the-Collage-API)
 - [The Collage API](#The-Collage-API)
@@ -19,41 +19,40 @@ The _paste()_ function will paste a new DOM subtree over an existing one.
 const inlineNotice = paste('#mulit-line-notice', ({ text }) =>  `
 	<span id="inline-notice" >${text}</span>`
 )
+
 inlineNotice({ text:  '<strong>Notice</strong>: You are using an unsupported browser.' })
 ```
 
-**tl;dr**: Wavefront finds the DOM element via a given _selector_, using [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) CSS syntax. Then replaces the found element with the new markup defined in the _declarativeTemplate_.
+**tl;dr**: Wavefront locates the DOM element via a given _selector_, using [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) CSS syntax and subsequently swaps it with the specified markup outlined in the _declarativeTemplate_.
+
 ### What's happening?
 #### The Paste function
-1.  _paste()_ queries the DOM using the _selector_ for the element which will be pasted over.
+1. _paste()_ queries the target element in the DOM using the _selector_ which will be pasted over.
 2. _paste()_ will validate the new markup syntax to ensure there is no _JSX-like_ logic.
-3. _paste()_ returns the new **_Collage_** function that we name as _inlineNotice()_
+3. Upon completion, _paste()_ returns the new **_Collage_** function, which is assigned the name _inlineNotice()_
 
 #### The returned Collage function
-1. _inlineNotice()_ takes the **_props_** object. In the example we are using just one prop we are naming as **_text_**.
-2. Wavefront safeguard props against non-values to prevent "null", "undefined" and "NaN" values from being exposed.
-3. props are also escaped before being written to the DOM to restrict potentially malicious code. Therefore the _text_ will output as `'&lt;strong&gt;Notice&lt;/strong&gt;: You are using an unsupported browser.'` when rendered to the DOM.
-4. _inlineNotice()_ can be called multiple times again with different text values
+1. **Parameter Input**: _inlineNotice()_ accepts a **_props_** object. In the example we are using just a single prop named **_text_**.
+2. **Props Safeguarding**: Wavefront ensures that the props are shielded against non-values, preventing exposure of `null`, `undefined`, and `NaN` values.
+3. **Sanitization**: Prior to being written to the DOM, the props will be sanitization process to mitigate the risk of potential malicious code. 
+4. **Multiple Invocations**: The inlineNotice() function is designed to be invoked multiple times, optionally with different values.
 
 ### Constructing user interfaces by collarging (Layering)
 <img  align="left" src="https://upload.wikimedia.org/wikipedia/en/6/6b/Hoch-Cut_With_the_Kitchen_Knife.jpg"  width="220" height="277" alt="An image of Hannah Höch's artwork - Cut with the Dada Kitchen Knife" title="Hannah Höch - Cut with the Dada Kitchen Knife">
 
-Wavefront works in a similar manner to how you would layer images to create collage art in the real-world. Consider the DOM as a state machine which represents the current state of the UI. 
+Wavefront works in a similar manner to layering images to create collage art in the real-world. Consider the DOM as a state machine which represents the current state of the UI. 
 
 Wavefront does not use a virtual DOM and does not depend on reading the DOM. The _declarativeTemplates_ you define can not only be layered anywhere on the page but can also be reused in innumerable ways as well as retained when using [**_slates_**](#).
 
 ### Logicless Templates
-Wavefront enforces a separation of logic and presentation. Separating visual building blocks from a logical system is a profound quality that is appreciated in many forms of engineering. This does not only separate concerns but also allows for people with different skillsets to have more focus on their specific tasks and goals. 
+Wavefront enforces a separation of logic and presentation. Separating visual building blocks from a logical system is a profound quality that is appreciated in many forms of engineering. This does not only separate concerns but also allows for people focusing on different concerns to have more focus on their specific tasks and goals. 
 
-The goal of Wavefront is not to exhaust you with a plethora of tools. Most of the Collage API functions are performing the same actions but with different intents.
+The aim of Wavefront is not to exhaust you with a plethora of tools. The majority of the Collage API functions are performing similar actions with different intents.
 
-###  Allowing markup though variables
-By default, all primitive-props are escaped. You can enable primitive-props as markup by prefixing `$$$` to the variable name. So if we were to rename the _text_ prop as _text$$$_ in the above code example it would output:
+###  Markup though variables
+You can think of Wavefront as a string-based JavaScript framework. Not only can you define a collage with markup syntax, but you can also take advantage of the powerful string manipulation native to JavaScript to manage your layouts using native data-methods.
 
-`'<strong>Notice</strong>: You are using an unsupported browser.'`
-All variables prefixed with `$$$` are sanitized using the native Sanitizer API with the default configuration.
-
-> By design, Wavefront does not allow you to configure how variables are sanitized. We recommend creating your own Trusted Types policy outside of the framework if you need to whitelist HTML entities.
+This is possible due to Wavefront's built-in sanitizer and direct insertion of text-nodes for text content. Wavefront also harnesses Trusted Types for modern protection which can optionally be polyfilled for unsupported browsers.
 
 ### The Collage Function
 The Collage function is a [lazy](https://en.wikipedia.org/wiki/Lazy_evaluation) function that is returned when creating a _declarativeTemplate_.

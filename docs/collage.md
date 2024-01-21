@@ -1,5 +1,5 @@
 # Collage API
-The Collage API helps to you layer parts of your UI.
+The Collage API helps you layer parts of your UI.
 
 - [Understanding The Collage API](#Understanding-the-Collage-API)
 - [The Collage API](#The-Collage-API)

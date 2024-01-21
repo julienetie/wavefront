@@ -155,3 +155,4 @@ mutate(ref, el =>  {
 ```
 > _Destructive_
 
+MIT © Julien Etienne 2024

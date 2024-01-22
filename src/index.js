@@ -34,7 +34,6 @@ import {
   removeListener
 } from './events.js'
 
-
 const sanitize = string => {
   return string
 }

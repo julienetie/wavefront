@@ -6,7 +6,7 @@ by a blank spaced string. When a denylist and replacement word is additionally p
 param's values will be treated as strings and matching results will be replaced by the
 replacement word */
 const safeguardParams = (params, denylistPattern, replaceWord) => {
-  if(wfEnv.isEnvNotSet()) return
+  if (wfEnv.isEnvNotSet()) return
 
   if (denylistPattern) {
     let paramsJSON = JSON.stringify(params)
@@ -75,7 +75,7 @@ const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file|sms):|[^&:/?#]*(?:[/
 const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i
 
 const sanitizeURL = (url) => {
-  if(wfEnv.isEnvNotSet()) return
+  if (wfEnv.isEnvNotSet()) return
 
   url = String(url)
   if (url.match(SAFE_URL_PATTERN) || url.match(DATA_URL_PATTERN)) return url
@@ -85,7 +85,7 @@ const sanitizeURL = (url) => {
 }
 
 const sanitizeSrcset = (srcset) => {
-  if(wfEnv.isEnvNotSet()) return
+  if (wfEnv.isEnvNotSet()) return
 
   srcset = String(srcset)
   return srcset.split(',').map((srcset) => sanitizeURL(srcset.trim())).join(', ')

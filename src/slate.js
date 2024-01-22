@@ -5,7 +5,8 @@ import _store from './_store.js'
 /*
 replaces the last stored slate into it's referenced DOM position */
 const stencil = (ref, paramsSandbox, sandbox) => {
-  if(wfEnv.isEnvNotSet()) return
+  // if (wfEnv.isEnvNotSet()) return
+
   // if (!_store.slates[ref]) {
   //   console.log(`Slate ${ref} does not exist`)
   // }
@@ -62,7 +63,7 @@ const stencil = (ref, paramsSandbox, sandbox) => {
 /*
 Removes a slate by reference */
 const removeSlate = (ref) => {
-  if(wfEnv.isEnvNotSet()) return
+  if (wfEnv.isEnvNotSet()) return
 
   if (_store.slates[ref]) {
     delete _store.slates[ref]
@@ -72,7 +73,7 @@ const removeSlate = (ref) => {
 /*
 Gets the slate wrapper */
 const getSlate = ref => {
-  if(wfEnv.isEnvNotSet()) return
+  if (wfEnv.isEnvNotSet()) return
 
   return _store.slates[ref]
 }

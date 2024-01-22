@@ -10,8 +10,12 @@ import {
   remove,
   mutate
 } from './collage.js'
+import { wfEnv } from './environment.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
+
+
+wfEnv.set()
 
 // const { placeholder, forbiddenOperators } = patterns
 

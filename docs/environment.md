@@ -4,7 +4,7 @@ The Environment API helps you manage your environment.
 
 - [Environments](#environments)
 - [Precedence](#precedence)
-- [Using WfEnv](#using-wfenv)
+- [Using waveEnv](#using-wfenv)
 - [c logger: Environment based logging](#using-wfenv)
     
 ## Environments
@@ -30,22 +30,22 @@ For example:
 - If headers are defined, they will proceed over all other methods.
 - If `Wavefront-Env` was not found, the meta tag would proceed over other methods.
 - If neither headers nor the meta environment content value is found, Wavefront will look for the `.wf_env` endpoint.
-- If the wf_env endpoint is not found, Wavefront will respect the WfEnv function.
+- If the wf_env endpoint is not found, Wavefront will respect the waveEnv function.
 
-For efficiency, you can reorder and skip methods. `WfEnv.define()` takes an array of the methods to use, in order.
+For efficiency, you can reorder and skip methods. `waveEnv.define()` takes an array of the methods to use, in order.
 ```javascript
 import { waveEnv } from './wavefront.js'
 
 waveEnv.define(['set', 'meta'])
 ```
-## Using WfEnv 
+## Using waveEnv 
 ```javascript
-import { WfEnv } from './wavefront.js'
+import { waveEnv } from './wavefront.js'
 
-WfEnv.set('prod')                // Set new or existing environment
-WfEnv.set('custom:prod')         // Set and create a custom environment that inherits internal rules from prod
-const env = WfEnv.get()          // Get environment
-const source = WfEnv.source()    // Get source of environment: "header" | "meta" | "wf_env" | "set"
+waveEnv.set('prod')                // Set new or existing environment
+waveEnv.set('custom:prod')         // Set and create a custom environment that inherits internal rules from prod
+const env = waveEnv.get()          // Get environment
+const source = waveEnv.source()    // Get source of environment: "header" | "meta" | "wf_env" | "set"
 ```
 
 ## C Logger

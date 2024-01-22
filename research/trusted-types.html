@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+- http-equiv Trusted Types Header:
+    - Typically used in the HTML <meta> tag and is an HTTP header delivered by the web server in the initial response.
+    - The header is named `trusted-types` and can have values like 'none' (Trusted Types disabled) or 'true' (Trusted Types enabled).
+    - The trusted-types header is part of the Trusted Types standard and serves as a global switch to enable or disable Trusted Types for a given document. 
+      Its purpose is to control whether Trusted Types are enforced at all.
+
+- require-trusted-types-for:
+    - A directive within the Content Security Policy (CSP) header, specifying which types of script execution must be protected by Trusted Types.
+    - It's more specific and allows you to target specific types of resources or actions within your application that should adhere to Trusted Types.
+    - The require-trusted-types-for directive acts as a whitelist, specifying which sinks (operations) should only be allowed if they adhere to Trusted Types. 
+      If a sink is not listed in the whitelist, it will be blocked, regardless of the presence or absence of the trusted-types HTTP header.
+
+
+
+
+    Difference:
+        - The http-equiv Trusted Types header (trusted-types) is about enabling or disabling Trusted Types globally for the entire document.
+        - On the other hand, require-trusted-types-for is more specific and allows you to target and enforce Trusted Types for specific types of 
+          resources or actions (e.g., scripts) within your application.
+
+Example Combination:
+You might use both in combination to globally enable Trusted Types and then specify where Trusted Types must be enforced:
+
+<meta http-equiv="Content-Security-Policy" content="trusted-types 'true'; require-trusted-types-for 'script';">
+
+
+Prevention of Tampering:
+While it's true that if a server is compromised, headers could potentially be tampered with, it's important to note that the trusted-types header
+is more about controlling the browser's behavior than preventing server-side tampering. Even if a server is hacked, an attacker cannot force the 
+browser to disable Trusted Types if the header is properly configured.
+
+trusted-types header is a means for web administrators to globally enable or disable Trusted Types for their web application. While it doesn't prevent 
+potential tampering on the server side, it ensures that the client-side security measures are consistently applied according to the chosen Trusted 
+Types policy.
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+        By default WF will:
+        - Check to see if a Content-Security-Policy exists. 
+        - It will check that `trusted-types` header policy is enabled with a policy name.
+        - It will check that `require-trusted-types-for 'script'` is present.
+
+        If not it will throw necessary errors.
+
+        The dev can fix `trusted-types` for local development by: 
+        - Sending trusted type header via their local server
+        - Removing the existing meta tag and Temporarliy disabling trusted-types header using csp.allowLocal()
+
+
+        csp.DEBUG_ALLOW_LOCAL(content) 
+        
+        By default with no value provided will insert: 
+        <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script';">
+
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script';"> -->
+    <title>Trusted Types Example</title>
+    <script type="module">
+        import { trust } from './wavefront-trusted.js'
+
+        /* 
+        - Policies enforced by servers (Server needs to be configured to send these policies) 
+            Content-Security-Policy: trusted-types wavefront; require-trusted-types-for 'script';
+            Content-Security-Policy: trusted-types wavefront wavefront#unsafe; require-trusted-types-for 'script';  
+        */
+
+        /* 
+        - Policies enforced by servers (Server needs to be configured to send these policies) 
+            Content-Security-Policy: trusted-types wavefront; require-trusted-types-for 'script';
+            Content-Security-Policy: trusted-types wavefront wavefront#unsafe; require-trusted-types-for 'script';  
+        */
+
+
+        trust()
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Trusted Types Example</h1>
+
+    <h4>Added with Trusted Types:</h4>
+    <div id="div1">Not added</div>
+
+    <h4>Added without Trusted Types:</h4>
+    <div id="div2">Not added</div>
+
+    <h4>Code:</h4>
+    <code id="code"></code>
+
+    <script>
+
+        function htmlEscape(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        var untrustedHtml = "<p>This is a untrusted html string<img src=x onerror=console.log('xss')>";
+
+        // Create Trusted Types Policy
+        const escapeHTMLPolicy = trustedTypes.createPolicy("myEscapePolicy", {
+            createHTML: (string) => htmlEscape(string)
+        });
+
+        // With trusted types
+        let el = document.getElementById("div1");
+        const escaped = escapeHTMLPolicy.createHTML(untrustedHtml);
+        //Html is added because escaped is a instance of a trusted type
+        console.log(escaped instanceof TrustedHTML);
+        el.innerHTML = escaped;
+
+        // Without trusted types
+        let el2 = document.getElementById("div2");
+        // This is not safe and blocked by require trusted types
+        el2.innerHTML = untrustedHtml;
+    </script>
+    <script>
+
+        // Show code
+        var code = document.documentElement.innerHTML;
+        // No trusted type needed because innerText is safe
+        document.getElementById("code").innerText = code;
+    </script>
+
+</body>
+
+</html>

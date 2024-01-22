@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+
+</head>
+
+<body id="parent">
+
+    <script>
+        const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:\/?#]*(?:[\/?#]|$))/i;
+
+        const sanitizeUrl = url => {
+            url = String(url);
+            return url.match(SAFE_URL_PATTERN) ? url : 'unsafe:' + url;
+        };
+
+        let count = 0
+        function filterAttributes(namedNodeMap, allowedAttributeList) {
+            const filteredAttributes = new NamedNodeMap();
+
+            for (let i = 0; i < namedNodeMap.length; i++) {
+                const attribute = namedNodeMap[i];
+
+                if (allowedAttributeList.includes(attribute.name)) {
+                    filteredAttributes.setNamedItem(attribute.cloneNode());
+                }
+            }
+
+            return filteredAttributes;
+        }
+
+
+        function createFilteredDomTree(rootNode, allowedAttributes) {
+            const walker = document.createTreeWalker(
+                rootNode,
+                NodeFilter.SHOW_ELEMENT,
+                {
+                    acceptNode: (node) => {
+                        // Filter attributes on elements
+                        for (const attr of node.attributes) {
+                            if (!allowedAttributes.includes(attr.name)) {
+                                node.removeAttribute(attr.name);
+                            } else if (attr.name === 'href' || attr.name === 'src') {
+                                // Sanitize URL attributes
+                                node.setAttribute(attr.name, sanitizeUrl(attr.value));
+                            }
+                        }
+
+                        const propertyNames = Object.getOwnPropertyNames(node);
+                        for (const propName of propertyNames) {
+                            if (propName !== 'tagName' && !allowedAttributes.includes(propName)) {
+                                node[propName] = '';
+                                node.removeAttribute(propName);
+                            }
+                        }
+
+                        return NodeFilter.FILTER_ACCEPT;
+
+                    },
+                }
+            );
+
+            // Create a new document fragment to hold the filtered content
+            const fragment = document.createDocumentFragment();
+
+            // Traverse the tree and clone nodes to the new fragment
+            while (walker.nextNode()) {
+                // const currentNode = walker.currentNode;
+                // const clonedNode = currentNode.cloneNode(true);
+                // fragment.appendChild(clonedNode);
+            }
+
+            return walker.currentNode
+        }
+
+        // Example usage:
+        const originalTree = document.getElementById('originalTree'); // Replace with your actual DOM element
+        // const whitelist = ['class', 'id', 'href']; // Replace with your attribute whitelist
+        // const newTree = createFilteredDomTree(originalTree, whitelist);
+
+        // Append the new tree to the document or do other actions as needed
+        // document.body.appendChild(newTree);
+
+    </script>
+
+    <script type="module">
+        import inputHTML from '../input-html.js'
+
+        const iframe = document.createElement('iframe')
+        iframe.sandbox = 'allow-same-origin'
+        document.body.appendChild(iframe)
+
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+
+
+        const start = performance.now()
+
+        iframeDocument.body.insertAdjacentHTML('afterbegin', inputHTML)
+
+        const whitelist = ['class', 'src', 'onerror', 'id', 'href', 'd', 'viewBox', 'style', 'xml:space', 'role']
+
+
+
+        // function bfs(el) {
+        //     const queue = [];
+        //     while (el) {
+
+        //         if (el.tagName === 'SCRIPT') {
+        //             el.remove()
+
+        //         } else {
+        //             for (const attr of Object.values(el.attributes)) {
+        //                 if (!whitelist.includes(attr.name)) {
+        //                     el.removeAttribute(attr.name)
+        //                 } else {
+        //                     const val = sanitizeUrl(el.getAttribute(attr.name))
+        //                     el.setAttribute(attr.name, val)
+        //                 }
+        //             }
+        //         }
+
+        //         [...el.children].forEach(child => queue.push(child));
+        //         el = queue.shift();
+        //     }
+        // }
+
+        // bfs(iframeDocument.body);
+        // const all = iframeDocument.querySelectorAll('*')
+        // all.forEach(item => {
+
+        //     for (const attr of Object.values(item.attributes)) {
+        //         if (!whitelist.includes(attr.name)) {
+        //             item.removeAttribute(attr.name)
+        //         } else {
+        //             const val =  sanitizeUrl(item.getAttribute(attr.name))
+        //             item.setAttribute(attr.name, val)
+        //         }
+        //     }
+
+        //     if (item.tagName === 'SCRIPT') {
+        //         item.remove()
+        //     }
+
+        // })
+        // document.body.insertAdjacentElement('beforebegin', iframeDocument.body)
+        // const end = performance.now()
+        // console.log(end - start)
+
+        // // console.log(document.body.innerHTML)
+
+        const startDP = performance.now()
+
+        const clean = DOMPurify.sanitize(inputHTML);
+        document.body.insertAdjacentHTML('beforebegin', clean)
+        const endDP = performance.now()
+        console.log(endDP - startDP)
+    </script>
+</body>
+
+</html>

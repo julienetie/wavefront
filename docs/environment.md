@@ -5,6 +5,7 @@ The Environment API helps you manage your environment.
 - [Environments](#environments)
 - [Precedence](#precedence)
 - [Using WfEnv](#using-wfenv)
+- [c logger: Environment based logging](#using-wfenv)
     
 ## Environments
 Wavefront has two default environments: 
@@ -45,4 +46,16 @@ WfEnv.set('prod')                // Set new or existing environment
 WfEnv.set('custom:prod')         // Set and create a custom environment that inherits internal rules from prod
 const env = WfEnv.get()          // Get environment
 const source = WfEnv.source()    // Get source of environment: "header" | "meta" | "wf_env" | "set"
+```
+
+## C Logger
+The `c` logger is simply a wrapper for `console`. It features the exact same methods as console e.g. `console.log`. 
+The benefit is that it will not log in a production or production-like environment (Will not log for `prod` or `<custom>:prod`)
+
+```javascript
+import {c} from './wavefront.js'
+
+c.log('hello', 1,2,3)
+c.table([4, 5, 6])
+c.error(err)
 ```

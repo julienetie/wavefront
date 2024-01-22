@@ -24,7 +24,7 @@ Custom dev environments must proceed with the parent environment in all usage. F
 1. **Headers**: The highest determining factor of the environment is the optional `Wavefront-Env` HTTP header. It can be set to `dev`, `prod`, or a custom environment name.
 2. **Meta tag**: By manually or dynamically setting the meta tag `<meta name="environment" content="dev">`, Wavefront will automatically recognize the environment.
 3. **.wf_env**: The `wf_env` file should be at the root of the project domain; it should only contain `env=dev`. It should be updated during build-time.
-4. **WfEnv.set(<env>)**: This will only work when served via _localhost_ or _127.0.0.1_.
+4. **waveEnv.set(<env>)**: This will only work when served via _localhost_ or _127.0.0.1_.
 
 For example: 
 - If headers are defined, they will proceed over all other methods.
@@ -34,9 +34,9 @@ For example:
 
 For efficiency, you can reorder and skip methods. `WfEnv.define()` takes an array of the methods to use, in order.
 ```javascript
-import { wfEnv } from './wavefront.js'
+import { waveEnv } from './wavefront.js'
 
-wfEnv.define(['set', 'meta'])
+waveEnv.define(['set', 'meta'])
 ```
 ## Using WfEnv 
 ```javascript

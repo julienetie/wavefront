@@ -1,9 +1,12 @@
 import { query, getAncestors, removeDescendentEvents } from './helpers.js'
 import _store from './_store.js'
+import { wfEnv } from './environment.js'
 
 /*
 Add single event listener */
 const listenTo = (selector, event, eventHandler, options) => {
+  if(wfEnv.isEnvNotSet()) return
+
   const el = query(selector)
   if (!el) {
     console.error(`Invalid selector ${el}`)
@@ -38,6 +41,8 @@ const dismiss = (selector) => {
 }
 
 const createDelegate = (selector, event, eventHandler) => {
+  if(wfEnv.isEnvNotSet()) return
+
   const delegatedSelector = _store.delegatedEvents.get(selector)
 
   const eventObject = {
@@ -61,6 +66,8 @@ const suspect = el => ({
 })
 
 const trigger = (selector, event, e) => {
+  if(wfEnv.isEnvNotSet()) return
+
   const events = _store.delegatedEvents.get(selector)
   if (events) {
     const match = events.find(eventObject => eventObject.event === event)
@@ -69,6 +76,8 @@ const trigger = (selector, event, e) => {
 }
 
 const removeDelegate = (selector, event) => {
+  if(wfEnv.isEnvNotSet()) return
+
   let events = _store.delegatedEvents.get(selector)
   if (events) {
     events = events.filter(eventObject => eventObject.event !== event)
@@ -77,6 +86,8 @@ const removeDelegate = (selector, event) => {
 }
 
 const removeListener = (selector, event) => {
+  if(wfEnv.isEnvNotSet()) return
+
   const el = query(selector)
   // Remove event
   const boundEvent = _store.singleEvents.get(el)

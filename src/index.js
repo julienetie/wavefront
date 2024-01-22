@@ -23,7 +23,7 @@ import {
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
 import { stencilInto, sequence } from './helpers.js'
-// import _store from './_store.js'
+import { wfEnv } from './environment.js'
 import {
   listenTo,
   dismiss,
@@ -33,6 +33,7 @@ import {
   removeDelegate,
   removeListener
 } from './events.js'
+
 
 const sanitize = string => {
   return string
@@ -103,5 +104,6 @@ export {
   sequence,
   raf,
   caf,
-  validateInput
+  validateInput,
+  wfEnv
 }

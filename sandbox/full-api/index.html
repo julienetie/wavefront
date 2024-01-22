@@ -5,14 +5,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta name="environment" content="staging:dev"> -->
   <link rel="stylesheet" href="full-api.css">
   <title>Antii | Full API</title>
+
+  <!-- 
+    # Wavefront Setup 
+    
+    wfEnv.set() needs to be called before any Wave functions can be called. 
+  -->
+  <script type="module">
+    import { wfEnv } from '../../src/index.js'
+    // Only define or set needs to be called.
+    //  wfEnv.define(['meta', 'wf_env', 'header', 'set'])
+    wfEnv.set('dev')
+    console.log(wfEnv.get())
+  </script>
 </head>
 
 <body>
   <!-- Root -->
   <div id="root" class="root"></div>
-  <script type="module" src="./controller.js"></script>
+  <!-- <script type="module" src="./controller.js"></script> -->
 </body>
 
 </html>

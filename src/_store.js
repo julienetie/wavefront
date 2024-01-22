@@ -6,7 +6,9 @@ const _store = {
   template: document.createElement('template'),
   slates: {},
   singleEvents: new WeakMap(),
-  singleEventsAncestors: []
+  singleEventsAncestors: [],
+  env: null,
+  envSource: null
 }
 
 export default _store

@@ -1,6 +1,8 @@
 import { safeguardParams } from './safety.js'
+import { wfEnv } from './environment.js'
 import { query, removeDescendentEvents, removeChildNodes, patterns, empty } from './helpers.js'
 import _store from './_store.js'
+
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
 
@@ -39,6 +41,8 @@ const validateTemplateHandler = (templateHandler) => {
 /*
 A closure that requres `params` to create and insert markup */
 const paster = type => (selector, templateHandler) => {
+  if(wfEnv.isEnvNotSet()) return
+
   selector = selector === '/' ? '#root' : selector
   const el = query(selector)
 
@@ -105,6 +109,8 @@ const pasteStart = paster('pasteStart')
 const pasteEnd = paster('pasteEnd')
 
 const removeWithin = selector => {
+  if(wfEnv.isEnvNotSet()) return
+  
   const el = query(selector)
   if (el && el.children.length > 0) {
     // Remove all nested events
@@ -116,6 +122,8 @@ const removeWithin = selector => {
 }
 
 const remove = selector => {
+  if(wfEnv.isEnvNotSet()) return
+
   const el = query(selector)
   if (el) {
     // Remove all nested events
@@ -129,6 +137,8 @@ const remove = selector => {
 /*
 Allows the DOM to be directly mutated within a scope */
 const mutate = (selector, templateHandler) => {
+  if(wfEnv.isEnvNotSet()) return
+
   const el = query(selector)
   templateHandler(el)
 }

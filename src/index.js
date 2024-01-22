@@ -23,7 +23,7 @@ import {
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
 import { stencilInto, sequence } from './helpers.js'
-import { wfEnv } from './environment.js'
+import { waveEnv, c } from './environment.js'
 import {
   listenTo,
   dismiss,
@@ -104,5 +104,6 @@ export {
   raf,
   caf,
   validateInput,
-  wfEnv
+  waveEnv,
+  c
 }

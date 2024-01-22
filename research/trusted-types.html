@@ -55,13 +55,36 @@ Types policy.
         - Removing the existing meta tag and Temporarliy disabling trusted-types header using csp.allowLocal()
 
 
-        csp.DEBUG_ALLOW_LOCAL(content) 
+        csp.DEBUG_ALLOW_LOCAL(content)
         
         By default with no value provided will insert: 
         <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script';">
+        
+        csp.DEBUG_DISABLE_CSP()
+        This will not attach a CSP.
 
+
+        # Principle:
+        - You cannot use any Wavefront function without initalising with either: 
+
+        csp()
+        csp('allow-local', <optional>)
+        csp('disable')
+
+        ## csp()
+        Will check to ensure a CSP is present, it will not modify it
+
+        ## csp('allow-local', <optional>)
+        Removes the existing CSP and replaces it with the default that dosn't require headers
+
+        ## csp('disable')
+        Removes the existing CSP
+
+        Once the CSP function is ran the WF API will work. 
+
+        WF_Debug.
     -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script';"> -->
+    <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script';">
     <title>Trusted Types Example</title>
     <script type="module">
         import { trust } from './wavefront-trusted.js'

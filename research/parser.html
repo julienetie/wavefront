@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parser</title>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sanitize-html/1.27.1/sanitize-html-es2015.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sanitize-html/1.27.1/sanitize-html-es2015.min.js"></script>
 </head>
 
 <body>
     <script type="module">
         import { Parser } from './html-parser-2.js'
-        import inputHTML from './input-html.js'
+        // import inputHTML from './input-html.js'
+        import inputHTML from './html-spec.js'
         // import * as sanitizeHtml from  'https://cdnjs.cloudflare.com/ajax/libs/sanitize-html/1.27.1/sanitize-html-es2015.min.js'
         const empty = ''
         let output = empty
@@ -123,10 +124,10 @@
         console.timeEnd('@')
         // console.log(document.body.innerHTML)
 
-        // console.time('sanitize-html')
-        // const clean = sanitizeHtml(inputHTML)
-        // document.body.insertAdjacentHTML('afterbegin', clean)
-        // console.timeEnd('sanitize-html')
+        console.time('sanitize-html')
+        const clean = sanitizeHtml(inputHTML)
+        document.body.insertAdjacentHTML('afterbegin', clean)
+        console.timeEnd('sanitize-html')
     </script>
 </body>
 

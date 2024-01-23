@@ -1,6 +1,11 @@
 const inputHTML = `
 <body>
-
+<-- Single Line comment -->
+<h1  someattribute="" >HELLO</h1>
+<-- Mulit \n 
+\n Line 
+Comment 
+-->
 <img srcset="javascript:alert(1)"> 
 "-prompt(8)-"
 '-prompt(8)-'

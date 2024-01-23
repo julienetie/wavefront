@@ -154,12 +154,12 @@
 
         // // console.log(document.body.innerHTML)
 
-        const startDP = performance.now()
+        console.time('test')
 
         const clean = DOMPurify.sanitize(inputHTML);
         document.body.insertAdjacentHTML('beforebegin', clean)
         const endDP = performance.now()
-        console.log(endDP - startDP)
+        console.timeEnd('test')
     </script>
 </body>
 

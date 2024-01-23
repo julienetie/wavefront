@@ -122,8 +122,31 @@ Object.keys(console).forEach(fn => {
     }
 })
 
+const waveDebug = {
+    enable: () => _store.debug.isDebugMode = true,
+    disbale: () => _store.debug.isDebugMode = false,
+    isEnabled: () => _store.debug.isDebugMode,
+    warnings: {
+        toggle: (type, value) => {
+            if (typeof value !== 'boolean') return
+
+            if (type === 'all') {
+                Object.keys(_store.debug.warnings).forEach(key => {
+                    _store.debug.warnings[key] = value
+                })
+            } else {
+                _store.debug.warnings[type] = value
+            }
+        }
+    },
+    csp: {
+        disable: () => { },
+        enable: () => { },
+    }
+}
 
 export {
+    waveDebug,
     waveEnv,
     c
 }

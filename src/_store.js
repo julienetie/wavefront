@@ -8,7 +8,10 @@ const _store = {
   singleEvents: new WeakMap(),
   singleEventsAncestors: [],
   env: null,
-  envSource: null
+  envSource: null,
+  debug:{
+    isDebugMode: false
+  }
 }
 
 export default _store

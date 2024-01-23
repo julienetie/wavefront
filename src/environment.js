@@ -8,6 +8,8 @@ const metaEnv = 'meta[name="environment"]'
 let precedence = ['header', 'meta', 'wf_env', 'set']
 let methodAttempt = 0
 
+const isLocal = customHostname => hostname.includes('localhost') || hostname.includes('127.0.0.1') || hostname.includes(customHostname)
+
 const tryNextMethod = () => {
     methodAttempt++
     const method = precedence[methodAttempt]
@@ -86,7 +88,7 @@ const waveEnv = {
     set: (env, customHostname) => {
         /*
             This will only action for local development and will fail for server environments */
-        if (hostname.includes('localhost') || hostname.includes('127.0.0.1') || hostname.includes(customHostname)) { // @todo Refactor
+        if (isLocal(customHostname)) { // @todo Refactor
             envMethods.set(env)
         } else {
             envMethods[precedence[0]]()
@@ -138,15 +140,47 @@ const waveDebug = {
                 _store.debug.warnings[type] = value
             }
         }
-    },
-    csp: {
-        disable: () => { },
-        enable: () => { },
+    }
+}
+
+const waveCps = {
+    /* 
+    Disables Trusted types for local development
+
+    This will override the creation of trusted type policies in the Wavefront API.
+    It does not tamper with the requirements of the meta tags. 
+
+    The implementor will be responsible for: 
+    - Conditionally hiding/ showing the meta tags from the backend
+    - Removing or commenting the meta tags when developing or if necessary for other environments.
+    */
+    disable: (type = 'dev') => {
+        switch (type) {
+            case 'dev':  // Disable Trusted Types for local development 
+                if (envMethods.get().endsWith('dev')) {
+                    _store.cps.disable = true
+                }
+                break
+            case 'prod': // Disable Trusted Types for prod
+                if (envMethods.get().endsWith('prod')) {
+                    _store.cps.disable = true
+                }
+                break
+            case 'all': // Disable Trusted Types for prod
+                _store.cps.disable = true
+                break
+            default: // Disable Truested Types for custom environments
+                if (envMethods.get() === type) {
+                    _store.cps.disable = true
+                }
+                break
+        }
     }
 }
 
 export {
     waveDebug,
     waveEnv,
+    waveCps,
     c
 }

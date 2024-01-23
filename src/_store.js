@@ -10,7 +10,11 @@ const _store = {
   env: null,
   envSource: null,
   debug:{
-    isDebugMode: false
+    isDebugMode: false,
+    warnings: {},
+  },
+  cps: {
+    disable: false
   }
 }
 

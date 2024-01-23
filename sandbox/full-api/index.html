@@ -15,11 +15,13 @@
     wfEnv.set() needs to be called before any Wave functions can be called. 
   -->
   <script type="module">
-    import { wfEnv } from '../../src/index.js'
+    import { waveEnv, waveCps } from '../../src/index.js'
     // Only define or set needs to be called.
     //  wfEnv.define(['meta', 'wf_env', 'header', 'set'])
-    wfEnv.set('dev')
-    console.log(wfEnv.get())
+    waveEnv.set('dev')      // Mandatory
+    waveCps.disable('dev')  // Optional but may be necessary for local development
+
+    console.log(waveEnv.get())
   </script>
 </head>
 

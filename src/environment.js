@@ -76,8 +76,6 @@ const envMethods = {
         if (!['prod', 'dev'].some(value => env.startsWith(value)) && !env.includes(':')) {
             console.error('Wf: Custom environments must be prefixed with a colon followed by `prod` or `dev`')
         }
-        console.info('Env:', env)
-        console.info('From source:', source)
         _store.env = env
         _store.envSource = source
     },
@@ -86,8 +84,7 @@ const envMethods = {
 
 const waveEnv = {
     set: (env, customHostname) => {
-        /*
-            This will only action for local development and will fail for server environments */
+        // This will only action for local development and will fail for server environments
         if (isLocal(customHostname)) { // @todo Refactor
             envMethods.set(env)
         } else {
@@ -107,10 +104,9 @@ const waveEnv = {
     },
     source: () => _store.envSource,
     isEnvNotSet: () => {
-        console.error('Wavefront: The environment needs to be set to use the Wavefront API')
-        console.log(typeof _store.env === 'string')
-        console.log(['prod', 'env'].some(value => _store.env.includes(value)))
-        return !(typeof _store.env === 'string' && ['prod', 'env'].some(value => _store.env.includes(value)))
+        const hasEnv = !(typeof _store.env === 'string' && ['prod', 'env'].some(value => _store.env.includes(value)))
+        if(hasEnv) console.error('Wavefront: The environment needs to be set to use the Wavefront API')
+        return hasEnv
     }
 }
 
@@ -153,29 +149,10 @@ const waveCps = {
     The implementor will be responsible for: 
     - Conditionally hiding/ showing the meta tags from the backend
     - Removing or commenting the meta tags when developing or if necessary for other environments.
+
+    Implementors can disable conditionally and can check the environment using waveEnv.get()
     */
-    disable: (type = 'dev') => {
-        switch (type) {
-            case 'dev':  // Disable Trusted Types for local development 
-                if (envMethods.get().endsWith('dev')) {
-                    _store.cps.disable = true
-                }
-                break
-            case 'prod': // Disable Trusted Types for prod
-                if (envMethods.get().endsWith('prod')) {
-                    _store.cps.disable = true
-                }
-                break
-            case 'all': // Disable Trusted Types for prod
-                _store.cps.disable = true
-                break
-            default: // Disable Truested Types for custom environments
-                if (envMethods.get() === type) {
-                    _store.cps.disable = true
-                }
-                break
-        }
-    }
+    disable: () => _store.cps.disable = true
 }
 
 export {

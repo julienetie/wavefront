@@ -11,8 +11,11 @@ import {
   createDelegate,
   suspect,
   trigger,
-  removeDelegate
+  removeDelegate,
+  waveEnv,
 } from './src/index.js'
+
+waveEnv.set()
 
 /*
 VIEW */

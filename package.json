@@ -7,7 +7,8 @@
   "scripts": {
     "test": "./node_modules/.bin/http-server -p=3333 --s | ./node_modules/.bin/mocha-chrome http://127.0.0.1:3333/test.html --ignore-exceptions",
     "lint": "./node_modules/.bin/eslint src/",
-    "lint:fix": "./node_modules/.bin/eslint src/ --fix"
+    "lint:fix": "./node_modules/.bin/eslint src/ --fix",
+    "cp:xk":"cp ./node_modules/xsskillah/dist/xsskillah.js  ./libs/"
   },
   "repository": {
     "type": "git",
@@ -40,5 +41,8 @@
     "rollup-plugin-terser": "^7.0.2",
     "sanitize-html": "^2.11.0",
     "standard": "^17.0.0"
+  },
+  "dependencies": {
+    "xsskillah": "^0.1.3"
   }
 }

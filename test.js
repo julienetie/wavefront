@@ -15,13 +15,21 @@ import {
   waveEnv,
 } from './src/index.js'
 
+console.time('wavefront:test.js')
 waveEnv.set()
 
 /*
 VIEW */
 const linkView = pasteInto('#root', ({ title, href }) => `<a data-link href="${href}"><h1>${title}</h1></a>`)
 
-const writeOverLinkView = pasteInto('#root', ({ text, href }) => `<a data-something-else href="#${href}"><h1>H1<div>${text}</div>H12</h1></a>`)
+const writeOverLinkView = pasteInto('#root', ({ text, href }) => `
+<a data-something-else href="#${href}">
+  <h1>H1<div>${text}</div>
+  H12
+  </h1>
+  <span class="box">Box</span>
+</a>
+`)
 
 /*
 CONTROLLER */
@@ -98,3 +106,4 @@ document.addEventListener('click', (e) => {
 })
 
 window.removeSlate = removeSlate
+console.timeEnd('wavefront:test.js')

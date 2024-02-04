@@ -1,7 +1,20 @@
 import { safeguardParams } from './safety.js'
 import { waveEnv } from './environment.js'
 import { query, removeDescendentEvents, removeChildNodes, patterns, empty } from './helpers.js'
+import xssKillah from '../libs/xsskillah.js'
 import _store from './_store.js'
+
+const insertions = {
+  pasteInto: 'afterbegin',
+  pasteBefore: 'beforebegin',
+  pasteAfter: 'afterend',
+  pasteStart: 'afterbegin',
+  pasteEnd: 'beforeend',
+}
+
+const xss = xssKillah()
+
+console.log('xss', xss)
 
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
@@ -46,14 +59,6 @@ const paster = type => (selector, templateHandler) => {
   selector = selector === '/' ? '#root' : selector
   const el = query(selector)
 
-  const insertions = {
-    pasteInto: 'afterbegin',
-    pasteBefore: 'beforebegin',
-    pasteAfter: 'afterend',
-    pasteStart: 'afterbegin',
-    pasteEnd: 'beforeend'
-  }
-
   validateTemplateHandler(templateHandler)
 
   return (params = {}, ref, denylistPattern, replaceWord) => {
@@ -87,14 +92,20 @@ const paster = type => (selector, templateHandler) => {
     }
 
     const insertion = insertions[type]
+    const cleanedMarkup = xss(markup)
+
     if (insertion) {
-      el.insertAdjacentHTML(insertion, markup)
+      
+      console.log('cleanedMarkup', cleanedMarkup)
+      el.append(cleanedMarkup) // Needs correct position
+      // el.insertAdjacentHTML(insertion, markup)
       return
     }
 
     const templateContainer = document.createElement('div')
     _store.template.append(templateContainer)
-    templateContainer.insertAdjacentHTML('afterbegin', markup)
+    templateContainer.append(cleanedMarkup)
+    // templateContainer.insertAdjacentHTML('afterbegin', markup)
     const temp = templateContainer.firstElementChild
     el.replaceWith(temp)
     templateContainer.remove()

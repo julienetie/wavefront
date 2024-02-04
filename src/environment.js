@@ -104,7 +104,7 @@ const waveEnv = {
     },
     source: () => _store.envSource,
     isEnvNotSet: () => {
-        const hasEnv = !(typeof _store.env === 'string' && ['prod', 'env'].some(value => _store.env.includes(value)))
+        const hasEnv = !(typeof _store.env === 'string' && ['prod', 'dev'].some(value => _store.env.includes(value)))
         if(hasEnv) console.error('Wavefront: The environment needs to be set to use the Wavefront API')
         return hasEnv
     }

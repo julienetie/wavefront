@@ -54,6 +54,7 @@ const validateTemplateHandler = (templateHandler) => {
 /*
 A closure that requres `params` to create and insert markup */
 const paster = type => (selector, templateHandler) => {
+  console.log('waveEnv.isEnvNotSet()', waveEnv.isEnvNotSet())
   if (waveEnv.isEnvNotSet()) return
 
   selector = selector === '/' ? '#root' : selector

@@ -1,6 +1,7 @@
-import { pasteInto, sequence, empty } from '../../src/index.js'
+import { pasteInto, sequence, empty, waveEnv } from '../../src/index.js'
 import { boxView, frameView } from './views.js'
 
+console.log('controller',waveEnv.get())
 // Boxes
 const boxesStr = sequence(9, 1).map(boxView).join(empty)
 

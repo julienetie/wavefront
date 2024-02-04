@@ -1,5 +1,5 @@
 {
-  "name": "anti-framework",
+  "name": "wavefront",
   "version": "0.1.0",
   "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
   "main": "anti-framework.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julienetie/anti-framework.git"
+    "url": "git+https://github.com/julienetie/wavefront.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julienetie/anti-framework/issues"
+    "url": "https://github.com/julienetie/wavefront/issues"
   },
-  "homepage": "https://github.com/julienetie/anti-framework#readme",
+  "homepage": "https://github.com/julienetie/wavefront#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
     "benchmark": "^2.1.4",

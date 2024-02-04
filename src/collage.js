@@ -14,8 +14,6 @@ const insertions = {
 
 const xss = xssKillah()
 
-console.log('xss', xss)
-
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
 
@@ -54,7 +52,6 @@ const validateTemplateHandler = (templateHandler) => {
 /*
 A closure that requres `params` to create and insert markup */
 const paster = type => (selector, templateHandler) => {
-  console.log('waveEnv.isEnvNotSet()', waveEnv.isEnvNotSet())
   if (waveEnv.isEnvNotSet()) return
 
   selector = selector === '/' ? '#root' : selector
@@ -75,7 +72,7 @@ const paster = type => (selector, templateHandler) => {
     const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
 
     // Create markup
-    const markup = templateHandler(cleanedParams)
+    const markup = templateHandler(cleanedParams).trim()
 
     // Store copy of markup
     if (ref) {
@@ -94,18 +91,16 @@ const paster = type => (selector, templateHandler) => {
 
     const insertion = insertions[type]
     const cleanedMarkup = xss(markup)
-
     if (insertion) {
       
-      console.log('cleanedMarkup', cleanedMarkup)
-      el.append(cleanedMarkup) // Needs correct position
+      el.append(...cleanedMarkup) // Needs correct position
       // el.insertAdjacentHTML(insertion, markup)
       return
     }
 
     const templateContainer = document.createElement('div')
     _store.template.append(templateContainer)
-    templateContainer.append(cleanedMarkup)
+    templateContainer.append(...cleanedMarkup)
     // templateContainer.insertAdjacentHTML('afterbegin', markup)
     const temp = templateContainer.firstElementChild
     el.replaceWith(temp)

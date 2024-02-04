@@ -1,6 +1,6 @@
 {
   "name": "anti-framework",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
   "main": "anti-framework.js",
   "type": "module",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/julienetie/anti-framework.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/julienetie/anti-framework/issues"
   },

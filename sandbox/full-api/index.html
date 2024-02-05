@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta name="environment" content="staging:dev"> -->
-  <link rel="stylesheet" href="full-api.css">
-  <title>Antii | Full API</title>
-
-  <!-- 
-    # Wavefront Setup 
-    
-    wfEnv.set() needs to be called before any Wave functions can be called. 
-  -->
-  <script type="module">
-    import { waveEnv, waveCps } from '../../src/index.js'
-    // Only define or set needs to be called.
-    waveEnv.set('dev')      // Mandatory
-    // waveCps.disable('dev')  // Optional but may be necessary for local development
-  </script>
-</head>
-
-<body>
-  <!-- Root -->
-  <div id="root" class="root"></div>
-  <script type="module" src="./controller.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wavefront | Full API</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="full-api.css">
+        <script type="module">
+          import { waveEnv } from '../../src/index.js'
+          waveEnv.set()
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Wavefront</h1>
+        </header>
+        <main>
+            <!-- paste() https://github.com/julienetie/wavefront/blob/dev/docs/collage.md#paste -->
+            <section>
+                <h2>paste()</h2>
+                <div class="main-box" id="main-box-paste">123</div>
+            </section>
+            <!-- pasteInto() https://github.com/julienetie/wavefront/blob/dev/docs/collage.md#pasteinto -->
+            <section>
+                <h2>pasteInto()</h2>
+                <div class="main-box" id="main-box-paste-into">123</div>
+            </section>
+            <!-- pasteAfter() https://github.com/julienetie/wavefront/blob/dev/docs/collage.md#pasteafter -->
+            <section>
+                <h2>pasteAfter()</h2>
+                <div class="main-box" id="main-box-paste-after">123</div>
+            </section>
+            <!-- pasteBefore() https://github.com/julienetie/wavefront/blob/dev/docs/collage.md#pastebefore -->
+            <section>
+                <h2>pasteBefore()</h2>
+                <div class="main-box" id="main-box-paste-before">123</div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="./paste.ctrl.js"></script>
+    <script type="module" src="./paste-into.ctrl.js"></script>
+    <script type="module" src="./paste-after.ctrl.js"></script>
+    <script type="module" src="./paste-before.ctrl.js"></script>
 </body>
-
 </html>

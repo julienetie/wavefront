@@ -49,9 +49,43 @@ const validateTemplateHandler = (templateHandler) => {
   }
 }
 
+
+const domOperations = (target, newEl, type) => {
+  switch (type) {
+    case 'paste':
+      // Remove all nested events
+      removeDescendentEvents(target)
+
+      // Remove all descendents 
+      removeChildNodes(target)
+
+      // Paste Over
+      target.replaceWith(newEl)
+      break
+    case 'pasteInto':
+      // Remove all nested events
+      removeDescendentEvents(target, 'inner')
+
+      // Remove all descendents 
+      removeChildNodes(target)
+
+      // Paste Into
+      target.append(newEl)
+      break
+    case 'pasteAfter':
+      // Paste After
+      target.insertAdjacentElement('afterend', newEl)
+      break
+    case 'pasteBefore':
+      // Paste Before
+      target.insertAdjacentElement('beforebegin', newEl)
+      break
+  }
+}
+
 /*
 A closure that requres `params` to create and insert markup */
-const paster = type => (selector, templateHandler) => {
+const paster = (type = 'paste') => (selector, templateHandler) => {
   if (waveEnv.isEnvNotSet()) return
 
   selector = selector === '/' ? '#root' : selector
@@ -60,8 +94,8 @@ const paster = type => (selector, templateHandler) => {
   validateTemplateHandler(templateHandler)
 
   return (params = {}, ref, denylistPattern, replaceWord) => {
-    const shouldPasteInto = type === 'pasteInto'
-
+    // const shouldPasteInto = type === 'pasteInto'
+    console.log('type', type)
     // Missing element
     if (!el) {
       console.error(`Cannot find element ${selector}`)
@@ -70,33 +104,44 @@ const paster = type => (selector, templateHandler) => {
 
     // @todo Add comments
     const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
+    const templateParamsPattern = /\({\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([^}]+)\s*}/
+    const templateParamsList = templateHandler.toString().match(templateParamsPattern)
+    const templateParams = templateParamsList.slice(1)
+    const paramsMatchTemplateParams = templateParams.every(value => cleanedParams.hasOwnProperty(value.trim()))
+
+    // If params do not match the template params
+    if (!paramsMatchTemplateParams) {
+      console.error('Given params do not match template params')
+      return
+    }
+
 
     // Create markup
     const markup = templateHandler(cleanedParams).trim()
 
     // Store copy of markup
-    if (ref) {
-      _store.slates[ref] = { templateHandler, cleanedParams, selector }
-    }
+    if (ref) _store.slates[ref] = { templateHandler, cleanedParams, selector }
 
-    if (el.children.length > 0) {
-      // Remove all nested events
-      removeDescendentEvents(el, shouldPasteInto && 'inner')
 
-      if (shouldPasteInto) {
-        // Remove all children
-        removeChildNodes(el)
-      }
-    }
+    // if (el.children.length > 0) {
+    //   // Remove all nested events
+    //   removeDescendentEvents(el, shouldPasteInto && 'inner')
 
-    const insertion = insertions[type]
-    const cleanedMarkup = xss(markup)
-    if (insertion) {
-      
-      el.append(...cleanedMarkup) // Needs correct position
-      // el.insertAdjacentHTML(insertion, markup)
-      return
-    }
+    //   if (shouldPasteInto) {
+    //     // Remove all children
+    //     removeChildNodes(el)
+    //   }
+    // }
+
+    // const insertion = insertions[type]
+    const cleanedMarkup = xss(markup)[0]
+    // if (insertion) {
+
+    domOperations(el, cleanedMarkup, type)
+    // el.append(...cleanedMarkup) // Needs correct position
+    // el.insertAdjacentHTML(insertion, markup)
+    return
+    // }
 
     const templateContainer = document.createElement('div')
     _store.template.append(templateContainer)

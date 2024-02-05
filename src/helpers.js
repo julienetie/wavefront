@@ -17,6 +17,8 @@ const patterns = {
 /*
 Removes all events from descendent elements of a given element */
 const removeDescendentEvents = (el, inner) => {
+  if(el.children.length === 0) return
+
   const startPosition = inner ? 0 : -1
   const eventsToRemove = _store.singleEventsAncestors.reduce((acc, entry, i) => {
     // Looks thought each singleEventsAncestor for a match

@@ -1,50 +1,117 @@
 html {
-  background: lime;
+  background: whtie;
 }
 
 body {
-  background-color: aquamarine;
+  font-family: 'Open Sans', sans-serif;
   width: 100%;
   min-height: 100%;
   margin: 0;
   position: absolute;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  justify-items: center;
+  row-gap: 2rem;
 }
 
-.root {
-  background-color: rgb(225, 205, 205);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.frame {
-  background: greenyellow;
+header {
+  background: whitesmoke;
   width: 100%;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(6, 4rem);
-  grid-template-rows: 4rem 4rem 4rem;
-  grid-auto-flow: column;
+  place-items: center;
+  height: fit-content;
+
+  > h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding: 1rem;
+  }
 }
 
-.boxes {
-
+.collage {
+  aspect-ratio: 1 / 1;
+  place-self: center;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(6, 4rem);
-  grid-template-rows: 4rem 4rem 4rem;
-  grid-auto-flow: column;
+  place-content: center;
+  font-weight: bold;
+  cursor: crosshair;
+
+  > h3 {
+    height: 2rem;
+    padding: 0 1rem;
+  }
+
+  > p {
+    white-space: wrap;
+    word-wrap: break-word;
+    max-width: 12rem;
+    background: rgba(255, 255, 255, 0.138);
+    padding: 1rem;
+    /* display: none; */
+  }
+
+  &.paste {
+    background: #6495ed;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+
+  &.paste-into {
+    background: peru;
+  }
+
+  &.paste-after {
+    background: rgb(204, 157, 243);
+    height: 90%;
+  }
+
+  &.paste-before {
+    background: rgb(213, 213, 89);
+    height: 90%;
+  }
 }
 
-.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
-}
+main {
+  width: 64rem;
+  height: fit-content;
+  display: grid;
+  row-gap: 1rem;
 
-.box:nth-child(even) {
-  background-color: #ccc;
-  color: #000;
+  > section {
+    box-sizing: border-box;
+    padding: 2rem 2rem;
+    aspect-ratio: 3 / 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    box-shadow: 0.3rem 0.2rem 0.5rem #6a6a6a26;
+
+    > h2 {
+      font-size: 2rem;
+      /* height: 2rem; */
+      margin: 0;
+      padding-bottom: 1rem;
+      font-style: italic;
+    }
+
+    > .main-box {
+      background-image: linear-gradient(45deg, #e8cfe3 14.29%, #2dbda7 14.29%, #2dbda7 50%, #e8cfe3 50%, #e8cfe3 64.29%, #2dbda7 64.29%, #2dbda7 100%);
+      background-size: 9.90px 9.90px;
+      box-sizing: border-box;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      font-weight: bold;
+      place-content: center;
+
+      > * {
+        height: 80%;
+      }
+    }
+  }
 }

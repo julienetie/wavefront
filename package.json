@@ -1,6 +1,6 @@
 {
   "name": "wavefront",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true) # Anti-Framework",
   "main": "anti-framework.js",
   "type": "module",
@@ -19,30 +19,5 @@
   "bugs": {
     "url": "https://github.com/julienetie/wavefront/issues"
   },
-  "homepage": "https://github.com/julienetie/wavefront#readme",
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "benchmark": "^2.1.4",
-    "chai": "^4.3.6",
-    "dompurify": "^3.0.8",
-    "entities": "^4.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "html-dom-parser": "^5.0.7",
-    "html5parser": "^2.0.2",
-    "htmlparser2": "^9.1.0",
-    "http-server": "^14.1.0",
-    "jsdom": "^23.2.0",
-    "mocha": "^10.0.0",
-    "mocha-chrome": "^2.2.0",
-    "node-html-parser": "^6.1.12",
-    "rollup-plugin-terser": "^7.0.2",
-    "sanitize-html": "^2.11.0",
-    "standard": "^17.0.0"
-  },
-  "dependencies": {
-    "xsskillah": "^0.1.3"
-  }
+  "homepage": "https://github.com/julienetie/wavefront#readme"
 }

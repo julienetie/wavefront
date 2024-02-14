@@ -50,7 +50,7 @@ const validateTemplateHandler = (templateHandler) => {
 }
 
 
-const domOperations = (target, newEl, type) => {
+const domOperations = (target, newEl, type, pasteByIndex) => {
   switch (type) {
     case 'paste':
       // Remove all nested events
@@ -80,12 +80,30 @@ const domOperations = (target, newEl, type) => {
       // Paste Before
       target.insertAdjacentElement('beforebegin', newEl)
       break
+    case 'pasteStart':
+      // Paste Start
+      target.insertAdjacentElement('afterbegin', newEl)
+      break
+    case 'pasteEnd':
+      // Paste End
+      target.insertAdjacentElement('beforeend', newEl)
+      break
+    case 'pasteByIndex':
+      // Paste End
+      const targetChildren = target.children
+
+      if (pasteByIndex === targetChildren.length) {
+        targetChildren[pasteByIndex - 1].insertAdjacentElement('afterend', newEl)
+      } else {
+        targetChildren[pasteByIndex].insertAdjacentElement('beforebegin', newEl)
+      }
+      break
   }
 }
 
 /*
 A closure that requres `params` to create and insert markup */
-const paster = (type = 'paste') => (selector, templateHandler) => {
+const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => {
   if (waveEnv.isEnvNotSet()) return
 
   selector = selector === '/' ? '#root' : selector
@@ -137,7 +155,7 @@ const paster = (type = 'paste') => (selector, templateHandler) => {
     const cleanedMarkup = xss(markup)[0]
     // if (insertion) {
 
-    domOperations(el, cleanedMarkup, type)
+    domOperations(el, cleanedMarkup, type, pasteByIndex)
     // el.append(...cleanedMarkup) // Needs correct position
     // el.insertAdjacentHTML(insertion, markup)
     return
@@ -159,6 +177,7 @@ const pasteBefore = paster('pasteBefore')
 const pasteAfter = paster('pasteAfter')
 const pasteStart = paster('pasteStart')
 const pasteEnd = paster('pasteEnd')
+const pasteByIndex = paster('pasteByIndex')
 
 const removeWithin = selector => {
   if (waveEnv.isEnvNotSet()) return
@@ -202,6 +221,7 @@ export {
   pasteAfter,
   pasteStart,
   pasteEnd,
+  pasteByIndex,
   removeWithin,
   remove,
   mutate

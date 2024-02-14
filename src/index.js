@@ -14,7 +14,7 @@ import {
   pasteBefore,
   pasteAfter,
   pasteStart,
-  // pasteByIndex,
+  pasteByIndex,
   pasteEnd,
   removeWithin,
   remove,
@@ -62,7 +62,7 @@ export {
   pasteBefore,
   pasteAfter,
   pasteStart,
-  // pasteByIndex,
+  pasteByIndex,
   pasteEnd,
   listenTo,
   // ingnore

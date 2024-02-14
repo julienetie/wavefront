@@ -71,6 +71,21 @@ header {
     background: rgb(213, 213, 89);
     height: 90%;
   }
+
+  &.paste-start {
+    background: rgb(86, 205, 225);
+    font-size: 0.5rem;
+  }
+
+  &.paste-end {
+    background: rgb(153, 225, 86);
+    font-size: 0.5rem;
+  }
+
+  &.paste-by-index {
+    background: rgb(211, 119, 80);
+    font-size: 0.5rem;
+  }
 }
 
 main {
@@ -111,6 +126,13 @@ main {
 
       > * {
         height: 80%;
+      }
+
+      >.sub-box {
+        width: calc(100% - 2rem);
+        height: 1rem;
+        background: yellow;
+        margin: 1rem;
       }
     }
   }

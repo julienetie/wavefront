@@ -38,7 +38,7 @@ const ref = 'Some name'
 // Create and insert linkView
 const params = {
   title: 'Test',
-  href: '#test'
+  href: '#test',
 }
 linkView(params)
 

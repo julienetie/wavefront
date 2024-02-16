@@ -122,9 +122,8 @@ const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => 
 
     // @todo Add comments
     const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
-    const templateParamsPattern = /\({\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([^}]+)\s*}/
-    const templateParamsList = templateHandler.toString().match(templateParamsPattern)
-    const templateParams = templateParamsList.slice(1)
+    const templateParamsObject = templateHandler.toString().match(/\{([^{}]+)\}/)
+    const templateParams = (templateParamsObject[1] || empty)?.split(',').map(param => param.trim())
     const paramsMatchTemplateParams = templateParams.every(value => cleanedParams.hasOwnProperty(value.trim()))
 
     // If params do not match the template params

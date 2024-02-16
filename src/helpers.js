@@ -127,10 +127,14 @@ const sequence = (n, offset = 0, multiplier = 1) => {
   return seq
 }
 
+
+const isPrimitive = value => value !== Object(value)
+
 export {
   empty,
   query,
   patterns,
+  isPrimitive,
   sequence,
   removeDescendentEvents,
   removeChildNodes,

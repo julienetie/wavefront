@@ -13,6 +13,7 @@ import {
   trigger,
   removeDelegate,
   waveEnv,
+  alter
 } from './src/index.js'
 
 console.time('wavefront:test.js')
@@ -107,3 +108,126 @@ document.addEventListener('click', (e) => {
 
 window.removeSlate = removeSlate
 console.timeEnd('wavefront:test.js')
+
+console.info('//////////////////////////////////////////////////////////////////////////////////////////////')
+// Alter - messy sandbox ////
+
+// Get attribute
+const testClass = alter('#test').attr('class')
+console.log('Get attribute:', testClass)
+
+// Get multiple attributes as an object
+const testClass2 = alter('#test').attr('class, id, data-abc')
+console.log('Get multiple attributes as an object:', testClass2)
+
+// Set attribute
+alter('#test').attr('class', 'side-bar')
+console.log('Set attribute:', document.querySelector('#test').className)
+
+// Set multple attributes by callback
+alter('#test > section')
+  .attr((obj) => {
+    console.log('obj:', obj)
+    return {
+      'data-test': 123,
+      class: 'some-class',
+      id: 'new-id'
+    }
+  })
+console.log('Set multiple attribute by callback:', Object.entries(document.querySelector('#test > section').attributes))
+
+
+
+// Set multple attributes by object
+alter('#test > section')
+  .attr({
+    href: 'https://hello.com',
+    name: 'name',
+    'data-multiple': 'multi',
+  })
+console.log('Set multiple attribute by callback:', Object.entries(document.querySelector('#test > section').attributes))
+
+// Set style by function
+alter('#test')
+  .attr('style', styleObj => {
+    console.log('styleObj', styleObj)
+    return {
+      color: 'red',
+      background: 'blue',
+      'margin-top': '5rem',
+      'z-index': '10',
+      'display': 'grid',
+    }
+  })
+
+// Set style by object
+alter('#test')
+  .attr('style', {
+    color: 'darkgreen',
+    background: 'yellow',
+    'margin-top': '2rem',
+    'z-index': '10',
+    'display': 'grid',
+  })
+
+console.info('Props//////////////////////////////////////////////////////////////////////////////////////////////')
+// Alter - messy sandbox ////
+
+// Get attribute
+const propClass = alter('#test').prop('className')
+console.log('Get className:', propClass)
+
+// Get multiple attributes as an object
+const propGet = alter('#test').prop('className, id, tagName')
+console.log('Get multiple props as an object:', propGet)
+
+// Set prop
+alter('#test').prop('className', 'This is new Class')
+console.log('Set prop:', document.querySelector('#test').className)
+
+// Set multple attributes by callback
+alter('#test > section')
+  .prop((obj) => {
+    console.log('obj:', obj)
+    return {
+      textContent: 'This is some text',
+      className: 'apple',
+      checked: true
+    }
+  })
+const testEl = document.querySelector('#test > section')
+console.log('Set multiple props by callback:', testEl.textContent, testEl.className, testEl.checked)
+
+
+// Set multple attributes by object
+alter('#test > section')
+  .attr({
+    innerText: 'https://hello.com',
+    checked: false,
+    offsetWidth: 1000,
+  })
+const testEl2 = document.querySelector('#test > section')
+console.log('Set multiple props by callback:', testEl2.innerText, testEl2.checked, testEl2.offsetWidth)
+
+// // Set style by function
+// alter('#test')
+//   .attr('style', styleObj => {
+//     console.log('styleObj', styleObj)
+//     return {
+//       color: 'red',
+//       background: 'blue',
+//       'margin-top': '5rem',
+//       'z-index': '10',
+//       'display': 'grid',
+//     }
+//   })
+
+// // Set style by object
+// alter('#test')
+//   .attr('style', {
+//     color: 'darkgreen',
+//     background: 'yellow',
+//     'margin-top': '2rem',
+//     'z-index': '10',
+//     'display': 'grid',
+//   })

@@ -11,39 +11,64 @@ alter('selector', ref) // Updates both the DOM and the slate (lazily)
 ```
 
 ```javascript
-// Get attribute
-alter('selector')
-.attr('class', value => void console.log(value))
+// Use callback functions with caution.
+// Each callback function will read attributes or style attribtues before setting them.
+
+
+// Get attribute value
+const attr = alter('selector')
+	.attr('class')
+
+// Get multiple attributes, returns object of attr/ values
+const attr = alter('selector')
+	.attr('class,id,name,data-abc')
 
 // Set attribute
 alter('selector')
-.attr('class', value => `${value}-123`)
+	.attr('class', 'side-bar')
 
-// Get multiple attributes
-alter('selector')
-.attr('class,id,name,data-abc', (Class, id, name, dataAbc) => {
-	console.log(Class, id, name, dataAbc)
-})
+// Set multple attributes by callback
+alter('#test > section')
+  .attr(() => {
+    return {
+      'data-test': 123,
+      class: 'some-class',
+      id: 'new-id'
+    }
+  })
 
-// Set multiple attributes
-alter('selector')
-.attr(() => {
-	return {
-		Class: 'new-class',
-		id: 'new-id',
-		name: 'new-name',
-		dataAbc: 'new-data-abc-value'
-	}
-})
 
-// Set multiple attributes shorthand
-alter('selector')
-.attr({
-		Class: 'new-class',
-		id: 'new-id',
-		name: 'new-name',
-		dataAbc: 'new-data-abc-value'
-	})
+// Set multple attributes by object
+alter('#test > section')
+  .attr({
+    href: 'https://hello.com',
+    name: 'name',
+    'data-multiple': 'multi',
+  })
+
+// Set style by callbacks
+alter('#test')
+  .attr('style', () => {
+    return {
+      color: 'red',
+      background: 'blue',
+      'margin-top': '5rem',
+      'z-index': '10',
+      'display': 'grid',
+    }
+  })
+
+// Set style by object
+alter('#test')
+  .attr('style', {
+    color: 'darkgreen',
+    background: 'yellow',
+    'margin-top': '2rem',
+    'z-index': '10',
+    'display': 'grid',
+  })
+
+////////////////////////////////
 
 // Get properties
 alter('selector')

@@ -5,9 +5,14 @@
  d888888888b  8b Y88b      888     888
 d8888888b Y8b 88b Y88b     888     888
 
-Licensed under the Apache License Version 2.0
-Copyright 2022 © Julien Etienne, Vanslang */
+MIT Copyright 2024 © Julien Etienne, Vanslang */
 
+// Alter
+import {
+  alter, alterAll
+} from './alter.js'
+
+// Collage 
 import {
   paste,
   pasteInto,
@@ -20,10 +25,8 @@ import {
   remove,
   mutate
 } from './collage.js'
-import { safeguardParams } from './safety.js'
-import { stencil, removeSlate, getSlate } from './slate.js'
-import { stencilInto, sequence } from './helpers.js'
-import { waveEnv, c, waveCps } from './environment.js'
+
+// Events
 import {
   listenTo,
   dismiss,
@@ -34,19 +37,19 @@ import {
   removeListener
 } from './events.js'
 
-const sanitize = string => {
-  return string
-}
+import { safeguardParams } from './safety.js'
+import { stencil, removeSlate, getSlate } from './slate.js'
+import { stencilInto, sequence } from './helpers.js'
+import { waveEnv, c, waveCps } from './environment.js'
 
-// console.log(_store)
-// setTimeout(() => {
-//   console.log(_store)
-// }, 8000)
-
-const empty = ''
+// XssKillah
+import xssKillah from '../libs/xsskillah.js'
 
 const raf = window.requestAnimationFrame
 const caf = window.cancelAnimationFrame
+const sanitize = xssKillah
+const empty = ''
+
 
 const validateInput = (value, type) => {
   const input = document.createElement('input')
@@ -57,6 +60,8 @@ const validateInput = (value, type) => {
 }
 
 export {
+  alter,
+  alterAll,
   paste,
   pasteInto,
   pasteBefore,

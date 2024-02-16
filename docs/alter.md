@@ -1,7 +1,3 @@
-
-
-
-
 Alter will: 
 - Update the DOM directly
 - Optonally, lazily update a corresponding slate
@@ -69,88 +65,32 @@ alter('#test')
   })
 
 ////////////////////////////////
+// Get property value
+const propClass = alter('#test').prop('className')
 
-// Get properties
-alter('selector')
-.prop('className', value => void console.log(value))
+// Get multiple properties, returns object of attr/ values
+const propGet = alter('#test').prop('className, id, tagName')
 
-// Set properties
-alter('selector')
-.prop('href', value => `${value}/new-page`)
+// Set property
+alter('#test').prop('className', 'This is new Class')
 
-// Get multiple properties
-alter('selector')
-.prop('href, value, classList.contains, dataset.test123', 
-props => {
-	const {href, value, dataset, test123} = props
-	console.log(href, value, dataset, test123)
-	console.log(props['classList.contains']('active'))
-})
-
-// Set multiple properties
-alter('selector')
-.prop(() => {
-	return {
-		href: '#new-href',
-		value: 'new-value',
-		test123: 'new-data-abc-value'
-	}
-})
-
-// Set multiple properties shorthand
-alter('selector')
-.prop({
-		href: '#new-href',
-		value: 'new-value',
-		test123: 'new-data-abc-value'
-})
+// Set multple properties by callback
+alter('#test > section')
+  .prop((obj) => {
+    console.log('obj:', obj)
+    return {
+      textContent: 'This is some text',
+      className: 'apple',
+      checked: true
+    }
+  })
 
 
-// Query nested elements and or chain
-alter('selector')
-.attr('class', value => void console.log(value))
-.prop('className', value => void console.log(value))
-.query('ul li a')
-.attr('class', value => void console.log(value))
-.prop('className', value => void console.log(value))
-.query('span a')
-.query('div:nth-child(5)')
-
-// All reads and writes are batched
-
-// Query all nested elements and or chain
-alterAll('selector')  // Affects all matching selectors 
-.attr('class', value => void console.log(value))
-.prop('className', value => void console.log(value))
-.query('ul li a')
-.attr('class', value => void console.log(value))
-.prop('className', value => void console.log(value))
-.queryAll('span a') // Affects all matching nested selectors
-
-
-// .closest(selector)
-
-  
-
-// .offsetParent()
-
-// .parentElement()
-
-// .parentNode()
-
-// .nextSibling()
-
-// .NextElementSibling()
-
-// .previousSibling()
-
-// .previousElementSibling()
-
-// .lastChild()
-
-// .firstChild()
-
-// .lastElementChild()
-
-// .firstElementChild
+// Set multple properties by object
+alter('#test > section')
+  .attr({
+    innerText: 'https://hello.com',
+    checked: false,
+    offsetWidth: 1000,
+  })
 ```

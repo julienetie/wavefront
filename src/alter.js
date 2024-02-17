@@ -19,6 +19,7 @@ const getStyleObj = el => {
 
 
 const alterPartial = (el, type,) => {
+    if(el === null) console.error(`${el} is not an element`)
     const isAttr = type === 'attr'
     return (fnOrObj, callback) => {
         const isElArray = isArray(el)
@@ -45,6 +46,15 @@ const alterPartial = (el, type,) => {
                 Object.assign(el.style, returnValue)
                 return
             }
+
+
+            // Expose classList
+            if (!isAttr && fnOrObj === 'classList') return el.classList
+            
+
+            // Expose data
+            if (!isAttr && fnOrObj === 'dataset') return el.dataset
+
 
             if (isPrimitive(fnOrObj) && fnOrObj !== undefined) {
                 const fnOrObjList = fnOrObj.split(',')
@@ -84,6 +94,9 @@ const alter = (selector, ref) => {
     return {
         attr: alterPartial(el, 'attr'),
         prop: alterPartial(el, 'prop'),
+        classList: el.classList,
+        dataset: el.dataset,
+        el
     }
 }
 

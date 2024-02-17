@@ -223,3 +223,9 @@ const testClass2All = alterAll('[data-some-span').attr('class, id, data-abc')
 console.log('Get multiple attributes as an object:', testClass2All)
 
 // Assume alterAll works as expected
+
+
+// classList
+alter('.last-span').attr('style', { border: '1px solid red', display: 'block'})
+
+alter('.last-span ol li:nth-child(1)').prop('classList').add('test-123')

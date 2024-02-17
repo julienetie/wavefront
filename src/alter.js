@@ -1,4 +1,5 @@
-import { query, isPrimitive } from './helpers.js'
+import { query, queryAll, isPrimitive } from './helpers.js'
+const { isArray } = Array
 
 const getAttributes = el => {
     const attributes = {}
@@ -17,57 +18,63 @@ const getStyleObj = el => {
 }
 
 
-const attrPartial = (el, type) => {
+const alterPartial = (el, type,) => {
     const isAttr = type === 'attr'
     return (fnOrObj, callback) => {
-        // Set by object
-        const isFunction = typeof fnOrObj === 'function'
-        if (typeof fnOrObj === 'object' || isFunction) {
-            const returnObject = isFunction ? fnOrObj(isAttr ? getAttributes(el) : null) : fnOrObj
-            Object.entries(returnObject).forEach(([key, value]) => {
-                if(isAttr){
-                el.setAttribute(key, value)
-                } else {
-                    el[key] = value
-                }
-            })
-            return
-        }
+        const isElArray = isArray(el)
 
-        // Set style
-        if (isAttr && fnOrObj === 'style') {
-            const isFunction = typeof callback === 'function'
-            const returnValue = isFunction ? callback(getStyleObj(el)) : callback
-            Object.assign(el.style, returnValue)
-            return
-        }
-
-        if (isPrimitive(fnOrObj) && fnOrObj !== undefined) {
-            const fnOrObjList = fnOrObj.split(',')
-
-            // Get attributes
-            if (callback === undefined) {
-                // multi
-                const obj = {}
-                if (fnOrObjList.length > 1) {
-                    fnOrObjList.map(attrName => {
-                        const trimmedName = attrName.trim()
-
-                        obj[trimmedName] = isAttr ? el.getAttribute(trimmedName) : el[trimmedName]
-                    })
-                    return obj
-                }
-                return isAttr ? el.getAttribute(fnOrObj) : el[fnOrObj]
+        const alterElement = el => {
+            // Set by object
+            const isFunction = typeof fnOrObj === 'function'
+            if (typeof fnOrObj === 'object' || isFunction) {
+                const returnObject = isFunction ? fnOrObj(isAttr ? getAttributes(el) : null) : fnOrObj
+                Object.entries(returnObject).forEach(([key, value]) => {
+                    if (isAttr) {
+                        el.setAttribute(key, value)
+                    } else {
+                        el[key] = value
+                    }
+                })
+                return
             }
-            // Set attribute
-            if (isPrimitive(callback)) {
-                if(isAttr) {
-                    el.setAttribute(fnOrObj, callback)
-                }else{
-                    el[fnOrObj] = callback
-                }   
+
+            // Set style
+            if (isAttr && fnOrObj === 'style') {
+                const isFunction = typeof callback === 'function'
+                const returnValue = isFunction ? callback(getStyleObj(el)) : callback
+                Object.assign(el.style, returnValue)
+                return
+            }
+
+            if (isPrimitive(fnOrObj) && fnOrObj !== undefined) {
+                const fnOrObjList = fnOrObj.split(',')
+
+                // Get attributes
+                if (callback === undefined) {
+                    // multi
+                    const obj = {}
+                    if (fnOrObjList.length > 1) {
+                        fnOrObjList.map(attrName => {
+                            const trimmedName = attrName.trim()
+
+                            obj[trimmedName] = isAttr ? el.getAttribute(trimmedName) : el[trimmedName]
+                        })
+                        return obj
+                    }
+                    return isAttr ? el.getAttribute(fnOrObj) : el[fnOrObj]
+                }
+                // Set attribute
+                if (isPrimitive(callback)) {
+                    if (isAttr) {
+                        el.setAttribute(fnOrObj, callback)
+                    } else {
+                        el[fnOrObj] = callback
+                    }
+                }
             }
         }
+
+        return isElArray ? el.map(alterElement) : alterElement(el)
     }
 }
 
@@ -75,17 +82,16 @@ const attrPartial = (el, type) => {
 const alter = (selector, ref) => {
     const el = query(selector)
     return {
-        attr: attrPartial(el, 'attr'),
-        prop: attrPartial(el, 'prop'),
+        attr: alterPartial(el, 'attr'),
+        prop: alterPartial(el, 'prop'),
     }
 }
 
-const alterAll = (selector, ) => {
+const alterAll = (selector, ref) => {
+    const el = queryAll(selector)
     return {
-        attr: () => {
-            // attrPartial(el, 'attr')
-        },
-        prop: attrPartial(el, 'prop'),
+        attr: alterPartial(el, 'attr'),
+        prop: alterPartial(el, 'prop'),
     }
 }
 

@@ -5,7 +5,8 @@ const { body } = document
 /*
 If traversing from `document` is a problem you should be using a
 virtual-list to manage off-screen DOM elements */
-const query = selector => document.querySelector(selector)
+const query = (selector) => document.querySelector(selector)
+const queryAll = (selector) => Array.from(document.querySelectorAll(selector))
 
 // RegExp and other patterns.
 const patterns = {
@@ -133,6 +134,7 @@ const isPrimitive = value => value !== Object(value)
 export {
   empty,
   query,
+  queryAll,
   patterns,
   isPrimitive,
   sequence,

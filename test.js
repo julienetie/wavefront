@@ -13,7 +13,8 @@ import {
   trigger,
   removeDelegate,
   waveEnv,
-  alter
+  alter,
+  alterAll,
 } from './src/index.js'
 
 console.time('wavefront:test.js')
@@ -209,25 +210,16 @@ alter('#test > section')
 const testEl2 = document.querySelector('#test > section')
 console.log('Set multiple props by callback:', testEl2.innerText, testEl2.checked, testEl2.offsetWidth)
 
-// // Set style by function
-// alter('#test')
-//   .attr('style', styleObj => {
-//     console.log('styleObj', styleObj)
-//     return {
-//       color: 'red',
-//       background: 'blue',
-//       'margin-top': '5rem',
-//       'z-index': '10',
-//       'display': 'grid',
-//     }
-//   })
 
-// // Set style by object
-// alter('#test')
-//   .attr('style', {
-//     color: 'darkgreen',
-//     background: 'yellow',
-//     'margin-top': '2rem',
-//     'z-index': '10',
-//     'display': 'grid',
-//   })
+console.info('ALL //////////////////////////////////////////////////////////////////////////////////////////////')
+// Alter - messy sandbox ////
+
+// Get attribute
+const testClassAll = alterAll('[data-some-span').attr('class')
+console.log('Get attribute:', testClassAll)
+
+// Get multiple attributes as an object
+const testClass2All = alterAll('[data-some-span').attr('class, id, data-abc')
+console.log('Get multiple attributes as an object:', testClass2All)
+
+// Assume alterAll works as expected

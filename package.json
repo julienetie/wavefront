@@ -8,7 +8,8 @@
     "test": "./node_modules/.bin/http-server -p=3333 --s | ./node_modules/.bin/mocha-chrome http://127.0.0.1:3333/test.html --ignore-exceptions",
     "lint": "./node_modules/.bin/eslint src/",
     "lint:fix": "./node_modules/.bin/eslint src/ --fix",
-    "cp:xk":"cp ./node_modules/xsskillah/dist/xsskillah.js  ./libs/"
+    "cp:xk":"cp ./node_modules/xsskillah/dist/xsskillah.js  ./libs/",
+    "d": "http-server ./"
   },
   "repository": {
     "type": "git",

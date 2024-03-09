@@ -73,8 +73,6 @@ const _ = tag
 const html = tag
 
 export {
-  alter,
-  alterAll,
   paste,
   pasteInto,
   pasteBefore,
@@ -83,6 +81,16 @@ export {
   pasteByIndex,
   pasteEnd,
   listenTo,
+  dismiss,
+
+
+  createDelegate,
+  suspect,
+  trigger,
+
+
+  alter,
+  alterAll,
   // ingnore
   stencilInto, // stencilInto
   stencil,
@@ -107,15 +115,12 @@ export {
   removeListener,
   removeWithin,
   remove,
-  createDelegate,
-  suspect,
-  trigger,
   removeDelegate,
   safeguardParams,
   getSlate,
   // muteSlate
   // unmuteSlate
-  dismiss,
+
   sanitize,
   empty,
   sequence,

@@ -59,6 +59,19 @@ const validateInput = (value, type) => {
   return input.checkValidity()
 }
 
+const tag = (strings, ...values) => {
+  let result = empty
+
+  for (let i = 0; i < strings.length; i++) {
+    result += strings[i]
+    if (i < values.length) result += values[i]
+  }
+  return result
+}
+
+const _ = tag
+const html = tag
+
 export {
   alter,
   alterAll,
@@ -111,5 +124,7 @@ export {
   validateInput,
   waveEnv,
   waveCps,
-  c
+  c,
+  html,
+  _,
 }

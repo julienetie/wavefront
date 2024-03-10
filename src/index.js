@@ -28,12 +28,7 @@ import {
 
 // Events
 import {
-  listenTo,
-  dismiss,
-  createDelegate,
-  suspect,
-  trigger,
-  removeDelegate,
+  addListener,
   removeListener
 } from './events.js'
 
@@ -80,13 +75,8 @@ export {
   pasteStart,
   pasteByIndex,
   pasteEnd,
-  listenTo,
-  dismiss,
-
-
-  createDelegate,
-  suspect,
-  trigger,
+  addListener,
+  removeListener,
 
 
   alter,
@@ -112,10 +102,10 @@ export {
   // swap
   mutate, // slate needs to store mutation, (if any)
   removeSlate,
-  removeListener,
+ 
   removeWithin,
   remove,
-  removeDelegate,
+
   safeguardParams,
   getSlate,
   // muteSlate

@@ -17,6 +17,12 @@ Wavefront takes two kind of approaches to intercepting events.
 - Event Delegates
 - Direct Listeners
 
+### Rule of thumb
+If you are unsure how to approach event management in a project consider this order: 
+1. Try Event Delegates first: Many common events will work using event-delegation in some cases you may need to enable or disable capturing in the event-listener's options.
+2. If event delegation does not work you can use subject-events which attach directly to elements
+
+
 ### Event Delegates
 
 Wavefront uses a technique called "event delegation," where a single event listener can intercept events across multiple child elements. 
@@ -54,7 +60,7 @@ not entirely abstract the event delegation system away. Wavefront's event delega
 | Global-object  | Object          | A [window][windowLink] or [document][documentLink] object including iFrame [contentWindow][contentWindowLink] and [contentDocument][contentDocumentLink] objects                                                                      |   
 | Options        | Object\|Boolean | Native [addEventListener][addEventListenerLink] options object or useCapture boolean                                                                                                |   
 
-Using Event Delegates
+Basic Event Delegates usage
 ```javascript
 
 // Create the venue and assign event-listeners to event acts `resize` and `click`
@@ -80,6 +86,16 @@ target('click').closest('a', ({target}) => {
 })
 ```
 
+
+
+### Subject Events
+
+
+
+
+
+## The Events API
+
 ### events.venue 
 
 ### events.setPending
@@ -92,8 +108,12 @@ target('click').closest('a', ({target}) => {
 
 ### events.removeDelegate
 
-### addListener
+### subject().addListener
 
-### removeListener
+### subject().removeListener
+
+### subject().suspend
+
+### subject().resume
 
 MIT © Julien Etienne 2024

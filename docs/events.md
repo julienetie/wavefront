@@ -58,7 +58,7 @@ Using Event Delegates
 ```javascript
 
 // Create the venue and assign event-listeners to event acts `resize` and `click`
-event.venue({
+events.venue({
   resize: {
     window 
   },
@@ -67,12 +67,13 @@ event.venue({
   }
 })
 
-// Manage resize events 
+// Manage window resize
 target('resize', ({target}) => {
   console.info('window object', target)
   ...
 })
 
+// Manage link clicks
 target('click').closest('a', ({target}) => {
     console.info('Click target', target)
   ...

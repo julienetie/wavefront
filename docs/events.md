@@ -80,5 +80,20 @@ target('click').closest('a', ({target}) => {
 })
 ```
 
+### events.venue 
+
+### events.setPending
+
+### events.suspend
+
+### events.resume
+
+### events.removeListener
+
+### events.removeDelegate
+
+### addListener
+
+### removeListener
 
 MIT © Julien Etienne 2024

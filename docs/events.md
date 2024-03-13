@@ -155,7 +155,7 @@ focus: {
 ```
 The global-object is typically the `document` or `window` object. 
 
-### events.setPending
+### events.setPending()
 If an iframe is required the `pending` primitive should be used until the iframe is available, then it can be set using 
 `events.setPending`
 ```javascript
@@ -170,16 +170,29 @@ click: {
 })
 const { contentDocument } = document.querySelector('#some-iframe')
 events.setPending('click', contentDocument)
+
+// Set pending for multiple listeners
+events.setPending('click', 'click:2', 'input', contentDocument)
 ```
 
+### events.suspend()
+Prevent listeners from executing their handlers
+```javascript
+// Set pending for multiple listeners
+events.suspend('click', 'focus', 'mousedown')
+```
 
-### events.suspend
+### events.resume()
+Re-enable execution of a listeners handler
+```javascript
+// Set resume for multiple listeners
+events.resume('click', 'focus', 'mousedown')
+```
+### events.removeListener()
 
-### events.resume
+### events.removeDelegate()
 
-### events.removeListener
 
-### events.removeDelegate
 
 ### subject().addListener()
 The _subject()_ API is similar to addEventListener though it is crucial for preventing memory leaks in conjunction with other Wavefront APIs.

@@ -153,7 +153,10 @@ focus: {
 ...
 })
 ```
-The global-object is typically the `document` or `window` object. If an iframe is required the `pending` primitive should be used until the iframe is available, then it can be set using 
+The global-object is typically the `document` or `window` object. 
+
+### events.setPending
+If an iframe is required the `pending` primitive should be used until the iframe is available, then it can be set using 
 `events.setPending`
 ```javascript
 import { pending } from './vendor/wavefront.js'
@@ -168,7 +171,7 @@ click: {
 const { contentDocument } = document.querySelector('#some-iframe')
 events.setPending('click', contentDocument)
 ```
-### events.setPending
+
 
 ### events.suspend
 

@@ -131,21 +131,43 @@ target('mousemove', ({target) => {
 })
 ```
 
-
-
-
-
-
-### Subject Events
-
-
-
-
-
 ## The Events API
+### events.venue()
+The `events.venue()` function initalizes global-objects with listeners to be used for event-delegation. 
+- Each property name represents a _listener_
+- You can define mutliple listeners of the same type by prefixing an alias to the event-type in question
+  - click
+  - 'click:2'
+  - 'click:video'
+    
+  Each listener represents an individual `addEventListener` under the hood.
+- Event-listeners must contain a self-named global-object or the pending primative. And can optionally contain the `options` property as an object or boolean.
 
-### events.venue 
-
+```javascript
+events.venue({
+...
+focus: {
+  document,
+  options: true
+}
+...
+})
+```
+The global-object is typically the `document` or `window` object. If an iframe is required the `pending` primitive should be used until the iframe is available, then it can be set using 
+`events.setPending`
+```javascript
+import { pending } from './vendor/wavefront.js'
+events.venue({
+...
+click: {
+  pending,
+  options: true
+}
+...
+})
+const { contentDocument } = document.querySelector('#some-iframe')
+events.setPending('click', contentDocument)
+```
 ### events.setPending
 
 ### events.suspend

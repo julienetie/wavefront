@@ -10,81 +10,129 @@ The Events API manages event listeners.
   - [pasteBefore()](#pasteBefore)
   - [pasteStart()](#pasteStart)
   - [pasteEnd()](#pasteEnd)
+
 ## Understanding The Events API
 
-The Events API is a set of function that provide granular and comprehensive mangement of event listeners.
-Wavefront takes two kind of approaches to intercepting events. 
-- Event Delegates
-- Direct Listeners
+The Events API is a set of functions that provide comprehensive event management.
+Wavefront offers two approaches to intercepting events:
+- `events`: Event Delegation API
+- `bound`: Bound Events API
 
-### Rule of thumb
-If you are unsure how to approach event management in a project consider this order: 
-1. Try Event Delegates first: Many common events will work using event-delegation in some cases you may need to enable or disable capturing in the event-listener's options.
-2. If event delegation does not work you can use subject-events which attach directly to elements
+It's always recommended to prioritize event delegation over bound events. Some events require capture to be enabled. Direct-events should only be used when event-delegation cannot resolve an event.
+
+Wavefront recommends the following approach to the Events API:
+1. Initialize the events.venue, which is a configuration for defining global event listeners.
+2. Define event delegates using the `targets` function. Each delegate behaves like a virtual event listener.
+3. If necessary, you can use the `bound` function to manage scenarios that cannot be solved using event-delegation.
+
+When an element containing a bound event is overwritten, the bound-event will be removed.
+Global events are not automatically removed but can be manually removed if needed.
 
 
-### Event Delegates
-
-Wavefront uses a technique called "event delegation," where a single event listener can intercept events across multiple child elements. 
-This not a new concept, it's supported in front-end JavaScript frameworks but Unlike other JavaScript frameworks, Wavefront does 
-not entirely abstract the event delegation system away. Wavefront's event delegation is granular and idiomatic to the nature of the DOM.  
-
-- **Decoupled listeners**: Event listeners are detatched from the working DOM allowing the same events and delegates to be re-used no matter how or when the DOM is rebuilt
-- **Global listeners**: Event listeners can be attached to window and document objects, including iframe global objects  
-- **Options**: Define native options for each event-listener e.g. capture, once, passive, signal and useCapture
-- **pending**: Indicate if a gloabl will be set in the future using `setPending`, this is necessary for iframes
-- **Multiple event instances**: Define multiple event listenres using event-aliases for the same event-type but with different options.
-- **Target by relationship**: Find an ancestor, descendent or equivalent to the target.
-- **Multiple event alias targets**: target with multiple event-aliases   
-- **Multiple suspects**: target multiple selectors using a single or multple event-aliases
-- **Suspectable expressions**: Freely detect the relationship of suspects. 
-
-[targetLink]:https://developer.mozilla.org/en-US/docs/Web/API/Event/target
-[selectorLink]:https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors
-[addEventListenerLink]:https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-[eventTypeLink]:https://developer.mozilla.org/en-US/docs/Web/API/Event/type
-[windowLink]:https://developer.mozilla.org/en-US/docs/Web/API/Window/window
-[documentLink]:https://developer.mozilla.org/en-US/docs/Web/API/Document
-[contentWindowLink]:https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow
-[contentDocumentLink]:https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentDocument
-#### The lingo
-
-| Term           | Type            | Description                                                                                                                                                 |
-|----------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Target         | Object          | An event [target][targetLink]                                                                                                                               |  
-| Suspect        | String          | A [selector][selectorLink] related to target (closest, contains, equals)                                                                                    |   
-| Delegate       | N/A             | A set of parameters and instructions which informs an _event-listener_ when and how to react to an event                                                    |   
-| Event-listener | Object          | Each represents an [addEventListener][addEventListenerLink] and is defined in the `events.venue`. Each _event-listener_ is assigned to an _event-act_       |   
-| Event-Act      | String          | A unique name of the event-listener. Each event-act begins with the [event-type][eventTypeLink] followed by a custom alias.                                 |   
-| Venue          | Object          | An object where _event-listeners_ are defined against _event-acts_                                                                                              |   
-| Global-object  | Object          | A [window][windowLink] or [document][documentLink] object including iFrame [contentWindow][contentWindowLink] and [contentDocument][contentDocumentLink] objects                                                                      |   
-| Options        | Object\|Boolean | Native [addEventListener][addEventListenerLink] options object or useCapture boolean                                                                                                |   
-
-Basic Event Delegates usage
+## A Basic Event Delegation Example
+Below is an example of how to target multiple anchor tags.
 ```javascript
 
-// Create the venue and assign event-listeners to event acts `resize` and `click`
+// Add a click event-listener to the document
 events.venue({
-  resize: {
-    window 
-  },
   click: {
     document
   }
 })
 
-// Manage window resize
-target('resize', ({target}) => {
-  console.info('window object', target)
-  ...
-})
-
-// Manage link clicks
-target('click').closest('a', ({target}) => {
-    console.info('Click target', target)
+// Matches all anchor tags and their descendents
+target('click').closest('a', e => {
   ...
 })
 ```
+
+## A Comprehensive Event Delegation Example
+./src/events.venue.js
+```javascript
+events.venue({
+    click: {
+        document
+    },
+    'click:iframe1': {
+        pending
+    },
+    resize: {
+        window
+    },
+    input: {
+        document,
+        options: true
+    },
+    transitionend: {
+        document,
+        options: true
+    },
+    focus: {
+        document,
+        options: {
+            once: true
+        }
+    },
+    mousemove: {
+        document
+    }
+})
+```
+./src/some-component/somefile.events.js
+```javascript
+
+// Matches all elements
+target('click', e => {...})
+
+// Matches all anchor tags and their descendents
+target('click').closest('a', e => {...})
+
+// Matches all elements that are descendents of an anchor tag
+target('click').contains('a', e => {...})
+
+// Matches anchor tags
+target('click').equals('a', e => {...})
+
+// Matches all anchor tags and their descendents for multiple event-listeners
+target('click', 'mousemove', 'focus').closest('a', e => {...})
+
+// Matches multiple selectors and their descendents 
+target('click').closest('header', 'footer', '#side-bar' , e => {...})
+
+// Named delegate
+target('click:iframe1').closest('a', e => {...}).ref('abc123')
+
+// Set pending global-object
+const iframe1 = document.querySelector('#iframe1')
+events.setPending('click:iframe1', iframe1.contentDocument)
+
+// Suspend event-listeners
+events.suspend('resize', 'click', 'input')
+
+// resume event listeners
+events.resume('click', 'resize')
+
+// Remove event listener
+events.removeListener('transitionend')
+
+// Remove a delegate.
+events.removeDelegate('abc123')
+
+// Suspect expressions
+target('mousemove', ({target) => {
+  // Contains
+  if(suspect(target).contains('#some-element1')){...}
+
+  // Closest
+  if(suspect(target).closest('#some-element2')){...}
+
+  // Equals
+  if(suspect(target).equals('#some-element3')){...}
+})
+```
+
+
+
 
 
 
@@ -122,5 +170,8 @@ Removes a given event listener by it's event-name
 Suspends a given event listener by it's event-name
 ### subject().resume
 Resumes a given event listener by it's event-name
+
+## suspect
+
 
 MIT © Julien Etienne 2024

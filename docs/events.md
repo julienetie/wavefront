@@ -12,7 +12,7 @@ Wavefront features two strategies for intercepting events:
 - `events`: Event Delegation API
 - `bound`: Bound Events API
 
-It's advisable to prioritize event delegation over bound events. Certain events may require enabling capture for effective propagation. Direct events should typically serve as a final option when event delegation becomes problematic or incapable, or to navigate around 3rd party caveats.
+As a rule of thumb, always prefer event delegation over bound events. Certain events may require enabling capture for effective propagation. Direct events should typically serve as a final option when event delegation becomes problematic or incapable, or to navigate around 3rd party caveats.
 
 Wavefront recommends the following approach to the Events API:
 1. Initialize the events.venue, which is a configuration for defining global event listeners.

@@ -7,17 +7,17 @@ The Events API manages event listeners.
 
 ## Understanding The Events API
 
-The Events API is a set of functions that provide a comprehensive event management solution for the UI.
+The Events API is a set of functions that provide a comprehensive event management solution.
 Wavefront features two strategies for intercepting events:
 - `events`: Event Delegation API
 - `bound`: Bound Events API
 
-As a rule of thumb, always prefer event delegation over bound events. Certain events may require enabling capture for effective propagation. Direct events should typically serve as a final option when event delegation becomes problematic or incapable, or to navigate around 3rd party caveats.
+As a rule of thumb, always prefer event delegation over bound events. Certain events may require enabling capture for effective propagation. Direct events should typically serve as a final option when event delegation becomes problematic, incapable, or to navigate around 3rd party caveats.
 
-Wavefront recommends the following approach to the Events API:
-1. Initialize the events.venue, which is a configuration for defining global event listeners.
-2. Define event delegates using the `targets` function. Each delegate behaves like a virtual event listener.
-3. If necessary, you can use the `bound` function to manage scenarios that cannot be solved using event-delegation.
+Wavefront recommends the following approach when using the Events API:
+1. Initialize **events.venue**, which is a configuration for defining global event listeners.
+2. Create event delegates using the **targets** function. Think of each delegate as a virtual event-listener.
+3. If necessary, use the `bound` function to manage scenarios that cannot be solved using event-delegation.
 
 When an element containing a bound event is overwritten, the bound-event will be removed.
 Global events are not automatically removed but can be manually removed if needed.

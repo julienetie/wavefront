@@ -7,7 +7,7 @@ The Events API manages event listeners.
 
 ## Understanding The Events API
 
-The Events API is a set of functions that provide comprehensive event management.
+The Events API is a set of functions that provide a comprehensive event management solution for the UI.
 Wavefront features two strategies for intercepting events:
 - `events`: Event Delegation API
 - `bound`: Bound Events API

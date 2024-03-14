@@ -1,24 +1,18 @@
 # Events API
 The Events API manages event listeners.
 
-
 - [Understanding The Events API](#Understanding-the-Collage-API)
-- [The Collage API](#The-Collage-API)
-  - [paste()](#paste)
-  - [pasteInto()](#pasteInto)
-  - [pasteAfter()](#pasteAfter)
-  - [pasteBefore()](#pasteBefore)
-  - [pasteStart()](#pasteStart)
-  - [pasteEnd()](#pasteEnd)
+- [A Basic Event Delegation Example](#a-basic-event-delegation-example)
+- [A Comprehensive Event Delegation Example](#a-comprehensive-event-delegation-example)
 
 ## Understanding The Events API
 
 The Events API is a set of functions that provide comprehensive event management.
-Wavefront offers two approaches to intercepting events:
+Wavefront features two strategies for intercepting events:
 - `events`: Event Delegation API
 - `bound`: Bound Events API
 
-It's always recommended to prioritize event delegation over bound events. Some events require capture to be enabled. Direct-events should only be used when event-delegation cannot resolve an event.
+It's advisable to prioritize event delegation over bound events. Certain events may require enabling capture for effective propagation. Direct events should typically serve as a final option when event delegation becomes problematic or incapable, or to navigate around 3rd party caveats.
 
 Wavefront recommends the following approach to the Events API:
 1. Initialize the events.venue, which is a configuration for defining global event listeners.

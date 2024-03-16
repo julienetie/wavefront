@@ -124,18 +124,24 @@ target('mousemove', ({target) => {
   if(suspect(target).equals('#some-element3')){...}
 })
 ```
+[addEventListenerLink]:https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+[optionsLink]:https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options
+[useCaptureLink]:https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#usecapture
+[pendingLink]:https://github.com/julienetie/wavefront/???
 
 ## The Events API
 ### events.venue()
-The `events.venue()` function initalizes global-objects with listeners to be used for event-delegation. 
-- Each property name represents a _listener_
-- You can define mutliple listeners of the same type by prefixing an alias to the event-type in question
+The `events.venue()` is where you define [addEventListeners][addEventListenerLink] on _root-objects_. 
+venue() takes an object literal which contains _listeners_.
+- Each property name represents a _listener_.
+- You can define additional listeners of the same _event-type_ by prefixing an alias delimited by an underscore, e.g:
   - click
-  - 'click:2'
-  - 'click:video'
-    
-  Each listener represents an individual `addEventListener` under the hood.
-- Event-listeners must contain a self-named global-object or the pending primative. And can optionally contain the `options` property as an object or boolean.
+  - click_2
+  - click_video
+  
+  Listener names cannot contain more than 1 underscore.
+- Each listener represents an individual `addEventListener` under the hood
+- Event-listeners must contain a self-named _root-object_ or the [pending][pendingLink] primative. And can optionally contain the [options][optionsLink] property as an object or boolean for [useCapture][useCaptureLink].
 
 ```javascript
 events.venue({
@@ -147,10 +153,14 @@ focus: {
 ...
 })
 ```
-The global-object is typically the `document` or `window` object. 
+The root-object is typically a `document` or `window` object. 
+
+`events.venue(...)` can only be called once per JavaScript execution context. So it is advisable to place it in a file named.
+`./src/events.venue.js` this file can represent all gloabl events across your application, or you can have multiple `*.venue.js` files to represent different golabl events per page or per JavaScript execution context.
+
 
 ### events.setPending()
-If an iframe is required the `pending` primitive should be used until the iframe is available, then it can be set using 
+If iframe events need to be intercepted, the `pending` primitive should be used until the iframe is available, then it can be set using 
 `events.setPending`
 ```javascript
 import { pending } from './vendor/wavefront.js'
@@ -185,6 +195,34 @@ events.resume('click', 'focus', 'mousedown')
 ### events.removeListener()
 
 ### events.removeDelegate()
+
+### target()
+The `target()` function creates a delegate, which is like a virtual event-listener based on a listener you defined in the venue object.
+To create a global delegate you can use the target function with a callback
+
+```javascript
+target('mousemove', ({ClientX, ClientY}) => {
+ ...
+})
+```
+Relationship methods are used to target elements ancestors, descendents or that are equal to the target.
+```javascript
+// Closest ancestor or equal to target
+target('click').closest('#ancestor')
+
+// Contains descendent or equal to target
+target('click').contains('#descendent')
+
+// Equal to target
+target('click').equals('#equal-selector')
+
+// Nearest ancestor, not euqal to
+target('click').nearest('#ancestor')
+
+// Includes descendent, not equal to
+target('click').includes('#descendent')
+
+```
 
 
 

@@ -7,6 +7,10 @@ const _store = {
   slates: {},
   singleEvents: new WeakMap(),
   singleEventsAncestors: [],
+  events: {
+    globals: new Map(),
+    delegates: new Map()
+  },
   env: null,
   envSource: null,
   debug:{

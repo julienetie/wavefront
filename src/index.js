@@ -28,13 +28,14 @@ import {
 
 // Events
 import {
-  addListener,
-  removeListener
+  bound,
+  events,
+  target,
 } from './events.js'
 
 import { safeguardParams } from './safety.js'
 import { stencil, removeSlate, getSlate } from './slate.js'
-import { stencilInto, sequence } from './helpers.js'
+import { stencilInto, sequence, pending } from './helpers.js'
 import { waveEnv, c, waveCps } from './environment.js'
 
 // XssKillah
@@ -75,9 +76,10 @@ export {
   pasteStart,
   pasteByIndex,
   pasteEnd,
-  addListener,
-  removeListener,
-
+  bound,
+  events,
+  target,
+  pending,
 
   alter,
   alterAll,

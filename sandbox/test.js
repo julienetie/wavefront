@@ -1,21 +1,19 @@
 import {
   paste,
   pasteInto,
-  listenTo,
   stencilInto,
   mutate,
   removeSlate,
-  removeListener,
   removeWithin,
   remove,
-  createDelegate,
-  suspect,
-  trigger,
-  removeDelegate,
+  events,
+  bound,
   waveEnv,
   alter,
   alterAll,
-} from './src/index.js'
+  target,
+  pending,
+} from '../src/index.js'
 
 console.time('wavefront:test.js')
 waveEnv.set()
@@ -45,7 +43,7 @@ const params = {
 linkView(params)
 
 // Listen to clicks on data-link
-listenTo('[data-link]', 'click', ({
+bound.addListener('[data-link]', 'click', ({
   target
 }) => {
   console.log('click', target.parentElement.href)
@@ -83,29 +81,29 @@ mutate('#root', el => {
 })
 
 // Listen to clicks on data-link
-listenTo('h1 > div', 'mouseover', ({
+bound.addListener('h1 > div', 'mouseover', ({
   target
 }) => {
   console.log('mouseover:', target)
 })
 
-removeListener('h1 > div', 'mouseover')
+bound.removeListener('h1 > div', 'mouseover')
 
 removeWithin('h1')
 remove('h1')
 
-createDelegate('#root > a', 'click', e => console.log(`What is going on ${e}`))
+// createDelegate('#root > a', 'click', e => console.log(`What is going on ${e}`))
 
-let count = 0
-document.addEventListener('click', (e) => {
-  if (suspect(e.target).equals('#root > a')) {
-    trigger('#root > a', 'click', e)
-  }
-  count++
-  if (count > 3) {
-    removeDelegate('#root > a', 'click')
-  }
-})
+// let count = 0
+// document.addEventListener('click', (e) => {
+//   if (suspect(e.target).equals('#root > a')) {
+//     trigger('#root > a', 'click', e)
+//   }
+//   count++
+//   if (count > 3) {
+//     removeDelegate('#root > a', 'click')
+//   }
+// })
 
 window.removeSlate = removeSlate
 console.timeEnd('wavefront:test.js')
@@ -229,3 +227,103 @@ console.log('Get multiple attributes as an object:', testClass2All)
 alter('.last-span').attr('style', { border: '1px solid red', display: 'block'})
 
 alter('.last-span ol li:nth-child(1)').prop('classList').add('test-123')
+
+
+///////////////////////////////////////////////////////
+///////// Event Delegation ////////////////////////////
+// const pending = Symbol('pending')
+
+
+// events.create({
+//   click: {
+//     document
+//   },
+//   'click:2': {
+//    pending,
+//    options: true 
+//   },
+//   'mousemove:iframe': {
+//     pending,
+//     options: true
+//   }
+// })
+
+// const iframe = document.querySelector('iframe')
+// events.setPending('click:2 mousemove:iframe', iframe.contentDocument)
+// // events.setPending('mousemove:iframe', iframe.contentDocument)
+
+// target('click', ({target}) => {
+//   console.log('Global "click" Delegation', target)
+// })
+
+// target('click:2 mousemove:iframe', ({target}) => {
+//   console.log('iframe "click:2" delegation', target)
+// })
+
+// target('click').closest('#a1', ({target}, suspect) => {
+//   console.log('Suspect', target, 'closest', suspect)
+// })
+
+// target('click').equals('[data-test="123"]', ({target}, suspect) => {
+//   console.log('Suspect 2 ', target, 'equals', suspect)
+// })
+
+// target('click').contains('.box', ({target}, suspect) => {
+//   console.log('Suspect 3 ', target, 'contains', suspect)
+// })
+
+events.venue({
+  click: {
+      document
+  },
+  click_iframe1: {
+      pending
+  },
+  resize: {
+      window
+  },
+  input: {
+      document,
+      options: true
+  },
+  transitionend: {
+      document,
+      options: true
+  },
+  focus: {
+      document,
+      options: {
+          once: true
+      }
+  },
+  mousemove: {
+      document
+  }
+})
+const iframe1 = document.querySelector('iframe')
+events.setPending('click_iframe1', iframe1.contentDocument)
+
+// Matches all elements
+target('click', e => { console.log('All', e.target)})
+
+// Matches all anchor tags and their descendents
+target('click').closest('a', ({target}, suspect) => {
+  console.log('closest', target, 'to', suspect)
+})
+
+// Matches all elements that are descendents of an anchor tag
+target('click').contains('a', ({target}, suspect) => {
+  console.log('contains', target, 'to', suspect)
+})
+
+// Matches anchor tags
+target('click').equals('#test-a-wrapper > a', (e, suspect) => {
+  e.preventDefault()
+  console.log('equals', e.target, 'to', suspect)
+})
+
+target('click_iframe1').closest('header', ({target}) =>{
+  console.log('target:::Iframe', target)
+})
+
+

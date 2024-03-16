@@ -120,6 +120,7 @@ const getAncestors = (el) => {
 }
 
 const empty = ''
+const pending = Symbol('pending')
 
 const sequence = (n, offset = 0, multiplier = 1) => {
   let seq = [...Array(n + offset).keys()]
@@ -130,13 +131,16 @@ const sequence = (n, offset = 0, multiplier = 1) => {
 
 
 const isPrimitive = value => value !== Object(value)
+const isPending = value => value.toString() === pending.toString()
 
 export {
+  pending,
   empty,
   query,
   queryAll,
   patterns,
   isPrimitive,
+  isPending,
   sequence,
   removeDescendentEvents,
   removeChildNodes,

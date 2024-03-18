@@ -9,7 +9,8 @@ const _store = {
   singleEventsAncestors: [],
   events: {
     globals: new Map(),
-    delegates: new Map()
+    delegates: new Map(),
+    isSuspended: new Map(),
   },
   env: null,
   envSource: null,

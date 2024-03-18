@@ -279,6 +279,9 @@ events.venue({
   click_iframe1: {
       pending
   },
+  dblclick:{
+    document
+  },
   resize: {
       window
   },
@@ -304,26 +307,36 @@ const iframe1 = document.querySelector('iframe')
 events.setPending('click_iframe1', iframe1.contentDocument)
 
 // Matches all elements
-target('click', e => { console.log('All', e.target)})
+// target('click', 'mousemove', 'dblclick', e => { console.log('Match all:', e.type)})
+// .ref('1234')
+
+
+// events.suspend('1234')
+// events.resume('1234')
+// All listener names 
+// 
+
+// if(ref === storedRef)
 
 // Matches all anchor tags and their descendents
-target('click').closest('a', ({target}, suspect) => {
+target('click').closest('#closest', 'body', ({target}, suspect) => {
   console.log('closest', target, 'to', suspect)
-})
+}).ref('abc')
 
-// Matches all elements that are descendents of an anchor tag
-target('click').contains('a', ({target}, suspect) => {
-  console.log('contains', target, 'to', suspect)
-})
+events.suspend('abc')
+events.resume('abc')
 
-// Matches anchor tags
-target('click').equals('#test-a-wrapper > a', (e, suspect) => {
-  e.preventDefault()
-  console.log('equals', e.target, 'to', suspect)
-})
+// // Matches all elements that are descendents of an anchor tag
+// target('click').contains('#contains', ({target}, suspect) => {
+//   console.log('contains', target, 'to', suspect)
+// })
 
-target('click_iframe1').closest('header', ({target}) =>{
-  console.log('target:::Iframe', target)
-})
+// // Matches anchor tags
+// target('click').equals('#equals', (e, suspect) => {
+//   e.preventDefault()
+//   console.log('equals', e.target, 'to', suspect)
+// })
 
-
+// target('click_iframe1').closest('header', ({target}) =>{
+//   console.log('target:::Iframe', target)
+// })

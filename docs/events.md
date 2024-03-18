@@ -226,22 +226,21 @@ target('click').includes('#descendent')
 
 
 
-### subject().addListener()
+### bound.addListener()
 The _subject()_ API is similar to addEventListener though it is crucial for preventing memory leaks in conjunction with other Wavefront APIs.
 Event Delegation should always be preffered over _subject()_ if plausible.
 
 `addListener()` adds an event listener to a given selector, and uses the same options as the native _addEventListener_.
 addListener uses the same style of event-naming as event delegates.
 
-### subject().removeListener()
-Removes a given event listener by it's event-name
-
-### subject().suspend
-Suspends a given event listener by it's event-name
-### subject().resume
-Resumes a given event listener by it's event-name
+### bound.removeListener()
+Removes a given event listener by a given selector and it's eventTypes.
 
 ## suspect
+
+```javascript
+suspect(target).equals('#selector1', '.selector2')
+```
 
 
 MIT © Julien Etienne 2024

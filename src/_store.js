@@ -11,6 +11,7 @@ const _store = {
     globals: new Map(),
     delegates: new Map(),
     isSuspended: new Map(),
+    bound: [],
   },
   env: null,
   envSource: null,

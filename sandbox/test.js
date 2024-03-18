@@ -89,8 +89,8 @@ bound.addListener('h1 > div', 'mouseover', ({
 
 bound.removeListener('h1 > div', 'mouseover')
 
-removeWithin('h1')
-remove('h1')
+// removeWithin('h1')
+// remove('h1')
 
 // createDelegate('#root > a', 'click', e => console.log(`What is going on ${e}`))
 
@@ -319,12 +319,12 @@ events.setPending('click_iframe1', iframe1.contentDocument)
 // if(ref === storedRef)
 
 // Matches all anchor tags and their descendents
-target('click').closest('#closest', 'body', ({target}, suspect) => {
-  console.log('closest', target, 'to', suspect)
-}).ref('abc')
+// target('click').closest('#closest', 'body', ({target}, suspect) => {
+//   console.log('closest', target, 'to', suspect)
+// }).ref('abc')
 
-events.suspend('abc')
-events.resume('abc')
+// events.suspend('abc')
+// events.resume('abc')
 
 // // Matches all elements that are descendents of an anchor tag
 // target('click').contains('#contains', ({target}, suspect) => {
@@ -340,3 +340,8 @@ events.resume('abc')
 // target('click_iframe1').closest('header', ({target}) =>{
 //   console.log('target:::Iframe', target)
 // })
+
+
+// bound.addListener('#closest', 'click', ({target, type}) =>{
+//   console.log('bound events:::', target, type)
+// }, false)

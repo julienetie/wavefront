@@ -253,17 +253,28 @@ const bound = {
     // Add event listener
     el.addEventListener(event, eventHandler, options)
   },
-  removeListener: (selector) => {
-    const el = query(selector)
+  removeListener: (selector, ...events) => {
+    const boundedElement = query(selector)
     // Missing element
-    if (!el) {
+    if (!boundedElement) {
       console.error(`Cannot find element ${selector}`)
       return
     }
-    removeDescendentEvents(el)
+
+    _store.singleEvents.get(boundedElement).forEach(eventObject => {
+      const {
+        event,
+        eventHandler,
+        options
+      } = eventObject
+
+      if(events.includes(event)){
+          boundedElement.removeEventListener(event, eventHandler, options)
+      }
+    })
+    _store.singleEvents.delete(boundedElement)
   }
 }
-
 
 export {
   bound,

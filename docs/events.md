@@ -192,9 +192,6 @@ Re-enable execution of a listeners handler
 // Set resume for multiple listeners
 events.resume('click', 'focus', 'mousedown')
 ```
-### events.removeListener()
-
-### events.removeDelegate()
 
 ### target()
 The `target()` function creates a delegate, which is like a virtual event-listener based on a listener you defined in the venue object.

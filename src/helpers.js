@@ -18,7 +18,7 @@ const patterns = {
 /*
 Removes all events from descendent elements of a given element */
 const removeDescendentEvents = (el, inner) => {
-  if(el.children.length === 0) return
+  if (el.children.length === 0) return
 
   const startPosition = inner ? 0 : -1
   const eventsToRemove = _store.singleEventsAncestors.reduce((acc, entry, i) => {
@@ -128,7 +128,6 @@ const sequence = (n, offset = 0, multiplier = 1) => {
   seq = multiplier === 1 ? seq : seq.map(value => value * multiplier)
   return seq
 }
-
 
 const isPrimitive = value => value !== Object(value)
 const isPending = value => value.toString() === pending.toString()

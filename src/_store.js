@@ -11,13 +11,13 @@ const _store = {
     globals: new Map(),
     delegates: new Map(),
     isSuspended: new Map(),
-    bound: [],
+    bound: []
   },
   env: null,
   envSource: null,
-  debug:{
+  debug: {
     isDebugMode: false,
-    warnings: {},
+    warnings: {}
   },
   cps: {
     disable: false

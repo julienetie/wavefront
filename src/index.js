@@ -12,7 +12,7 @@ import {
   alter, alterAll
 } from './alter.js'
 
-// Collage 
+// Collage
 import {
   paste,
   pasteInto,
@@ -30,7 +30,7 @@ import {
 import {
   bound,
   events,
-  target,
+  target
 } from './events.js'
 
 import { safeguardParams } from './safety.js'
@@ -45,7 +45,6 @@ const raf = window.requestAnimationFrame
 const caf = window.cancelAnimationFrame
 const sanitize = xssKillah
 const empty = ''
-
 
 const validateInput = (value, type) => {
   const input = document.createElement('input')
@@ -104,7 +103,7 @@ export {
   // swap
   mutate, // slate needs to store mutation, (if any)
   removeSlate,
- 
+
   removeWithin,
   remove,
 
@@ -123,5 +122,5 @@ export {
   waveCps,
   c,
   html,
-  _,
+  _
 }

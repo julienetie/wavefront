@@ -14,7 +14,6 @@ import { waveEnv } from './environment.js'
 // import { patterns } from './helpers.js'
 // import { getSlate } from './slate.js'
 
-
 waveEnv.set()
 
 // const { placeholder, forbiddenOperators } = patterns

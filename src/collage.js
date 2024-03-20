@@ -9,7 +9,7 @@ const insertions = {
   pasteBefore: 'beforebegin',
   pasteAfter: 'afterend',
   pasteStart: 'afterbegin',
-  pasteEnd: 'beforeend',
+  pasteEnd: 'beforeend'
 }
 
 const xss = xssKillah()
@@ -49,14 +49,13 @@ const validateTemplateHandler = (templateHandler) => {
   }
 }
 
-
 const domOperations = (target, newEl, type, pasteByIndex) => {
   switch (type) {
     case 'paste':
       // Remove all nested events
       removeDescendentEvents(target)
 
-      // Remove all descendents 
+      // Remove all descendents
       removeChildNodes(target)
 
       // Paste Over
@@ -66,7 +65,7 @@ const domOperations = (target, newEl, type, pasteByIndex) => {
       // Remove all nested events
       removeDescendentEvents(target, 'inner')
 
-      // Remove all descendents 
+      // Remove all descendents
       removeChildNodes(target)
 
       // Paste Into
@@ -132,13 +131,11 @@ const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => 
       return
     }
 
-
     // Create markup
     const markup = templateHandler(cleanedParams).trim()
 
     // Store copy of markup
     if (ref) _store.slates[ref] = { templateHandler, cleanedParams, selector }
-
 
     // if (el.children.length > 0) {
     //   // Remove all nested events

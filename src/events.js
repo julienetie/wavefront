@@ -1,4 +1,4 @@
-import { query, getAncestors, removeDescendentEvents, pending, isPending } from './helpers.js'
+import { query, getAncestors, pending, isPending } from './helpers.js'
 import _store from './_store.js'
 import { waveEnv } from './environment.js'
 
@@ -8,15 +8,11 @@ const isGlobal = value => isWindow(value) || isDocument(value)
 const validListenerName = value => (value.match(/_/g) || []).length <= 1
 
 const { isArray } = Array
-let hasVenue = false
 
 const events = {
   venue: (eventsConfig = {}) => {
     // Ensure the environment is set
     if (waveEnv.isEnvNotSet()) return
-
-    // Confirm venue is set
-    hasVenue = true
 
     // Ensure eventsConfig is an object
     if (typeof eventsConfig !== 'object') return console.error('`eventsConfig` should be an object')
@@ -58,7 +54,7 @@ const events = {
         delegates.forEach(delegateHandler => {
           const { method, selectors, reference } = delegateHandler
 
-          const ref = typeof reference === 'string' ? reference : delegateHandler?.handler?.reference 
+          const ref = typeof reference === 'string' ? reference : delegateHandler?.handler?.reference
           const isSuspended = _store.events.isSuspended.get(ref)
 
           if (isSuspended) {
@@ -118,7 +114,7 @@ const events = {
 
     if (typeof globalObject !== 'object') return console.error('Last param of setPending should be a rootObject')
 
-    if (pendingParams.length < 2) return console.error(`${method} requires at least 1 listener and a rootObject`)
+    if (pendingParams.length < 2) return console.error(`setPending requires at least 1 listener and a rootObject`)
 
     listenerNames.forEach(listenerName => {
       if (isGlobal(globalObject)) {
@@ -186,7 +182,6 @@ const target = (...targetParams) => {
 
     if (typeof handler !== 'function') console.error('Handler must be a function')
 
-   
     targetParams.forEach(listenerName => {
       const delegates = _store.events.delegates.get(listenerName) || []
 
@@ -202,7 +197,7 @@ const target = (...targetParams) => {
         delegates.push({
           handler,
           method,
-          selectors,
+          selectors
         })
       }
     })
@@ -219,7 +214,7 @@ const target = (...targetParams) => {
     equals: suspectMethod('equals'),
     contains: suspectMethod('contains'),
     nearest: suspectMethod('nearest'),
-    includes: suspectMethod('includes'),
+    includes: suspectMethod('includes')
   }
 }
 
@@ -268,8 +263,8 @@ const bound = {
         options
       } = eventObject
 
-      if(events.includes(event)){
-          boundedElement.removeEventListener(event, eventHandler, options)
+      if (events.includes(event)) {
+        boundedElement.removeEventListener(event, eventHandler, options)
       }
     })
     _store.singleEvents.delete(boundedElement)

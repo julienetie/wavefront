@@ -60,7 +60,7 @@ const alterPartial = (el, type) => {
           // multi
           const obj = {}
           if (fnOrObjList.length > 1) {
-            fnOrObjList.map(attrName => {
+            fnOrObjList.forEach(attrName => {
               const trimmedName = attrName.trim()
 
               obj[trimmedName] = isAttr ? el.getAttribute(trimmedName) : el[trimmedName]

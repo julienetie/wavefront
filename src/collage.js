@@ -4,14 +4,6 @@ import { query, removeDescendentEvents, removeChildNodes, patterns, empty } from
 import xssKillah from '../libs/xsskillah.js'
 import _store from './_store.js'
 
-const insertions = {
-  pasteInto: 'afterbegin',
-  pasteBefore: 'beforebegin',
-  pasteAfter: 'afterend',
-  pasteStart: 'afterbegin',
-  pasteEnd: 'beforeend'
-}
-
 const xss = xssKillah()
 
 const { placeholder, forbiddenOperators } = patterns
@@ -87,7 +79,7 @@ const domOperations = (target, newEl, type, pasteByIndex) => {
       // Paste End
       target.insertAdjacentElement('beforeend', newEl)
       break
-    case 'pasteByIndex':
+    case 'pasteByIndex': {
       // Paste End
       const targetChildren = target.children
 
@@ -97,6 +89,7 @@ const domOperations = (target, newEl, type, pasteByIndex) => {
         targetChildren[pasteByIndex].insertAdjacentElement('beforebegin', newEl)
       }
       break
+    }
   }
 }
 
@@ -123,7 +116,7 @@ const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => 
     const cleanedParams = safeguardParams(params, denylistPattern, replaceWord)
     const templateParamsObject = templateHandler.toString().match(/\{([^{}]+)\}/)
     const templateParams = (templateParamsObject[1] || empty)?.split(',').map(param => param.trim())
-    const paramsMatchTemplateParams = templateParams.every(value => cleanedParams.hasOwnProperty(value.trim()))
+    const paramsMatchTemplateParams = templateParams.every(value => Object.hasOwn(cleanedParams, value.trim()))
 
     // If params do not match the template params
     if (!paramsMatchTemplateParams) {
@@ -154,16 +147,16 @@ const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => 
     domOperations(el, cleanedMarkup, type, pasteByIndex)
     // el.append(...cleanedMarkup) // Needs correct position
     // el.insertAdjacentHTML(insertion, markup)
-    return
+
     // }
 
-    const templateContainer = document.createElement('div')
-    _store.template.append(templateContainer)
-    templateContainer.append(...cleanedMarkup)
-    // templateContainer.insertAdjacentHTML('afterbegin', markup)
-    const temp = templateContainer.firstElementChild
-    el.replaceWith(temp)
-    templateContainer.remove()
+    // const templateContainer = document.createElement('div')
+    // _store.template.append(templateContainer)
+    // templateContainer.append(...cleanedMarkup)
+    // // templateContainer.insertAdjacentHTML('afterbegin', markup)
+    // const temp = templateContainer.firstElementChild
+    // el.replaceWith(temp)
+    // templateContainer.remove()
   }
 }
 

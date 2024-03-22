@@ -1,0 +1,816 @@
+<div class="cz bn da db dc dd">
+    <div>
+        <h1
+            id="d7ab"
+            class="pw-post-title abs fj abt am gl qs abu rh qt qu qv abv rj qw qx qy abw wg qz ra rb abx wj rc rd re aby wm rf rg bq"
+            data-testid="storyTitle"
+            data-selectable-paragraph=""
+        >Different Types of Arrays in JavaScript + When to Use Them</h1>
+        <div class="abz aca acb acc acd">
+            <div class="speechify-ignore n di">
+                <div class="speechify-ignore bn s">
+                    <div class="pw pz sw su ss n">
+                        <div>
+                            <div class="n wv">
+                                <a rel="noopener follow" href="/@julienetienne?source=post_page-----77f7843b71de--------------------------------">
+                                    <div>
+                                        <div
+                                            class="bs"
+                                            aria-hidden="false"
+                                            aria-describedby="597"
+                                            aria-labelledby="597"
+                                        >
+                                            <div class="s ace acf ch acg ach">
+                                                <div class="s by">
+                                                    <img
+                                                        alt="Julien Etienne"
+                                                        class="s cm ch zw zx cn"
+                                                        src="https://miro.medium.com/v2/resize:fill:88:88/1*QADoVQ9X8JvC9DL_2W_LIw.jpeg"
+                                                        width="44"
+                                                        height="44"
+                                                        loading="lazy"
+                                                        data-testid="authorPhoto"
+                                                    >
+                                                    <div class="aci ch s zw zx ck u acj cl"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bt bn s">
+                            <div class="n">
+                                <div style="flex: 1 1 0%;">
+                                    <span class="am b bm ah bq">
+                                        <div class="ack n o">
+                                            <div class="n o li">
+                                                <div class="n o">
+                                                    <div>
+                                                        <div
+                                                            class="bs"
+                                                            aria-hidden="false"
+                                                            aria-describedby="598"
+                                                            aria-labelledby="598"
+                                                        >
+                                                            <p class="am b fi ii bq">
+                                                                <a
+                                                                    class="az ak ba bb bc an bd w ao ap aq ar as zi"
+                                                                    data-testid="authorName"
+                                                                    rel="noopener follow"
+                                                                    href="/@julienetienne?source=post_page-----77f7843b71de--------------------------------"
+                                                                >Julien Etienne</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="s fp">
+                                <span class="am b bm ah aj">
+                                    <div class="n dh tb sy fk">
+                                        <span class="am b bm ah aj">
+                                            <div class="n ay">
+                                                <span data-testid="storyReadTime">7 min read</span>
+                                                <div class="yd nt s" aria-hidden="true">
+                                                    <span class="s" aria-hidden="true">
+                                                        <span class="am b bm ah aj">·</span>
+                                                    </span>
+                                                </div>
+                                                <span data-testid="storyPublishDate">Feb 7, 2024</span>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="n di acl on acm op acn aco acp acq acr acs act acu acv acw acx acy">
+                        <div class="h k ae bv bw o">
+                            <div class="adl s">
+                                <div class="n o cq">
+                                    <div class="pw-multi-vote-icon by ll adm adn ado">
+                                        <div class="">
+                                            <div>
+                                                <div
+                                                    class="bs"
+                                                    aria-hidden="false"
+                                                    aria-describedby="681"
+                                                    aria-labelledby="681"
+                                                >
+                                                    <div class="ho apv hk adq adr ads adt w adu adv adw ado">
+                                                        <svg
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            aria-label="clap"
+                                                        >
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.37.83L12 3.28l.63-2.45h-1.26zM15.42 1.84l-1.18-.39-.34 2.5 1.52-2.1zM9.76 1.45l-1.19.4 1.53 2.1-.34-2.5zM20.25 11.84l-2.5-4.4a1.42 1.42 0 0 0-.93-.64.96.96 0 0 0-.75.18c-.25.19-.4.42-.45.7l.05.05 2.35 4.13c1.62 2.95 1.1 5.78-1.52 8.4l-.46.41c1-.13 1.93-.6 2.78-1.45 2.7-2.7 2.51-5.59 1.43-7.38zM12.07 9.01c-.13-.69.08-1.3.57-1.77l-2.06-2.07a1.12 1.12 0 0 0-1.56 0c-.15.15-.22.34-.27.53L12.07 9z"></path>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.74 8.3a1.13 1.13 0 0 0-.73-.5.67.67 0 0 0-.53.13c-.15.12-.59.46-.2 1.3l1.18 2.5a.45.45 0 0 1-.23.76.44.44 0 0 1-.48-.25L7.6 6.11a.82.82 0 1 0-1.15 1.15l3.64 3.64a.45.45 0 1 1-.63.63L5.83 7.9 4.8 6.86a.82.82 0 0 0-1.33.9c.04.1.1.18.18.26l1.02 1.03 3.65 3.64a.44.44 0 0 1-.15.73.44.44 0 0 1-.48-.1L4.05 9.68a.82.82 0 0 0-1.4.57.81.81 0 0 0 .24.58l1.53 1.54 2.3 2.28a.45.45 0 0 1-.64.63L3.8 13a.81.81 0 0 0-1.39.57c0 .22.09.43.24.58l4.4 4.4c2.8 2.8 5.5 4.12 8.68.94 2.27-2.28 2.71-4.6 1.34-7.1l-2.32-4.08z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pw-multi-vote-count s adx ady adz aea aeb aec aed">
+                                        <div>
+                                            <div
+                                                class="bs"
+                                                aria-hidden="false"
+                                                aria-describedby="682"
+                                                aria-labelledby="682"
+                                            >
+                                                <p class="am b al ah aj">
+                                                    <button class="az ak ba bb bc an bd w ao ap aq ar as at au pe ky">29
+                                                        <span class="s h g f ajn ajo"></span>
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    class="bs"
+                                    aria-hidden="false"
+                                    aria-describedby="599"
+                                    aria-labelledby="599"
+                                >
+                                    <button class="ap ho lf aef n o bz hm ol" aria-label="responses">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            class="aee"
+                                        >
+                                            <path d="M18 16.8a7.14 7.14 0 0 0 2.24-5.32c0-4.12-3.53-7.48-8.05-7.48C7.67 4 4 7.36 4 11.48c0 4.13 3.67 7.48 8.2 7.48a8.9 8.9 0 0 0 2.38-.32c.23.2.48.39.75.56 1.06.69 2.2 1.04 3.4 1.04.22 0 .4-.11.48-.29a.5.5 0 0 0-.04-.52 6.4 6.4 0 0 1-1.16-2.65v.02zm-3.12 1.06l-.06-.22-.32.1a8 8 0 0 1-2.3.33c-4.03 0-7.3-2.96-7.3-6.59S8.17 4.9 12.2 4.9c4 0 7.1 2.96 7.1 6.6 0 1.8-.6 3.47-2.02 4.72l-.2.16v.26l.02.3a6.74 6.74 0 0 0 .88 2.4 5.27 5.27 0 0 1-2.17-.86c-.28-.17-.72-.38-.94-.59l.01-.02z"></path>
+                                        </svg>
+                                        <p class="am b al ah aj">
+                                            <span class="pw-responses-count xt aee">1</span>
+                                        </p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="n o acz ada adb adc add ade adf adg adh adi adj gw adk hb hc">
+                            <div class="pk k j i d"></div>
+                            <div class="h k">
+                                <div>
+                                    <div
+                                        class="bs"
+                                        aria-hidden="false"
+                                        aria-describedby="600"
+                                        aria-labelledby="600"
+                                    >
+                                        <div class="bs" aria-hidden="false">
+                                            <button
+                                                aria-controls="addToCatalogBookmarkButton"
+                                                aria-expanded="false"
+                                                aria-label="Add to list bookmark button"
+                                                data-testid="headerBookmarkButton"
+                                                class="az bz ba bb bc an bd oi ao ap aq ko od oe hx"
+                                            >
+                                                <svg
+                                                    width="24"
+                                                    height="24"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    class="of"
+                                                >
+                                                    <path d="M17.5 1.25a.5.5 0 0 1 1 0v2.5H21a.5.5 0 0 1 0 1h-2.5v2.5a.5.5 0 0 1-1 0v-2.5H15a.5.5 0 0 1 0-1h2.5v-2.5zm-11 4.5a1 1 0 0 1 1-1H11a.5.5 0 0 0 0-1H7.5a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V5.75z" fill="#000"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cm aeg dh">
+                                <div class="s ay">
+                                    <div class="n p">
+                                        <div class="aeh aei aej aek ael ty cz bn">
+                                            <div class="n">
+                                                <div>
+                                                    <a class="az ak ba bb bc an bd w ao ap aq ar as at au" rel="noopener follow" href="/plans?dimension=post_audio_button&amp;postId=77f7843b71de&amp;source=upgrade_membership---post_audio_button----------------------------------">
+                                                        <div>
+                                                            <div
+                                                                class="bs"
+                                                                aria-hidden="false"
+                                                                aria-describedby="601"
+                                                                aria-labelledby="601"
+                                                            >
+                                                                <button aria-label="Listen" data-testid="audioPlayButton" class="az bz ba bb bc an bd oi ao ap aq ko oj ok ol om aem aen aeo aep y aeq aer aes aet aeu aev aew ab aex aey aez">
+                                                                    <svg
+                                                                        width="24"
+                                                                        height="24"
+                                                                        viewBox="0 0 24 24"
+                                                                        fill="none"
+                                                                    >
+                                                                        <path
+                                                                            fill-rule="evenodd"
+                                                                            clip-rule="evenodd"
+                                                                            d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0zm9-10a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm3.38 10.42l-4.6 3.06a.5.5 0 0 1-.78-.41V8.93c0-.4.45-.63.78-.41l4.6 3.06c.3.2.3.64 0 .84z"
+                                                                            fill="currentColor"
+                                                                        ></path>
+                                                                    </svg>
+                                                                    <div class="j i d">
+                                                                        <p class="am b bm ah aj">Listen</p>
+                                                                    </div>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bs"
+                                aria-hidden="false"
+                                aria-describedby="postFooterSocialMenu"
+                                aria-labelledby="postFooterSocialMenu"
+                            >
+                                <div>
+                                    <div
+                                        class="bs"
+                                        aria-hidden="false"
+                                        aria-describedby="602"
+                                        aria-labelledby="602"
+                                    >
+                                        <button
+                                            aria-controls="postFooterSocialMenu"
+                                            aria-expanded="false"
+                                            aria-label="Share Post"
+                                            data-testid="headerSocialShareButton"
+                                            class="az bz ba bb bc an bd oi ao ap aq ko oj ok ol om aem aen aeo aep y aeq aer aes aet aeu aev aew ab aex aey aez"
+                                        >
+                                            <svg
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M15.22 4.93a.42.42 0 0 1-.12.13h.01a.45.45 0 0 1-.29.08.52.52 0 0 1-.3-.13L12.5 3v7.07a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5V3.02l-2 2a.45.45 0 0 1-.57.04h-.02a.4.4 0 0 1-.16-.3.4.4 0 0 1 .1-.32l2.8-2.8a.5.5 0 0 1 .7 0l2.8 2.8a.42.42 0 0 1 .07.5zm-.1.14zm.88 2h1.5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2H8a.5.5 0 0 1 .35.14c.1.1.15.22.15.35a.5.5 0 0 1-.15.35.5.5 0 0 1-.35.15H6.4c-.5 0-.9.4-.9.9v10.2a.9.9 0 0 0 .9.9h11.2c.5 0 .9-.4.9-.9V8.96c0-.5-.4-.9-.9-.9H16a.5.5 0 0 1 0-1z"
+                                                    fill="currentColor"
+                                                ></path>
+                                            </svg>
+                                            <div class="j i d">
+                                                <p class="am b bm ah aj">Share</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs" aria-hidden="false">
+                                <div
+                                    class="bs"
+                                    aria-hidden="false"
+                                    aria-describedby="creatorActionOverflowMenu"
+                                    aria-labelledby="creatorActionOverflowMenu"
+                                >
+                                    <div
+                                        class="bs"
+                                        aria-hidden="false"
+                                        aria-describedby="collectionSubmissionPopover"
+                                        aria-labelledby="collectionSubmissionPopover"
+                                    >
+                                        <div class="apw s fp">
+                                            <div>
+                                                <div
+                                                    class="bs"
+                                                    aria-hidden="false"
+                                                    aria-describedby="778"
+                                                    aria-labelledby="778"
+                                                >
+                                                    <button
+                                                        aria-controls="creatorActionOverflowMenu"
+                                                        aria-expanded="false"
+                                                        aria-label="More options"
+                                                        data-testid="headerStoryOptionsButton"
+                                                        class="az bz ba bb bc an bd oi ao ap aq ko oj ok ol om aem aen aeo aep y aeq aer aes aet aeu aev aew ab aex aey aez"
+                                                    >
+                                                        <svg
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                        >
+                                                            <path
+                                                                fill-rule="evenodd"
+                                                                clip-rule="evenodd"
+                                                                d="M4.39 12c0 .55.2 1.02.59 1.41.39.4.86.59 1.4.59.56 0 1.03-.2 1.42-.59.4-.39.59-.86.59-1.41 0-.55-.2-1.02-.6-1.41A1.93 1.93 0 0 0 6.4 10c-.55 0-1.02.2-1.41.59-.4.39-.6.86-.6 1.41zM10 12c0 .55.2 1.02.58 1.41.4.4.87.59 1.42.59.54 0 1.02-.2 1.4-.59.4-.39.6-.86.6-1.41 0-.55-.2-1.02-.6-1.41a1.93 1.93 0 0 0-1.4-.59c-.55 0-1.04.2-1.42.59-.4.39-.58.86-.58 1.41zm5.6 0c0 .55.2 1.02.57 1.41.4.4.88.59 1.43.59.57 0 1.04-.2 1.43-.59.39-.39.57-.86.57-1.41 0-.55-.2-1.02-.57-1.41A1.93 1.93 0 0 0 17.6 10c-.55 0-1.04.2-1.43.59-.38.39-.57.86-.57 1.41z"
+                                                                fill="currentColor"
+                                                            ></path>
+                                                        </svg>
+                                                        <div class="j i d">
+                                                            <p class="am b bm ah aj">More</p>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <figure class="vn vo vp afb afc afd lg lh paragraph-image">
+        <div role="button" tabindex="0" class="afe aff by afg bn afh">
+            <div class="lg lh afa">
+                <picture>
+                    <source srcset="https://miro.medium.com/v2/resize:fit:640/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 640w, https://miro.medium.com/v2/resize:fit:720/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 720w, https://miro.medium.com/v2/resize:fit:750/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 750w, https://miro.medium.com/v2/resize:fit:786/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 786w, https://miro.medium.com/v2/resize:fit:828/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 828w, https://miro.medium.com/v2/resize:fit:1100/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 1100w, https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qUUywTM12OyWRw5OxCSeYg.png 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px" type="image/webp">
+                    <source data-testid="og" srcset="https://miro.medium.com/v2/resize:fit:640/1*qUUywTM12OyWRw5OxCSeYg.png 640w, https://miro.medium.com/v2/resize:fit:720/1*qUUywTM12OyWRw5OxCSeYg.png 720w, https://miro.medium.com/v2/resize:fit:750/1*qUUywTM12OyWRw5OxCSeYg.png 750w, https://miro.medium.com/v2/resize:fit:786/1*qUUywTM12OyWRw5OxCSeYg.png 786w, https://miro.medium.com/v2/resize:fit:828/1*qUUywTM12OyWRw5OxCSeYg.png 828w, https://miro.medium.com/v2/resize:fit:1100/1*qUUywTM12OyWRw5OxCSeYg.png 1100w, https://miro.medium.com/v2/resize:fit:1400/1*qUUywTM12OyWRw5OxCSeYg.png 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px">
+                    <img
+                        alt=""
+                        class="bn ty afi c"
+                        width="700"
+                        height="294"
+                        loading="eager"
+                        role="presentation"
+                        src="https://miro.medium.com/v2/resize:fit:1400/1*qUUywTM12OyWRw5OxCSeYg.png"
+                    >
+                </picture>
+            </div>
+        </div>
+    </figure>
+    <p id="8658" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Let’s explore what arrays JavaScript has and the appropriate times to use them. This will be more about general purpose usage than specific usage.</p>
+    <h1 id="dcc9" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">What is an array</h1>
+    <p id="bcb1" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">Try to avoid these back n’ forth discussions regarding what constitutes a “real array”. All you need to know is the connotation of “a
+        <em class="agr">rray”</em> refers to both high-level and low-level interpretations. A high-level array is basically a sequential collection.
+    </p>
+    <h2 id="9d89" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Sequential collection</h2>
+    <p id="6b04" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">Across various programming languages, this is a dataset that stores data sequentially with dynamic resizing. A sequential collection could represent an underlying array, a view, list, or linked-list. In Golang, this would be a
+        <a
+            class="az ja"
+            href="https://go.dev/tour/moretypes/7"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Slice</a>, Python has
+        <a
+            class="az ja"
+            href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >List</a> and JavaScript has
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Array</a>.
+    </p>
+    <p id="c88d" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">There are many nuances regarding Arrays in JS:
+        <em class="agr">with holes, without, is an Object</em>etc. This is my rule of thumb:
+    </p>
+    <blockquote class="agz aha ahb">
+        <p id="4566" class="afj afk agr mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">If it’s not going to be beneficial don’t obsess about it</p>
+    </blockquote>
+    <p id="1d76" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">With that said, I want to touch on just the most important aspects of Arrays in JS. If you don’t already know, you can type-check arrays using
+        <code class="cn ahc ahd ahe ahf b">Array.isArray()</code> which I tend to destructure using
+        <code class="cn ahc ahd ahe ahf b">const { isArray } = Array</code>. You can find more fundamental information about
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Array</a> on MDN.
+    </p>
+    <h1 id="c462" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Array Constructor</h1>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="9afa" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">const array = new Array(12_345)</span>
+    </pre>
+    <ul class="">
+        <li id="a4dc" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">High performance for a large collection of items since it notifies the V8 to perform
+            <a
+                class="az ja"
+                href="https://en.wikipedia.org/wiki/Constant_folding"
+                rel="noopener ugc nofollow"
+                target="_blank"
+            >constant folding</a>.
+        </li>
+        <li id="1383" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Use it when you have a large number of items</li>
+    </ul>
+    <blockquote class="agz aha ahb">
+        <p id="18d0" class="afj afk agr mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The definition of “large” depends on the platform and several factors, you will need to benchmark profile as it sometimes changes due to future compiler optimisations. (Do not use the demo value)</p>
+    </blockquote>
+    <h1 id="e7dc" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Array Literal</h1>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="ec13" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">const array = []</span>
+    </pre>
+    <ul class="">
+        <li id="d6f6" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Typically optimised for incurring smaller lengths of data over time</li>
+        <li id="da3c" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Expected to be dynamic</li>
+        <li id="5052" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Best for generic purpose usage</li>
+    </ul>
+    <blockquote class="agz aha ahb">
+        <p id="b750" class="afj afk agr mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The most common array syntax is typically the best array to use in most cases. Typically on the browser, we are not juggling significantly large data collections, “large” is the exception not the rule.</p>
+    </blockquote>
+    <h1 id="4256" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Fixed-Length Array Literal</h1>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="f14b" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">const array = []
+            <br>array.length = 12_234
+        </span>
+    </pre>
+    <p id="2b7b" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The
+        <em class="agr">fixed-length array literal</em> is similar in performance to the Array Constructor example. The performance difference is usually negligible. Both the
+        <em class="agr">array constructor</em> and
+        <em class="agr">fixed-legth array literal</em> share the same use cases.
+    </p>
+    <blockquote class="agz aha ahb">
+        <p id="8c68" class="afj afk agr mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">I’d like to stress that 12_234 is just a random number for example purposes. I cannot define an exact number which defines a large collection. Consider benchmarking if it’s really keeping you up at night.</p>
+    </blockquote>
+    <h1 id="8ddd" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">ArrayBuffer</h1>
+    <p id="859d" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">An ArrayBuffer is a “Byte Array”, which is an area of memory containing a group of contiguous
+        <em class="agr">(one after the other)</em> bytes.
+    </p>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="29cd" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">[ Byte 0  | Byte 1  | Byte 2, ... ] // contiguous bytes</span>
+    </pre>
+    <p id="c6a4" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">In V8
+        <em class="agr">(Chrome/ Node.js)</em> array-buffers are stored in the memory heap.
+    </p>
+    <p id="0522" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">An array-buffer is a
+        <strong class="mw gl">Generic Raw Binary Data Buffer</strong>.
+    </p>
+    <ul class="">
+        <li id="7657" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Generic</strong>: It’s not tied down to a particular data type. It can be used to store any binary data, whether it represents integers, unsigned integers, floats, unsigned floats and strings.
+        </li>
+        <li id="d908" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Raw</strong>: The representation of
+            <a
+                class="az ja"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"
+                rel="noopener ugc nofollow"
+                target="_blank"
+            >ArrayBuffer</a> in JavaScript is consistent with physical memory there is no metadata or transformations.
+        </li>
+    </ul>
+    <p id="eed0" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Array-buffers are fixed in size on creation, they are not directly manipulated they are simply containers for binary data.</p>
+    <h2 id="f316" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Benefits</h2>
+    <ul class="">
+        <li id="bb2c" class="afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Generic</strong>
+            <em class="agr"> (as mentioned)</em>
+        </li>
+        <li id="cf09" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Fast</strong>: Performs
+            <a
+                class="az ja"
+                href="https://en.wikipedia.org/wiki/Memory_management"
+                rel="noopener ugc nofollow"
+                target="_blank"
+            >memory preallocation</a>
+            <em class="agr">(A fixed unchangeable amount of memory)</em> which makes it efficient at runtime.
+        </li>
+        <li id="436e" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Multiple-Views</strong>: Array-buffers contains bytes of data (8 bits). We could view this data as it is:
+            <strong class="mw gl">
+                <em class="agr">[</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">] [</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">] [</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">] [</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">]</em>
+            </strong> or we could have a 16 bit view
+            <strong class="mw gl">
+                <em class="agr">[</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">,</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">] [</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">,</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">]</em>
+            </strong> or a 32 bit view
+            <em class="agr"></em>
+            <strong class="mw gl">
+                <em class="agr">[</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">,</em>
+            </strong>8 bit
+            <strong class="mw gl">
+                <em class="agr">,</em>
+            </strong>8 bit, 8 bit
+            <strong class="mw gl">
+                <em class="agr">]</em>
+            </strong> etc. This is what is meant by generic, the data can be seen and moulded in any way you see fit for any binary&nbsp;use&nbsp;case.
+        </li>
+    </ul>
+    <h1 id="7d9e" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Views</h1>
+    <p id="08e2" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">A view is how you interpret an array buffer. An array-buffer is byte (8 bit side by side) data. This never changes, it will always be byte data even if you interpret it as 16 bit, 32 bit or BigInt 64 bit.</p>
+    <p id="57ad" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Views are not only about interpreting data, they are the mechanisms that allow you to manipulate array-buffers.</p>
+    <p id="bdb1" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">I wrote about number representation in JS here:
+        <a class="az ja" rel="noopener" href="/@julienetienne/was-javascript-poorly-designed-part-3-ieee-754-df8cbd1aa0dd">
+            <em class="agr">JavaScript: Poorly Designed? — Part 3: IEEE 754</em>
+        </a>
+        <em class="agr"> whi</em>chmay help in regards to understanding binary in JS.
+    </p>
+    <h2 id="bc5c" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Types of Views</h2>
+    <p id="7fbb" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">There are two types of views:</p>
+    <ul class="">
+        <li id="180b" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Typed-arrays
+            <em class="agr">(TypedArray object)</em>
+        </li>
+        <li id="9014" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">DataViews
+            <em class="agr">(Out of scope, this needs a pt2)</em>
+        </li>
+    </ul>
+    <p id="492c" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Typed-arrays provide number-type perspectives of an array-buffer:</p>
+    <ul class="">
+        <li id="9d76" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Int8Array</strong>: 8-bit signed integers.
+        </li>
+        <li id="dd29" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Uint8Array</strong>: 8-bit unsigned integers
+        </li>
+        <li id="f210" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Uint8ClampedArray</strong>: 8-bit unsigned integers clamped to 0–255.
+        </li>
+        <li id="0d13" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Int16Array</strong>: 16-bit signed integers.
+        </li>
+        <li id="e863" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Uint16Array</strong>: 16-bit unsigned integers.
+        </li>
+        <li id="977c" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Int32Array</strong>: 32-bit signed integers.
+        </li>
+        <li id="08b4" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Uint32Array</strong>: 32-bit unsigned integers
+        </li>
+        <li id="cc9a" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Float32Array</strong>: 32-bit floating-point numbers
+        </li>
+        <li id="2a3e" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">Float64Array</strong>: 64-bit floating-point numbers
+        </li>
+        <li id="6154" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">BigInt64Array</strong>: 64-bit signed integer BigInt numbers.
+        </li>
+        <li id="b703" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <strong class="mw gl">BigUint64Array</strong>: 64-bit unsigned integer BigInt numbers.
+        </li>
+    </ul>
+    <h2 id="e120" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Let’s dance</h2>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="df44" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">
+            <span class="hljs-comment">// We allocate a buffer of only 4 bytes (32 bits)</span>
+            <br>
+            <span class="hljs-keyword">const</span> buffer =
+            <span class="hljs-keyword">new</span>
+            <span class="hljs-title.class">ArrayBuffer</span>(
+            <span class="hljs-number">4</span>)
+            <br>
+            <br>
+            <span class="hljs-comment">// Make an 8 bit unsigned integer TypedArray view</span>
+            <br>
+            <span class="hljs-keyword">const</span> uint8 =
+            <span class="hljs-keyword">new</span>
+            <span class="hljs-title.class">Uint8Array</span>(buffer)
+            <br>
+            <br>
+            <span class="hljs-comment">// Assign 123</span>
+            <br>uint8[
+            <span class="hljs-number">0</span>] =
+            <span class="hljs-number">123</span>
+            <br>
+            <br>
+            <span class="hljs-comment">// Assign 456</span>
+            <br>uint8[
+            <span class="hljs-number">1</span>] =
+            <span class="hljs-number">456</span>
+            <br>
+            <br>
+            <span class="hljs-comment">// Log the items</span>
+            <br>
+            <span class="hljs-keyword">for</span> (
+            <span class="hljs-keyword">const</span> item
+            <span class="hljs-keyword">of</span> uint8)
+            <span class="hljs-variable.language">console</span>.
+            <span class="hljs-title.function">log</span>(item)
+            <br>
+            <span class="hljs-comment">// 123</span>
+            <br>
+            <span class="hljs-comment">// 200</span>
+            <br>
+            <span class="hljs-comment">// 0</span>
+            <br>
+            <span class="hljs-comment">// 0</span>
+            <br>
+            <br>
+            <span class="hljs-comment">// WTF is going on?</span>
+        </span>
+    </pre>
+    <p id="41b1" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Ok so first let’s confirm that 8 bits in base 10 (human number system) is calculated via 2⁸ = 256. Meaning, an item in an 8 bit unsigned integer array cannot exceed 256 as a base 10 value.</p>
+    <p id="41e3" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">
+        <code class="cn ahc ahd ahe ahf b">uint8[1] = 456</code> tries to exceed 256 by 200. Therefore it truncates to the remainder
+        <code class="cn ahc ahd ahe ahf b">200</code>. The remainder is the significant part of the overall value.
+    </p>
+    <p id="75b6" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">As mentioned, a buffer can have multiple views so let’s view the same buffer as a 16 bit unsigned integer. Continuing from last…</p>
+    <pre class="ahg ahh ahi ahj ahk ahl ahf ahm jg ahn bi bq">
+        <span id="96de" class="aho age abt ahf b bm ahp ahq s ahr ahs" data-selectable-paragraph="">
+            <span class="hljs-keyword">const</span> uint16 =
+            <span class="hljs-keyword">new</span>
+            <span class="hljs-title.class">Uint16Array</span>(buffer)
+            <span class="hljs-comment">// same buffer variable</span>
+            <br>
+            <br>
+            <span class="hljs-keyword">for</span> (
+            <span class="hljs-keyword">const</span> item
+            <span class="hljs-keyword">of</span> uint16)
+            <span class="hljs-variable.language">console</span>.
+            <span class="hljs-title.function">log</span>(item)
+            <br>
+            <span class="hljs-comment">// 51323</span>
+            <br>
+            <span class="hljs-comment">// 0</span>
+        </span>
+    </pre>
+    <p id="58bd" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">We are viewing the 8 bit data in 16 bits so two entries are expected. But why 51323?</p>
+    <p id="496b" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">First we need to convert the
+        <em class="agr"> 8 bit — base 10</em> representations to 16 bit. I’m not here to show off I’m just using a binary calculator.
+    </p>
+    <ul class="">
+        <li id="dc43" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">123 = 01111011</li>
+        <li id="f2d4" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">200 = 11001000</li>
+        <li id="5e90" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">0 = 00000000</li>
+        <li id="ca40" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">0 = 0000000000000000</li>
+    </ul>
+    <p id="2203" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">JavaScript is
+        <a
+            class="az ja"
+            href="https://en.wikipedia.org/wiki/Endianness"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >little-endian</a>, it reads bytes from right to left, which is irrelevant in base 10
+    </p>
+    <blockquote class="agz aha ahb">
+        <p id="2dc3" class="afj afk agr mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">123 + 200 = 423 is the same as 200 + 123 = 423. So what!</p>
+    </blockquote>
+    <p id="c05d" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">But in binary we have to concatenate from right to left so in a 16 bit format this is:</p>
+    <p id="01eb" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">
+        <em class="agr">[1100100001111011, 0000000000000000]</em>
+    </p>
+    <p id="bcf8" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Now convert to base 10 and you should get:</p>
+    <p id="d58e" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">[51323, 0]</p>
+    <p id="3d19" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Hopefully this breaks down how different views can be used to manipulate and represent the underlying array-buffer.</p>
+    <h1 id="56ea" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Ok but when will I ever use this</h1>
+    <p id="d391" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">As you may already know, ArrayBuffer is used in graphics (WebGL, WebGPU), custom video codecs, and various forms of binary processing.</p>
+    <p id="d86c" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The standard sequential collection
+        <code class="cn ahc ahd ahe ahf b">Array</code>, is sufficient for most general-purpose programming needs. Although, there are scenarios where you can benefit from using an ArrayBuffer.
+    </p>
+    <h2 id="3004" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Coordinates</h2>
+    <p id="b6ff" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">If you have to manage a substantial number of x and y coordinates, or any other set of coordinates, for processing, such as for animation or data processing, ArrayBuffer could be more suitable than an
+        <code class="cn ahc ahd ahe ahf b">array</code> filled with objects. This depends on your use case. It’s worth benchmarking to determine what works best for the size of your data.
+    </p>
+    <h2 id="c760" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Finance</h2>
+    <p id="6ac7" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">If you’re coming from the prehistoric world it may be news to find out that JavaScript has native 64 bit
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >BigInt</a> numbers with full browser and node.js support.
+    </p>
+    <p id="6ecc" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >
+            <strong class="mw gl">BigUint64Array</strong>
+        </a> will allow for fast data manipulation but there’s really no benefit in terms of binary manipulation. Again benchmarking is necessary to see what works best.
+    </p>
+    <h2 id="3035" class="ags age abt am agf lw agt lx ma mb agu mc mf mg agv mh mk ml agw mm mp mq agx mr mu agy bq" data-selectable-paragraph="">Large Data</h2>
+    <p id="1d5e" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">At my time with
+        <a
+            class="az ja"
+            href="https://www.accenture.com/"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Accenture</a> I worked on an
+        <a
+            class="az ja"
+            href="https://en.wikipedia.org/wiki/Identity_management"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >IAM</a> project which used large datasets with tens of thousand of entries. Parsing and processing this data was a bit taxing on the browser. The process at one point was similar to the below:
+    </p>
+    <p id="de4b" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">
+        <em class="agr">Fetch data -&gt; Parse JSON -&gt; Store data in IndexedDB -&gt; Loop data</em>
+    </p>
+    <ul class="">
+        <li id="1b34" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <em class="agr">-&gt; Update Graph</em>
+        </li>
+        <li id="c8e2" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">
+            <em class="agr">-&gt; Update virtual-list</em>
+        </li>
+    </ul>
+    <p id="c029" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The values were entries (rows) of numbers and some string values. Separating the fields into array-buffers or a hybrid of array-buffers and objects would have improved performance if I was more familiar with Array buffers in JavaScript at the time.</p>
+    <p id="32b0" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The advantage of
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >IndexedDB</a> is that it can store array-buffers as
+        <em class="agr">Binary Large Objects</em> better known as
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Blob"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Blobs</a>.
+    </p>
+    <p id="00ff" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Using ArrayBuffer will rarely correlate directly to general purpose data, you will typically need to split your data into multiple arrays to harness the performance benefits.</p>
+    <h1 id="c53b" class="agd age abt am agf td agg te ma tf agh tg mf th agi ti tj tk agj tl tm tn agk to tp agl bq" data-selectable-paragraph="">Conclusion</h1>
+    <p id="4787" class="pw-post-body-paragraph afj afk abt mw b afl agm afn afo afp agn afr afs mg ago afu afv ml agp afx afy mq agq aga agb agc jo bq" data-selectable-paragraph="">JavaScript has both:</p>
+    <ul class="">
+        <li id="126e" class="afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc aht ahu ahv bq" data-selectable-paragraph="">High-level arrays</li>
+        <li id="9ff6" class="afj afk abt mw b afl ahw afn afo afp ahx afr afs mg ahy afu afv ml ahz afx afy mq aia aga agb agc aht ahu ahv bq" data-selectable-paragraph="">Low-level arrays</li>
+    </ul>
+    <p id="86a4" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The word “array” is confusing so don’t get hung up on it, so when in Rome don’t put pineapple on your pizza. An Array is
+        <code class="cn ahc ahd ahe ahf b">[]</code> or
+        <code class="cn ahc ahd ahe ahf b">new Array(...)</code> and a an ArrayBuffer is a “buffer”. A view can be a “view” or “Array View” to be honest I really don’t care.
+    </p>
+    <p id="42cd" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">There’s a lot I didn’t touch on in this article, it’s worth pointing out that iterating an array-literal usually does not have significant performance benefits over iterating an object-literal, so don’t read this article and butcher up your existing code, that’s not the intention here.</p>
+    <p id="705f" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">The purpose is to be aware of our options, so we can make better decisions in regards to how we approach development.</p>
+    <p id="67a5" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">I hate to say it, but…</p>
+    <blockquote class="aib">
+        <p id="a679" class="aic aid abt am aie aif aig aih aii aij aik agc aj" data-selectable-paragraph="">You won’t find yourself touching buffers or views much in JS unless you’re working on something really fun</p>
+    </blockquote>
+    <figure class="aim ain aio aip aiq afd lg lh paragraph-image">
+        <div role="button" tabindex="0" class="afe aff by afg bn afh">
+            <div class="lg lh ail">
+                <picture>
+                    <source srcset="https://miro.medium.com/v2/resize:fit:640/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 640w, https://miro.medium.com/v2/resize:fit:720/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 720w, https://miro.medium.com/v2/resize:fit:750/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 750w, https://miro.medium.com/v2/resize:fit:786/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 786w, https://miro.medium.com/v2/resize:fit:828/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 828w, https://miro.medium.com/v2/resize:fit:1100/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 1100w, https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Pefj-KuCoA0EYnJvKxk0Iw.png 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px" type="image/webp">
+                    <source data-testid="og" srcset="https://miro.medium.com/v2/resize:fit:640/1*Pefj-KuCoA0EYnJvKxk0Iw.png 640w, https://miro.medium.com/v2/resize:fit:720/1*Pefj-KuCoA0EYnJvKxk0Iw.png 720w, https://miro.medium.com/v2/resize:fit:750/1*Pefj-KuCoA0EYnJvKxk0Iw.png 750w, https://miro.medium.com/v2/resize:fit:786/1*Pefj-KuCoA0EYnJvKxk0Iw.png 786w, https://miro.medium.com/v2/resize:fit:828/1*Pefj-KuCoA0EYnJvKxk0Iw.png 828w, https://miro.medium.com/v2/resize:fit:1100/1*Pefj-KuCoA0EYnJvKxk0Iw.png 1100w, https://miro.medium.com/v2/resize:fit:1400/1*Pefj-KuCoA0EYnJvKxk0Iw.png 1400w" sizes="(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px">
+                    <img
+                        alt=""
+                        class="bn ty afi c"
+                        width="700"
+                        height="320"
+                        loading="lazy"
+                        role="presentation"
+                        src="https://miro.medium.com/v2/resize:fit:1400/1*Pefj-KuCoA0EYnJvKxk0Iw.png"
+                    >
+                </picture>
+            </div>
+        </div>
+        <figcaption class="air ih ais lg lh ait aiu am b bm ah aj" data-selectable-paragraph="">At the end of the day, ignorance is bliss</figcaption>
+    </figure>
+    <p id="984e" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">In reality, most of us will not be working on anything fun and there’s no reason to coerce boring things because we want to try a new syntax.</p>
+    <p id="afed" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">Also performance is not always the core metric, but this article has a prime focus on the performance of
+        <em class="agr">constant-folding</em> arrays and array-buffers because that’s really their main selling point.
+    </p>
+    <p id="d329" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">In pt-2 I’ll dive into
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >DataViews</a> and there will likely be a pt-3 diving into
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >SharedArrayBuffer</a> and
+        <a
+            class="az ja"
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics"
+            rel="noopener ugc nofollow"
+            target="_blank"
+        >Atomics</a>. which I will update here.
+    </p>
+    <p id="37c5" class="pw-post-body-paragraph afj afk abt mw b afl afm afn afo afp afq afr afs mg aft afu afv ml afw afx afy mq afz aga agb agc jo bq" data-selectable-paragraph="">— Julien</p>
+</div>

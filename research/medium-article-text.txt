@@ -1,0 +1,196 @@
+Different Types of Arrays in JavaScript + When to Use Them
+Julien Etienne
+Julien Etienne
+
+7 min read
+·
+Feb 7, 2024
+29
+
+
+1
+
+
+
+
+
+
+Let’s explore what arrays JavaScript has and the appropriate times to use them. This will be more about general purpose usage than specific usage.
+
+What is an array
+Try to avoid these back n’ forth discussions regarding what constitutes a “real array”. All you need to know is the connotation of “array” refers to both high-level and low-level interpretations. A high-level array is basically a sequential collection.
+
+Sequential collection
+Across various programming languages, this is a dataset that stores data sequentially with dynamic resizing. A sequential collection could represent an underlying array, a view, list, or linked-list. In Golang, this would be a Slice, Python has List and JavaScript has Array.
+
+There are many nuances regarding Arrays in JS: with holes, without, is an Object etc. This is my rule of thumb:
+
+If it’s not going to be beneficial don’t obsess about it
+
+With that said, I want to touch on just the most important aspects of Arrays in JS. If you don’t already know, you can type-check arrays using Array.isArray() which I tend to destructure using const { isArray } = Array. You can find more fundamental information about Array on MDN.
+
+Array Constructor
+const array = new Array(12_345)
+High performance for a large collection of items since it notifies the V8 to perform constant folding.
+Use it when you have a large number of items
+The definition of “large” depends on the platform and several factors, you will need to benchmark profile as it sometimes changes due to future compiler optimisations. (Do not use the demo value)
+
+Array Literal
+const array = []
+Typically optimised for incurring smaller lengths of data over time
+Expected to be dynamic
+Best for generic purpose usage
+The most common array syntax is typically the best array to use in most cases. Typically on the browser, we are not juggling significantly large data collections, “large” is the exception not the rule.
+
+Fixed-Length Array Literal
+const array = []
+array.length = 12_234
+The fixed-length array literal is similar in performance to the Array Constructor example. The performance difference is usually negligible. Both the array constructor and fixed-legth array literal share the same use cases.
+
+I’d like to stress that 12_234 is just a random number for example purposes. I cannot define an exact number which defines a large collection. Consider benchmarking if it’s really keeping you up at night.
+
+ArrayBuffer
+An ArrayBuffer is a “Byte Array”, which is an area of memory containing a group of contiguous (one after the other) bytes.
+
+[ Byte 0  | Byte 1  | Byte 2, ... ] // contiguous bytes
+In V8 (Chrome/ Node.js) array-buffers are stored in the memory heap.
+
+An array-buffer is a Generic Raw Binary Data Buffer.
+
+Generic: It’s not tied down to a particular data type. It can be used to store any binary data, whether it represents integers, unsigned integers, floats, unsigned floats and strings.
+Raw: The representation of ArrayBuffer in JavaScript is consistent with physical memory there is no metadata or transformations.
+Array-buffers are fixed in size on creation, they are not directly manipulated they are simply containers for binary data.
+
+Benefits
+Generic (as mentioned)
+Fast: Performs memory preallocation (A fixed unchangeable amount of memory) which makes it efficient at runtime.
+Multiple-Views: Array-buffers contains bytes of data (8 bits). We could view this data as it is: [8 bit] [8 bit] [8 bit] [8 bit] or we could have a 16 bit view [8 bit, 8 bit] [8 bit, 8 bit] or a 32 bit view [8 bit, 8 bit, 8 bit, 8 bit] etc. This is what is meant by generic, the data can be seen and moulded in any way you see fit for any binary use case.
+Views
+A view is how you interpret an array buffer. An array-buffer is byte (8 bit side by side) data. This never changes, it will always be byte data even if you interpret it as 16 bit, 32 bit or BigInt 64 bit.
+
+Views are not only about interpreting data, they are the mechanisms that allow you to manipulate array-buffers.
+
+I wrote about number representation in JS here: JavaScript: Poorly Designed? — Part 3: IEEE 754 whichmay help in regards to understanding binary in JS.
+
+Types of Views
+There are two types of views:
+
+Typed-arrays (TypedArray object)
+DataViews (Out of scope, this needs a pt2)
+Typed-arrays provide number-type perspectives of an array-buffer:
+
+Int8Array: 8-bit signed integers.
+Uint8Array: 8-bit unsigned integers
+Uint8ClampedArray: 8-bit unsigned integers clamped to 0–255.
+Int16Array: 16-bit signed integers.
+Uint16Array: 16-bit unsigned integers.
+Int32Array: 32-bit signed integers.
+Uint32Array: 32-bit unsigned integers
+Float32Array: 32-bit floating-point numbers
+Float64Array: 64-bit floating-point numbers
+BigInt64Array: 64-bit signed integer BigInt numbers.
+BigUint64Array: 64-bit unsigned integer BigInt numbers.
+Let’s dance
+// We allocate a buffer of only 4 bytes (32 bits)
+const buffer = new ArrayBuffer(4)
+
+// Make an 8 bit unsigned integer TypedArray view
+const uint8 = new Uint8Array(buffer)
+
+// Assign 123
+uint8[0] = 123
+
+// Assign 456
+uint8[1] = 456
+
+// Log the items
+for (const item of uint8) console.log(item)
+// 123
+// 200
+// 0 
+// 0
+
+// WTF is going on?
+Ok so first let’s confirm that 8 bits in base 10 (human number system) is calculated via 2⁸ = 256. Meaning, an item in an 8 bit unsigned integer array cannot exceed 256 as a base 10 value.
+
+uint8[1] = 456 tries to exceed 256 by 200. Therefore it truncates to the remainder 200. The remainder is the significant part of the overall value.
+
+As mentioned, a buffer can have multiple views so let’s view the same buffer as a 16 bit unsigned integer. Continuing from last…
+
+const uint16 = new Uint16Array(buffer) // same buffer variable
+
+for (const item of uint16) console.log(item)
+// 51323
+// 0
+We are viewing the 8 bit data in 16 bits so two entries are expected. But why 51323?
+
+First we need to convert the 8 bit — base 10 representations to 16 bit. I’m not here to show off I’m just using a binary calculator.
+
+123 = 01111011
+200 = 11001000
+0 = 00000000
+0 = 0000000000000000
+JavaScript is little-endian, it reads bytes from right to left, which is irrelevant in base 10
+
+123 + 200 = 423 is the same as 200 + 123 = 423. So what!
+
+But in binary we have to concatenate from right to left so in a 16 bit format this is:
+
+[1100100001111011, 0000000000000000]
+
+Now convert to base 10 and you should get:
+
+[51323, 0]
+
+Hopefully this breaks down how different views can be used to manipulate and represent the underlying array-buffer.
+
+Ok but when will I ever use this
+As you may already know, ArrayBuffer is used in graphics (WebGL, WebGPU), custom video codecs, and various forms of binary processing.
+
+The standard sequential collection Array, is sufficient for most general-purpose programming needs. Although, there are scenarios where you can benefit from using an ArrayBuffer.
+
+Coordinates
+If you have to manage a substantial number of x and y coordinates, or any other set of coordinates, for processing, such as for animation or data processing, ArrayBuffer could be more suitable than an array filled with objects. This depends on your use case. It’s worth benchmarking to determine what works best for the size of your data.
+
+Finance
+If you’re coming from the prehistoric world it may be news to find out that JavaScript has native 64 bit BigInt numbers with full browser and node.js support.
+
+BigUint64Array will allow for fast data manipulation but there’s really no benefit in terms of binary manipulation. Again benchmarking is necessary to see what works best.
+
+Large Data
+At my time with Accenture I worked on an IAM project which used large datasets with tens of thousand of entries. Parsing and processing this data was a bit taxing on the browser. The process at one point was similar to the below:
+
+Fetch data -> Parse JSON -> Store data in IndexedDB -> Loop data
+
+-> Update Graph
+-> Update virtual-list
+The values were entries (rows) of numbers and some string values. Separating the fields into array-buffers or a hybrid of array-buffers and objects would have improved performance if I was more familiar with Array buffers in JavaScript at the time.
+
+The advantage of IndexedDB is that it can store array-buffers as Binary Large Objects better known as Blobs.
+
+Using ArrayBuffer will rarely correlate directly to general purpose data, you will typically need to split your data into multiple arrays to harness the performance benefits.
+
+Conclusion
+JavaScript has both:
+
+High-level arrays
+Low-level arrays
+The word “array” is confusing so don’t get hung up on it, so when in Rome don’t put pineapple on your pizza. An Array is [] or new Array(...) and a an ArrayBuffer is a “buffer”. A view can be a “view” or “Array View” to be honest I really don’t care.
+
+There’s a lot I didn’t touch on in this article, it’s worth pointing out that iterating an array-literal usually does not have significant performance benefits over iterating an object-literal, so don’t read this article and butcher up your existing code, that’s not the intention here.
+
+The purpose is to be aware of our options, so we can make better decisions in regards to how we approach development.
+
+I hate to say it, but…
+
+You won’t find yourself touching buffers or views much in JS unless you’re working on something really fun
+
+
+At the end of the day, ignorance is bliss
+In reality, most of us will not be working on anything fun and there’s no reason to coerce boring things because we want to try a new syntax.
+
+Also performance is not always the core metric, but this article has a prime focus on the performance of constant-folding arrays and array-buffers because that’s really their main selling point.
+
+In pt-2 I’ll dive into DataViews and there will likely be a pt-3 diving into SharedArrayBuffer and Atomics. which I will update here.
+
+— Julien

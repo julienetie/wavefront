@@ -1,190 +1,46 @@
+> #### _pre-alpha_ | WIP
 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="158.59123mm"
+   height="34.475056mm"
+   viewBox="0 0 158.59123 34.475056"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     id="layer1"
+     transform="translate(-32.494497,-84.276884)"><path
+       style="font-size:96px;font-family:Raleway;white-space:pre;fill:#120073"
+       d="m 170.17209,282.79284 h 6.336 l 9.6,24.192 9.696,-24.192 h 6.432 l -11.904,29.088 13.056,30.816 24.672,-60.384 h 7.296 l -28.896,68.16 h -5.952 l -14.304,-33.696 -14.4,33.696 h -5.856 l -28.8,-68.16 h 7.2 l 24.768,60.384 12.96,-30.816 z m 64.31982,53.28 q 0,-4.704 2.688,-8.064 2.688,-3.456 7.392,-5.28 4.8,-1.92 11.04,-1.92 3.648,0 7.584,0.576 3.936,0.576 7.008,1.728 v -4.224 q 0,-6.336 -3.744,-10.08 -3.744,-3.744 -10.368,-3.744 -4.032,0 -7.968,1.536 -3.84,1.44 -8.064,4.32 l -2.496,-4.608 q 4.896,-3.36 9.6,-4.992 4.704,-1.728 9.6,-1.728 9.216,0 14.592,5.28 5.376,5.28 5.376,14.592 v 23.136 q 0,1.344 0.576,2.016 0.576,0.576 1.824,0.672 v 5.184 q -1.056,0.096 -1.824,0.192 -0.768,0.096 -1.152,0 -2.4,-0.096 -3.648,-1.536 -1.248,-1.44 -1.344,-3.072 l -0.096,-3.648 q -3.36,4.32 -8.736,6.72 -5.376,2.304 -10.944,2.304 -4.8,0 -8.736,-2.016 -3.84,-2.112 -6.048,-5.568 -2.112,-3.552 -2.112,-7.776 z m 33.504,3.84 q 1.056,-1.344 1.632,-2.592 0.576,-1.248 0.576,-2.208 v -7.296 q -3.264,-1.248 -6.816,-1.92 -3.456,-0.672 -7.008,-0.672 -7.008,0 -11.328,2.784 -4.32,2.784 -4.32,7.584 0,2.784 1.44,5.28 1.44,2.4 4.224,4.032 2.784,1.536 6.528,1.536 4.704,0 8.736,-1.824 4.128,-1.824 6.336,-4.704 z m 36.19176,10.56 -20.256,-50.016 h 6.816 l 17.088,43.488 17.184,-43.488 h 6.432 l -20.256,50.016 z m 56.15975,0.96 q -5.376,0 -9.984,-2.016 -4.608,-2.112 -7.968,-5.664 -3.36,-3.648 -5.28,-8.352 -1.824,-4.704 -1.824,-10.08 0,-7.008 3.168,-12.864 3.264,-5.856 8.928,-9.312 5.664,-3.552 12.864,-3.552 7.392,0 12.864,3.552 5.568,3.552 8.736,9.408 3.168,5.76 3.168,12.672 0,0.768 0,1.536 0,0.672 -0.096,1.056 h -42.816 q 0.48,5.376 2.976,9.6 2.592,4.128 6.624,6.624 4.128,2.4 8.928,2.4 4.896,0 9.216,-2.496 4.416,-2.496 6.144,-6.528 l 5.664,1.536 q -1.536,3.552 -4.704,6.432 -3.168,2.88 -7.488,4.512 -4.224,1.536 -9.12,1.536 z m -18.432,-28.32 h 36.96 q -0.384,-5.472 -2.976,-9.6 -2.496,-4.128 -6.624,-6.432 -4.032,-2.4 -8.928,-2.4 -4.896,0 -8.928,2.4 -4.032,2.304 -6.624,6.528 -2.496,4.128 -2.88,9.504 z m 55.00794,27.36 v -44.832 h -6.912 v -5.184 h 6.912 v -1.344 q 0,-6.144 1.728,-10.56 1.824,-4.416 5.088,-6.72 3.36,-2.4 7.872,-2.4 2.976,0 5.76,0.864 2.784,0.864 4.8,2.304 l -2.016,4.704 q -1.248,-1.056 -3.264,-1.632 -2.016,-0.576 -4.032,-0.576 -4.512,0 -7.008,3.552 -2.4,3.552 -2.4,10.272 v 1.536 h 13.824 v 5.184 h -13.824 v 44.832 z m 54.24,-44.256 q -6.528,0.192 -11.52,3.648 -4.896,3.456 -6.912,9.504 v 31.104 h -6.528 v -50.016 h 6.144 v 12 q 2.592,-5.28 6.816,-8.544 4.32,-3.264 9.12,-3.648 0.96,-0.096 1.632,-0.096 0.768,0 1.248,0.096 z m 28.51191,45.216 q -5.376,0 -9.984,-2.016 -4.512,-2.112 -7.872,-5.664 -3.264,-3.648 -5.088,-8.256 -1.824,-4.704 -1.824,-9.888 0,-5.376 1.824,-9.984 1.824,-4.704 5.184,-8.256 3.36,-3.648 7.872,-5.664 4.608,-2.112 9.984,-2.112 5.376,0 9.888,2.112 4.512,2.016 7.872,5.664 3.36,3.552 5.184,8.256 1.824,4.608 1.824,9.984 0,5.184 -1.824,9.888 -1.824,4.608 -5.184,8.256 -3.264,3.552 -7.872,5.664 -4.512,2.016 -9.984,2.016 z m -18.144,-25.728 q 0,5.568 2.4,10.176 2.496,4.512 6.624,7.2 4.128,2.592 9.12,2.592 4.992,0 9.12,-2.688 4.128,-2.688 6.624,-7.296 2.496,-4.704 2.496,-10.176 0,-5.568 -2.496,-10.176 -2.496,-4.608 -6.624,-7.296 -4.128,-2.688 -9.12,-2.688 -4.992,0 -9.12,2.784 -4.032,2.784 -6.528,7.392 -2.496,4.512 -2.496,10.176 z m 95.99993,24.768 h -6.528 v -27.936 q 0,-8.832 -2.592,-12.864 -2.592,-4.128 -8.16,-4.128 -3.84,0 -7.584,1.92 -3.744,1.824 -6.624,5.088 -2.784,3.168 -4.032,7.296 v 30.624 h -6.528 v -50.016 h 5.952 v 11.328 q 2.016,-3.648 5.28,-6.336 3.264,-2.784 7.392,-4.32 4.128,-1.536 8.544,-1.536 4.128,0 7.008,1.536 2.88,1.536 4.608,4.416 1.728,2.784 2.496,6.816 0.768,3.936 0.768,8.832 z m 37.43974,-2.4 q -0.768,0.288 -2.4,1.056 -1.632,0.768 -3.936,1.344 -2.304,0.576 -4.992,0.576 -2.784,0 -5.28,-1.056 -2.4,-1.056 -3.84,-3.168 -1.44,-2.208 -1.44,-5.376 v -35.808 h -6.912 v -5.184 h 6.912 v -16.896 h 6.528 v 16.896 h 11.52 v 5.184 h -11.52 v 33.984 q 0.192,2.688 1.92,4.032 1.824,1.344 4.128,1.344 2.688,0 4.896,-0.864 2.208,-0.96 2.688,-1.344 z"
+       id="text2"
+       transform="matrix(0.26458333,0,0,0.26458333,33.666334,18.056142)"
+       aria-label="Wavefront" /><path
+       style="fill:#120073;fill-opacity:1;stroke-width:0.178635"
+       d="m 46.216462,118.74625 c -0.135567,-0.0123 -0.308465,-0.0579 -0.442866,-0.11671 -0.102435,-0.0448 -10.281117,-5.69901 -10.38713,-5.76996 -0.362966,-0.24296 -0.595925,-0.64558 -0.624731,-1.07973 -0.0343,-0.51687 0.194971,-0.99628 0.613989,-1.28387 0.03746,-0.0257 2.074245,-1.32323 4.526208,-2.88339 l 4.458114,-2.83667 0.03448,0.0197 0.03448,0.0197 v 1.65634 1.65633 l -2.717646,1.72941 c -2.165878,1.37829 -2.715102,1.73175 -2.705111,1.74088 0.0069,0.006 1.320167,0.73747 2.91838,1.62482 1.598214,0.88735 2.924123,1.62393 2.946467,1.63686 l 0.04062,0.0235 -3.22e-4,-5.165 -3.22e-4,-5.16499 -4.771853,-3.03598 -4.771856,-3.035977 -0.0025,1.519307 c -0.0014,0.83562 -0.0014,2.20015 0,3.03229 l 0.0025,1.51298 2.153432,-1.37037 c 1.184386,-0.7537 2.158354,-1.37037 2.164369,-1.37037 0.0061,0 0.607733,0.3796 1.337146,0.84355 1.007504,0.64084 1.323512,0.84621 1.314993,0.8546 -0.02399,0.0236 -7.690754,4.89669 -7.754113,4.92858 -0.244286,0.12299 -0.510449,0.17598 -0.767086,0.15272 -0.358976,-0.0325 -0.644135,-0.16535 -0.89644,-0.41753 -0.244691,-0.24457 -0.380081,-0.52985 -0.41472,-0.87386 -0.01393,-0.13834 -0.01393,-11.420861 0,-11.559204 0.03464,-0.34401 0.170029,-0.62929 0.41472,-0.87386 0.163536,-0.163454 0.324573,-0.266922 0.526402,-0.338223 0.378879,-0.133844 0.776428,-0.108177 1.137124,0.07342 0.08145,0.04101 12.521368,7.954947 12.621236,8.029287 0.255724,0.19037 0.443232,0.46692 0.526707,0.77683 0.05141,0.19087 0.04808,-0.30524 0.04813,7.14389 5e-5,6.1662 -0.0014,6.89141 -0.01476,6.98082 -0.0463,0.3118 -0.186275,0.58788 -0.411054,0.81074 -0.297382,0.29485 -0.720195,0.44699 -1.136974,0.40912 z m 4.487804,-0.004 c -0.169353,-0.0208 -0.31032,-0.0633 -0.473156,-0.14259 -0.394247,-0.19213 -0.667747,-0.54398 -0.771629,-0.99267 l -0.02147,-0.0927 -0.0029,-6.91093 c -0.0022,-5.15963 -1.79e-4,-6.93395 0.008,-7.00174 0.03009,-0.24895 0.124838,-0.48645 0.274547,-0.68823 0.06284,-0.0847 0.193965,-0.21775 0.274586,-0.27863 0.09307,-0.0703 12.542416,-7.989901 12.63659,-8.038727 0.340481,-0.176536 0.737819,-0.207078 1.105101,-0.08494 0.207201,0.06891 0.378417,0.172299 0.536375,0.323911 0.253312,0.243133 0.402027,0.548779 0.437153,0.898441 0.01388,0.138242 0.01388,11.420965 0,11.559205 -0.03512,0.34966 -0.183841,0.65531 -0.437153,0.89844 -0.439276,0.42163 -1.089522,0.518 -1.636496,0.24255 -0.06247,-0.0314 -7.734343,-4.90755 -7.758549,-4.93118 -0.0082,-0.008 0.323527,-0.22351 1.311752,-0.85193 0.72753,-0.46264 1.330389,-0.84209 1.339687,-0.84321 0.0094,-0.001 0.984723,0.61427 2.16761,1.36754 l 2.150705,1.3696 0.0025,-1.51887 c 0.0013,-0.83538 0.0013,-2.19951 0,-3.031407 l -0.0025,-1.51254 -4.771702,3.035537 -4.771703,3.03553 -0.0029,4.43045 c -0.0016,2.43675 -7.14e-4,4.76011 0.0019,5.16304 l 0.0048,0.73257 2.953152,-1.64065 c 1.624233,-0.90236 2.951985,-1.64495 2.950558,-1.65022 -0.0014,-0.005 -1.222809,-0.78605 -2.714184,-1.73513 l -2.711592,-1.72556 -0.0022,-1.65343 -0.0022,-1.65343 0.03538,-0.0229 c 0.03259,-0.0211 0.03728,-0.0218 0.05964,-0.009 0.06065,0.0354 8.902461,5.66466 8.962614,5.70614 0.359213,0.24772 0.585654,0.64365 0.614206,1.07395 0.02825,0.42584 -0.118214,0.82011 -0.415158,1.11752 -0.04772,0.0478 -0.124266,0.11351 -0.170128,0.14607 -0.0961,0.0683 -10.325028,5.75432 -10.437013,5.80176 -0.09454,0.04 -0.209554,0.0746 -0.312946,0.094 -0.09916,0.0186 -0.313688,0.026 -0.411022,0.0142 z m -2.449871,-14.13861 c -0.0037,-1.16833 -0.0011,-1.10339 -0.05449,-1.30928 -0.0599,-0.2311 -0.176524,-0.47551 -0.315678,-0.66159 -0.05872,-0.0785 -0.06548,-0.0678 0.09103,-0.14435 0.21568,-0.10547 0.37312,-0.14157 0.621314,-0.14242 0.258203,-9e-4 0.423061,0.0357 0.640433,0.1423 0.156286,0.0766 0.150141,0.0682 0.0985,0.13534 -0.142018,0.18473 -0.261413,0.43254 -0.323152,0.67072 -0.05338,0.20589 -0.05066,0.14095 -0.05449,1.30928 -0.002,0.59539 -0.0054,1.08252 -0.0077,1.08252 -0.0022,0 -0.07603,-0.0458 -0.163881,-0.10171 -0.08785,-0.0559 -0.166483,-0.10337 -0.174733,-0.10538 -0.0082,-0.002 -0.08936,0.0438 -0.180255,0.10171 -0.09089,0.058 -0.167087,0.10538 -0.16932,0.10538 -0.0022,0 -0.0057,-0.48713 -0.0076,-1.08252 z m -3.672469,-4.22289 c -0.725505,-0.462287 -1.319099,-0.844777 -1.319099,-0.849977 0,-0.0145 1.095638,-0.70806 1.10775,-0.70125 0.0058,0.003 0.605662,0.38438 1.332942,0.84689 1.0672,0.678687 1.319858,0.843187 1.309541,0.852597 -0.02861,0.0261 -1.086861,0.69322 -1.098956,0.69276 -0.0073,-3.6e-4 -0.606673,-0.37873 -1.332178,-0.84102 z m 6.160575,0.49613 c -0.297036,-0.18938 -0.543522,-0.34767 -0.547743,-0.35174 -0.0058,-0.006 1.179809,-0.765297 2.637385,-1.689767 0.01864,-0.0118 0.06219,0.0139 0.568739,0.33632 0.301707,0.19201 0.549796,0.35284 0.55131,0.35738 0.0034,0.01 -2.639687,1.693417 -2.657345,1.692667 -0.0068,-3.6e-4 -0.25531,-0.15548 -0.552346,-0.34486 z m -2.319577,-0.19938 c -0.165882,-0.0234 -0.342173,-0.0803 -0.485899,-0.15689 -0.07773,-0.0414 -12.472404,-7.925584 -12.581319,-8.002888 -0.345328,-0.245101 -0.566051,-0.638878 -0.593971,-1.059658 -0.03462,-0.521723 0.199658,-1.005486 0.624731,-1.290014 0.106013,-0.07096 10.284692,-5.72513 10.38713,-5.769961 0.295929,-0.129511 0.620325,-0.155746 0.93036,-0.07524 0.127858,0.0332 0.196804,0.06001 0.316789,0.123174 0.371692,0.195676 0.632151,0.542171 0.732025,0.97383 l 0.02145,0.0927 0.0026,5.474476 0.0026,5.474476 -0.112376,-0.0713 c -0.06181,-0.03921 -0.705974,-0.449098 -1.431478,-0.910847 l -1.3191,-0.839545 -0.0048,-3.245859 -0.0048,-3.24586 -2.947768,1.637646 c -1.621273,0.900706 -2.951607,1.641485 -2.956298,1.646177 -0.01053,0.01053 9.575926,6.114028 9.603277,6.114301 0.02745,3.57e-4 9.614356,-6.103224 9.603515,-6.114067 -0.0048,-0.0048 -1.335261,-0.745705 -2.956534,-1.646411 l -2.947768,-1.637646 -0.0048,3.246277 -0.0048,3.246279 -1.386009,0.882344 c -0.762306,0.485288 -1.406472,0.895081 -1.43148,0.910646 l -0.04547,0.0283 0.0026,-5.474694 0.0026,-5.474692 0.02145,-0.0927 c 0.08382,-0.362258 0.288007,-0.67541 0.571233,-0.876065 0.09956,-0.07052 0.281848,-0.162101 0.391556,-0.19669 0.339612,-0.107078 0.682182,-0.09154 1.00595,0.04562 0.111885,0.0474 10.340978,5.733554 10.436168,5.801265 0.336184,0.239132 0.560122,0.643218 0.586646,1.058573 0.03351,0.524681 -0.204463,1.00723 -0.639585,1.296948 -0.03943,0.02626 -2.859005,1.82163 -6.265721,3.989726 -3.515078,2.237062 -6.239509,3.964949 -6.299179,3.995079 -0.203284,0.10263 -0.369494,0.14322 -0.606977,0.1482 -0.08674,0.002 -0.184243,-3.6e-4 -0.216663,-0.005 z"
+       id="path1" /></g></svg>
+
+
+![wavefront-full-logo](https://github.com/julienetie/wavefront/assets/7676299/e6f0acf9-414a-4eed-9cab-dbc5dd5475ec)
 
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
-# Wavefront
+# The Anti Framework
+### A-n̶o̶t̶h̶e̶r̶ JavaScript framework but not just another JavaScript framework: 
 
-### The Anti-Framework
-
-[![Standard-Js](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
-
-Wavefront is an ultramodern front-end JavaScript framework for building superlative user interfaces without the theatrics found in popular JavaScript frameworks.
-
-### Not your grandma's JavaScript framework
-We do things a little bit different here.
-
-
-- **No JSX**: Wavefront uses template-literal strings to define DOM nodes
-- **No Virtual-DOM**: Wavefront does not use a VDOM, it queries the DOM
-- **No Compiler**:  The code you develop with is your source code 
-- **No Dependencies**  
-- **High Performance**: Over-engineering is the bane of front-end development 
-- **Decoupled Events**: Delegated and direct events are decoupled from the DOM
-- **Separation of Concerns**: Logic and semantics are separated
-- **Lightweight**: Less than 6kb minified
+- **No Virtual-DOM**: Wavefront queries the DOM
+- **Componentless**: No component hierarchy, vastly improving simplicity
 - **Minimalistic**
-- **Scalable**: Solves real-world problems without inventing new ones
-- **Easy Customization**: Fork and customize without losing sleep
+- **Trusted-Types**: For modern XSS protection
+- **Performant XSS-sanitizer**: Standard for all DOM modifications
+- **No DSL**: Markup is defined using Template Literals, there's no JSX or special syntax to learn.
+- **Decoupled events**: A powerful event management system not bound by components
+- **Separation of concerns**: Enforcement of separation between logic and presentation
+- **String to DOM**: Advanced DOM creation using native string manipulation
+- **No compiler**: No magic required
+- **No dependencies**: No libraries or build-tool dependencies
+- **Lightweight**: Less than 30kB minified
+- **Full-featured UI framework**: For SPA, MPA, and hybrids
 
-## Philosophy
-Here are the core principles of Wavefront.
-### Native Natural Organic ECMAScript
-For quite some time it has not been necessary to transpile JavaScript.
- Major modern browsers support at least: 
-- 98.2% of ECMAScript 2015 (6) 
-- 98.8% of ECMAScript 2016+
-
-ECMAScript support is exceptionally good. Where ECMAScript and W3C features are inconsistent, they can be added manually and individually polyfilled to keep your project's footprint low.
-
-### Zero JavaScript build-time during development
-Development build are extremely fast for large and small projects as there is zero build-time for JavaScript source code. Wavefront uses a PostCSS for Nesting which on runs on affected stylesheet distribution flies. You can expect a fairly large project to build in miliseconds not seconds. When nesting support improves development will be officially instantaneous.
-
-### Collarging
-Wavefront uses a technique called "Collaging". In the real world, a collage artist would layer pictures to create collage art. Wavefront follows this simple ideology allowing you to build, place and update components anywhere on the page without rules or restrictions. The beauty of this is that there is no concept of component hierarchy. 
-
-### The Removal of Decedents Event   
-Wavefront utilises Event-delegation, allows events to propagate to a listener on the document or window object. Event-delegation is not always possible, therefore event listeners are sometimes placed directly onto elements. Wavefront will eradicate descendent event listeners before their elements are written over.
-
-### Trusted Types | Sanitization | Escaping | Scoped Passthrough
-Wavefront enforces Trusted Types and Sanitiztion on supported browsers to reduce or eliminate XSS vector attacks on DOM sinks. Primitive values inserted into a template are escaped by default. The Sanitizer API is used to allow Markup from external sources. Developer defined parts of a UI are not santized and rely on private scoping for Trusted Types. Wavefront combines all 4 strategies for optimal performance and security.
-
-### Slates 
-
-### Stamping
- 
-
-## Install 
-Import the wavefront library (-m --minified, -s --sourcemap, -i --install)
-`npx wavefront -i <destination>`
-
-Include wavefront as the first script to run on the page to ensure CPS security. 
-```html
-<script type="module" src="wavefront.min.js"></srcipt>
-```
-Wavefront will conditionally fetch necessary polyfills for unsupported browsers. _(See polyfill list)_
-
-Alternatively you can create a Wavefront boilerplate.
-`npx wavefront <project-name>`
-
-Which can be launched for development using
-`npm start`
-
-## Hello World Example _(For the birds)_
-```javascript
-import { pasteInto } from 'wavefront'
-
-const helloView = pasteInto('#root', ({greeting}) => `<h1>${greeting}</h1>`)
-
-helloView({greeting: 'Hello World!') // <div id="root"><h1>Hello World!</h1></div>
-```
-## Features 
-
-### Logic-less Views
-> Wavefront is a simple string-based DOM engine that uses template-literals for generating DOM nodes. The values you place inside template-literal placeholders `${}` will result into a string _(this is just standard JavaScript)_. Wavefront prohibits logical syntax within placeholders. Values are to be evaluated before being passed into a template function.
-
-### Viewless Controllers
-> A component is made up of a single view or views, and a controller represented as files or directories. The logic of your component should only reside in the controller. Markup is not defined within the controller, only in the view. The controller should import view-functions for instantiation using required values.
-You can also separate event logic into event _(files or directories)_ as an extension to your controller logic.
-E.g.
-- ui/
-- - side-menu/
-- - - controller.js
-- - - view.js
-- - - events.js  _(optional)_
-
-### Decoupled Events 
-> Event-delegation should be the first desirable approach when managing events. When delegation is not possible direct-events will suffice. When using Wavefront's API, Wavefront will automatically remove events from descendants before they are overwritten, to prevent memory-leaks. This means we can naturally write to the DOM without worrying about the ramifications of overwriting event driven components.
-
-### DRY Templates
-> View-templates are parameterized, meaning that they can take a variety of values for reuse without additional boilerplate code. This is just one of the many benefits of logic-less views.
-
-### Slates
-> Slates are snapshots of changes to a particular selector. Slates can be optionally stored or ignored when making a change to the DOM.
-They are stored as strings and can be modified as either strings or elements. Each selector can have one slate which represents the last recorded change. 
-This is useful for:
-> - Preserving the integrity of the DOM: (A slate can be used to rectify a subtree that the user or a browser extension has modified) 
-> - Security: To prevent modifying or reading dangerous changes made on the user's side
-> - Last state modifications: To make modifications based on the last saved state
-
-### Direct Modifications
-> Because of Wavefront's event model, you can modify the DOM directly. This is ideal in places where the integrity of the DOM is relaxed (not data critical).
-For data-critical UIs it is important to use the sanitizer before reading directly from the DOM.
-
-### Sanitiser
-> For safely reading directly from potentially dangerous parts of the DOM. This is your responsibility.
-
-### String-based UI manipulation
-> You will notice there are no APIs for manipulating data or control flow when rendering. This is because Wavefront is a string-based DOM engine. Because JavaScript has very strong string manipulation capabilities, this makes Wavefront the most powerful UI library for DOM manipulation.
-
-### No environment dependencies
-> With Wavefront we are going back to the basics
-> - Wavefront can work directly in the browser using the `<script...` tag
-> - NPM usage is not mandatory
-> - Bundlers are not mandatory
-> - Babel and TypeScrpt are not needed 
-
-## Support
-Wavefront supports all modern browsers beyond IE11
-
-## Style
-The Wavefront codebase and examples use [Standard](https://github.com/standard/standard) for code conformance. 
-
-## TBA (External libraries) 
-- Router
-- Static generator
-- State Management System
-
-## Concepts
-
-### Collage Development _(Overlaying)_ 
-When using frameworks like React and Angular you will typically make changes to the UI by setting different states as well as flow control logic within the component semantics.
-
-Wavefront uses a _Collage Development_ style, which allows you to overlay changes for any DOM selector of your choice, similar to how collage artwork is produced in the physical world. This means you generally do not need to be concerned about component hierarchy or managing hidden state changes when building or manipulating the UI.
-
-The beauty of event-delegation is that you can change any part of the page without being concerned about overwriting an event. There are some cases where event-delegation is not possible or less intuitive when compared to using direct-events.
-
-The reason you don't have to worry about what you overwrite via Wavefront is because direct-events are automatically removed on DOM mutations made within the Wavefront API.
-
-So there is zero component hierarchy model in Wavefront, which means complete creative freedom and maximum maintainability.
-
-### Params
-This is simply the the ability to provide an object literal of values to a view. This allows the logic of a view-function to live outside of the semantics which is very different to DSLs like JSX which encourages you to pollute semantics with logic. 
-
-To re-iterate, params are just object literals with values. They should always be named  `params`
-
-### Slate
-A slate is an internal variable that stores the state of the last DOM mutation of a given view-function.
-
-Previously we talked about how Wavefront uses a _Collage_ style to allow you to manipulate the DOM without constraints. But this could cause some concerns.
-- If you overwrite part of the DOM you may lose the previous state and if your `params` are arbitrary or unpredictable you may lose them forever.
-- You could store that state manually but that will require more boilerplate code
-- If you try to read from the DOM, a the user, extension or vulnerability could have made security compromises beforehand.
-
-A slate is a representation of the last state of an applied collage. It contributes to:
-- Integrity: If you are working on a sensitive part of your app (e.g. contact form, login, user input etc) you should be using the slate to prevent unwarranted external changes.
-- Security: You can use the slate when you want to read or evaluate a copy of what was last applied to the DOM by yourself.
-
-Each view-function has one slate which is updated on each applied collage. The markup of a slate is stored in memory as a string.
-
-### Delegates 
-A delegate is a virtual event target to help minimize the boilerplate logic of event-delegation management.
-- You can create a delegate for any selector using `createDelegate(...)`
-- You can detect a delegate conditionally using `suspect(...)` and determine if the target is equal, contained or closest to another element.
-- You can call a delegate's handler using `trigger(...)`
-- You can remove delegates using `removeDelegate`
-
-This minimalist API was not intended to be a technical masterpiece but it is a viable solution that avoids tight coupling to make event management light-weight and maintainable. Because of this flexibility you can manage delegated events in any part of the app and even trigger events from unrelated places.
-
-Wavefront has no intention to mask and polish things in JavaScript that are simple and work well. Therefore you can use the native `addEventListener` for global events _(document and window events only)`
-
-### Sanitize 
-It's inevitable that you must be able to read from the active DOM for various user inputs and interactions. Wavefront has an encapsulated way to do this using the `mutate(...)` method. 
-Wavefront has a buti-in security linter which ensures that you use the `santizer(...)` when reading from a DOM element via the `mutate` function. 
-- Mutate will understand the argument name and ensure that there are no left hand assignments to other variables without the use of the sanitizer.
-- Mutate will also understand if that argument is being used as an argument for another function
-- Mutate will warn about assigning external variables, the warning can be suppressed with an annotation 
-
-The linter ensures that the DOM is read safely without any additional plugins or IDEs. This allows you to freely work directly with the DOM without unnecessary or costly restrictions.
-
-The sanitizer removes dangerous content from a string.
-
-### Safeguarding
+MIT © Wavefront, Julien Etienne 2024

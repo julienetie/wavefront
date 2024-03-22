@@ -4,7 +4,7 @@ work-around documentation to solve any migration conflicts.
 
 ### Patches
 - For the latest major version, we apply patches to it's latest minor version.
-- For previous major releases (not the latest), Wavefront will only apply patches to the last minor version if required.
+- For previous major releases (not the latest), Wavefront will only apply patches to the lastest minor version if required.
 - Typically, we will only apply fixes to the two last major versions, in rarer cases we may apply fixes to previous major versions.
 
 ### Implementers

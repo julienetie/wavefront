@@ -24,11 +24,19 @@ Below are strategies for feature releases:
 - Standard release: Considered stable and production-ready.
 
 ### Branches
-All branches should be squashed before being merged-in, but not deleted until the feature is known to be stable.
-Release branches are merged but never deleted.
+Branches are: 
+
+- Rebased to keep up to date
+- Squashed and merged into main when finished
+
+Release branches are merged if necessary, but never deleted.
+
+There are 3 types of branches:
 - feat: Feature branch
-- Fix: Fix
+- fix: Bugfix
 - release: Trailing release branch
+
+Branches should not be deleted until the feature or fix is known to be stable.
 
 ### Tags
 Release tags follow [semver](https://semver.org/) versioning.

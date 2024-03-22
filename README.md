@@ -27,7 +27,7 @@
 
 ![Anti-Framework Ant Image](https://github.com/julienetie/anti-framework/blob/06398a8ab78780795e143689c2c4ccc426455bb3/anti-framework.webp?raw=true)
 # The Anti Framework
-### A-n̶o̶t̶h̶e̶r̶ JavaScript framework but not just another JavaScript framework: 
+### A-n̶o̶t̶h̶e̶r̶ JavaScript framework with a different direction: 
 
 - **No Virtual-DOM**: Wavefront queries the DOM
 - **Componentless**: No component hierarchy, vastly improving simplicity

@@ -1,6 +1,6 @@
 ## Release Strategy
 Wavefront strives to avoid breaking changes, although there is always a possibility of breaking changes occuring between consecutive major versions. Any breaking changes will feature 
-work-around documentation to aid mitigation.
+work-around documentation to solve any migration conflicts.
 
 ### Patches
 - For the latest major version, we apply patches to it's latest minor version.

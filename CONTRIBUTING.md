@@ -5,7 +5,7 @@ work-around documentation to aid mitigation.
 ### Patches
 - For the latest major version, we apply patches to it's latest minor version.
 - For previous major releases (not the latest), Wavefront will only apply patches to the last minor version if required.
-- Typically, Wavefront will apply patch fixes to the two latest major versions, but in rarer cases may apply changes to older major versions.
+- Typically, we will only apply fixes to the two last major versions, in rarer cases we may apply fixes to previous major versions.
 
 ### Implementers
 Developers using the library should always aim to upgrade to the latest stable version. If this is not possible, they should 

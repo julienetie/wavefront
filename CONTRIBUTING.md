@@ -13,12 +13,22 @@ upgrade to the latest minor and patch version of their desired major version.
 
 ### Trailing Release Branches
 The purpose of this strategy is to prevent accidentally introducing unwarranted new changes to older releases.
-- [main](#) represents the active branch. Tags are cut onto the main branch. 
+- [main](https://github.com/julienetie/wavefront/tree/main) represents the active branch. Tags are cut onto the main branch. 
 - When a new major release is ready, a trailing release branch is created to represent the previous release.
-- A fix to a previous major release may or may not be rebased into later releases, as the fix may adhere to breaking changes.
+- A fix to a previous major release may or may not be merged into later releases, as the fix may adhere to breaking changes.
 
 ### Releases
 Below are strategies for feature releases:
 - Alpha: An Internal testing branch (No tags).
 - Beta: A public pre-release, may contain bugs, and may still be under development.
 - Standard release: Considered stable and production-ready.
+
+### Branches
+All branches should be squashed before being merged-in, but not deleted until the feature is known to be stable.
+Release branches are merged but never deleted.
+- feat: Feature branch
+- Fix: Fix
+- release: Trailing release branch
+
+### Tags
+Release tags follow [semver](https://semver.org/) versioning.

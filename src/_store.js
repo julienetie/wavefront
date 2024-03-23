@@ -1,6 +1,7 @@
 /*
-The `_store` object is the single origin for globally
-shared data and state across the ANIT codebase */
+ * The `_store` object serves as the primary source for managing globally shared
+ * data and state throughout the entirety of the Wavefront codebase.
+ */
 const _store = {
   delegatedEvents: new Map(),
   template: document.createElement('template'),

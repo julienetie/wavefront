@@ -21,70 +21,121 @@ waveEnv.set()
 let d // eslint-disable-line
 const invalidList = [
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 - 2}</span>`,
     operator: '-'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 + 2}</span>`,
     operator: '+'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 * 2}</span>`,
     operator: '*'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 / 2}</span>`,
     operator: '/'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 % 2}</span>`,
     operator: '%'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${d = 2}</span>`,
     operator: '='
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${!2}</span>`,
     operator: '!'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 ? 2 : 2}</span>`,
     operator: '?'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${{ test: 123 }}</span>`,
     operator: ':'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 < 2}</span>`,
     operator: '<'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 > 2}</span>`,
     operator: '>'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 & 2}</span>`,
     operator: '&'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 | 2}</span>`,
     operator: '|'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${~2}</span>`,
     operator: '~'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 ^ 2}</span>`,
     operator: '^'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${typeof (2)}</span>`,
     operator: 'typeof'
   },
   {
+    /**
+     *
+     */
     invalidDT: () => `<span>${2 instanceof Element}</span>`,
     operator: 'instanceof'
   }

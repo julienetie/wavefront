@@ -5,6 +5,12 @@ When params are provided `null`, `NaN` and `undefined` values will be replaced
 by a blank spaced string. When a denylist and replacement word is additionally provided
 param's values will be treated as strings and matching results will be replaced by the
 replacement word */
+/**
+ *
+ * @param params
+ * @param denylistPattern
+ * @param replaceWord
+ */
 const safeguardParams = (params, denylistPattern, replaceWord) => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -74,6 +80,10 @@ const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file|sms):|[^&:/?#]*(?:[/
 /** A pattern that matches safe data URLs. Only matches image, video and audio types. */
 const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i
 
+/**
+ *
+ * @param url
+ */
 const sanitizeURL = (url) => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -84,6 +94,10 @@ const sanitizeURL = (url) => {
   return `unsafe:${url}`
 }
 
+/**
+ *
+ * @param srcset
+ */
 const sanitizeSrcset = (srcset) => {
   if (waveEnv.isEnvNotSet()) return
 

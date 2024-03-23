@@ -8,8 +8,15 @@ const metaEnv = 'meta[name="environment"]'
 let precedence = ['header', 'meta', 'wf_env', 'set']
 let methodAttempt = 0
 
+/**
+ *
+ * @param customHostname
+ */
 const isLocal = customHostname => hostname.includes('localhost') || hostname.includes('127.0.0.1') || hostname.includes(customHostname)
 
+/**
+ *
+ */
 const tryNextMethod = () => {
   methodAttempt++
   const method = precedence[methodAttempt]
@@ -22,6 +29,9 @@ const tryNextMethod = () => {
 }
 
 const envMethods = {
+  /**
+   *
+   */
   header: async () => {
     try {
       const response = await fetch(href)
@@ -41,6 +51,9 @@ const envMethods = {
       console.warn(`Wf: Error fetching ${WfEnvHeader} header`, err)
     }
   },
+  /**
+   *
+   */
   meta: () => {
     const env = document.head.querySelector(metaEnv)?.content
     if (env) {
@@ -50,6 +63,9 @@ const envMethods = {
       tryNextMethod()
     }
   },
+  /**
+   *
+   */
   wf_env: async () => {
     try {
       const response = await fetch(wfEnvUrl)
@@ -72,6 +88,11 @@ const envMethods = {
       tryNextMethod()
     }
   },
+  /**
+   *
+   * @param env
+   * @param source
+   */
   set: (env = 'prod', source = 'set') => {
     if (!['prod', 'dev'].some(value => env.startsWith(value)) && !env.includes(':')) {
       console.error('Wf: Custom environments must be prefixed with a colon followed by `prod` or `dev`')
@@ -79,10 +100,18 @@ const envMethods = {
     _store.env = env
     _store.envSource = source
   },
+  /**
+   *
+   */
   get: () => _store.env
 }
 
 const waveEnv = {
+  /**
+   *
+   * @param env
+   * @param customHostname
+   */
   set: (env, customHostname) => {
     // This will only action for local development and will fail for server environments
     if (isLocal(customHostname)) { // @todo Refactor
@@ -92,6 +121,10 @@ const waveEnv = {
     }
   },
   get: envMethods.get,
+  /**
+   *
+   * @param order
+   */
   define: order => {
     if (isArray(order)) {
       if (order.length <= 4 && order.length >= 1) {
@@ -102,7 +135,13 @@ const waveEnv = {
     }
     envMethods[precedence[0]]()
   },
+  /**
+   *
+   */
   source: () => _store.envSource,
+  /**
+   *
+   */
   isEnvNotSet: () => {
     const hasEnv = !(typeof _store.env === 'string' && ['prod', 'dev'].some(value => _store.env.includes(value)))
     if (hasEnv) console.error('Wavefront: The environment needs to be set to use the Wavefront API')
@@ -112,6 +151,10 @@ const waveEnv = {
 
 const c = {}
 Object.keys(console).forEach(fn => {
+  /**
+   *
+   * @param {...any} params
+   */
   c[fn] = (...params) => {
     const env = envMethods.get()
     if (env.endsWith('prod')) return
@@ -120,10 +163,24 @@ Object.keys(console).forEach(fn => {
 })
 
 const waveDebug = {
+  /**
+   *
+   */
   enable: () => void (_store.debug.isDebugMode = true),
+  /**
+   *
+   */
   disbale: () => void (_store.debug.isDebugMode = false),
+  /**
+   *
+   */
   isEnabled: () => _store.debug.isDebugMode,
   warnings: {
+    /**
+     *
+     * @param type
+     * @param value
+     */
     toggle: (type, value) => {
       if (typeof value !== 'boolean') return
 
@@ -151,6 +208,9 @@ const waveCps = {
 
     Implementors can disable conditionally and can check the environment using waveEnv.get()
     */
+  /**
+   *
+   */
   disable: () => void (_store.cps.disable = true)
 }
 

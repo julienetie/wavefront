@@ -1,12 +1,20 @@
 import { query, queryAll, isPrimitive } from './helpers.js'
 const { isArray } = Array
 
+/**
+ *
+ * @param el
+ */
 const getAttributes = el => {
   const attributes = {}
   for (const attr of el.attributes) attributes[attr.name] = attr.value
   return attributes
 }
 
+/**
+ *
+ * @param el
+ */
 const getStyleObj = el => {
   const styleString = el.getAttribute('style').slice(0, -1).split('; ') // @todo No safe split needs better regex
   const styleObj = {}
@@ -17,12 +25,21 @@ const getStyleObj = el => {
   return styleObj
 }
 
+/**
+ *
+ * @param el
+ * @param type
+ */
 const alterPartial = (el, type) => {
   if (el === null) console.error(`${el} is not an element`)
   const isAttr = type === 'attr'
   return (fnOrObj, callback) => {
     const isElArray = isArray(el)
 
+    /**
+     *
+     * @param el
+     */
     const alterElement = el => {
       // Set by object
       const isFunction = typeof fnOrObj === 'function'
@@ -84,6 +101,11 @@ const alterPartial = (el, type) => {
   }
 }
 
+/**
+ *
+ * @param selector
+ * @param ref
+ */
 const alter = (selector, ref) => {
   const el = query(selector)
   return {
@@ -95,6 +117,11 @@ const alter = (selector, ref) => {
   }
 }
 
+/**
+ *
+ * @param selector
+ * @param ref
+ */
 const alterAll = (selector, ref) => {
   const el = queryAll(selector)
   return {

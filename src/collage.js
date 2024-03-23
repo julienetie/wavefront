@@ -9,6 +9,10 @@ const xss = xssKillah()
 const { placeholder, forbiddenOperators } = patterns
 const { min } = Math
 
+/**
+ *
+ * @param templateHandler
+ */
 const validateTemplateHandler = (templateHandler) => {
   const templateHandlerStr = templateHandler.toString()
   const placeholders = (templateHandlerStr.match(placeholder) || []).join(empty)
@@ -41,6 +45,13 @@ const validateTemplateHandler = (templateHandler) => {
   }
 }
 
+/**
+ *
+ * @param target
+ * @param newEl
+ * @param type
+ * @param pasteByIndex
+ */
 const domOperations = (target, newEl, type, pasteByIndex) => {
   switch (type) {
     case 'paste':
@@ -95,6 +106,10 @@ const domOperations = (target, newEl, type, pasteByIndex) => {
 
 /*
 A closure that requres `params` to create and insert markup */
+/**
+ *
+ * @param type
+ */
 const paster = (type = 'paste') => (selector, templateHandler, pasteByIndex) => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -168,6 +183,10 @@ const pasteStart = paster('pasteStart')
 const pasteEnd = paster('pasteEnd')
 const pasteByIndex = paster('pasteByIndex')
 
+/**
+ *
+ * @param selector
+ */
 const removeWithin = selector => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -181,6 +200,10 @@ const removeWithin = selector => {
   return el
 }
 
+/**
+ *
+ * @param selector
+ */
 const remove = selector => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -196,6 +219,11 @@ const remove = selector => {
 
 /*
 Allows the DOM to be directly mutated within a scope */
+/**
+ *
+ * @param selector
+ * @param templateHandler
+ */
 const mutate = (selector, templateHandler) => {
   if (waveEnv.isEnvNotSet()) return
 

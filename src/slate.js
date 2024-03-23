@@ -4,6 +4,12 @@ import _store from './_store.js'
 
 /*
 replaces the last stored slate into it's referenced DOM position */
+/**
+ *
+ * @param ref
+ * @param paramsSandbox
+ * @param sandbox
+ */
 const stencil = (ref, paramsSandbox, sandbox) => {
   // if (waveEnv.isEnvNotSet()) return
 
@@ -62,6 +68,10 @@ const stencil = (ref, paramsSandbox, sandbox) => {
 
 /*
 Removes a slate by reference */
+/**
+ *
+ * @param ref
+ */
 const removeSlate = (ref) => {
   if (waveEnv.isEnvNotSet()) return
 
@@ -72,6 +82,10 @@ const removeSlate = (ref) => {
 
 /*
 Gets the slate wrapper */
+/**
+ *
+ * @param ref
+ */
 const getSlate = ref => {
   if (waveEnv.isEnvNotSet()) return
 

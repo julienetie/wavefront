@@ -5,7 +5,15 @@ const { body } = document
 /*
 If traversing from `document` is a problem you should be using a
 virtual-list to manage off-screen DOM elements */
+/**
+ *
+ * @param selector
+ */
 const query = (selector) => document.querySelector(selector)
+/**
+ *
+ * @param selector
+ */
 const queryAll = (selector) => Array.from(document.querySelectorAll(selector))
 
 // RegExp and other patterns.
@@ -17,6 +25,11 @@ const patterns = {
 
 /*
 Removes all events from descendent elements of a given element */
+/**
+ *
+ * @param el
+ * @param inner
+ */
 const removeDescendentEvents = (el, inner) => {
   if (el.children.length === 0) return
 
@@ -52,6 +65,10 @@ const removeDescendentEvents = (el, inner) => {
 
 /*
 Removes all child nodes of a given parent */
+/**
+ *
+ * @param parent
+ */
 const removeChildNodes = parent => {
   while (parent.hasChildNodes()) {
     parent.removeChild(parent.lastChild)
@@ -60,6 +77,12 @@ const removeChildNodes = parent => {
 
 /*
 Inserts the last stored slate into it's referenced DOM position */
+/**
+ *
+ * @param ref
+ * @param paramsSandbox
+ * @param sandbox
+ */
 const stencilInto = (ref, paramsSandbox, sandbox) => {
   if (!_store.slates[ref]) {
     console.log(`Slate ${ref} does not exist`)//
@@ -107,6 +130,10 @@ const stencilInto = (ref, paramsSandbox, sandbox) => {
 
 /*
 Creates a list of ancestors for a given descendent and stops before the body tag */
+/**
+ *
+ * @param el
+ */
 const getAncestors = (el) => {
   const ancestors = [el]
   while (el.parentElement !== body) {
@@ -122,6 +149,12 @@ const getAncestors = (el) => {
 const empty = ''
 const pending = Symbol('pending')
 
+/**
+ *
+ * @param n
+ * @param offset
+ * @param multiplier
+ */
 const sequence = (n, offset = 0, multiplier = 1) => {
   let seq = [...Array(n + offset).keys()]
   if (offset !== 0) seq.shift()
@@ -129,7 +162,15 @@ const sequence = (n, offset = 0, multiplier = 1) => {
   return seq
 }
 
+/**
+ *
+ * @param value
+ */
 const isPrimitive = value => value !== Object(value)
+/**
+ *
+ * @param value
+ */
 const isPending = value => value.toString() === pending.toString()
 
 export {

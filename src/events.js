@@ -2,14 +2,34 @@ import { query, getAncestors, pending, isPending } from './helpers.js'
 import _store from './_store.js'
 import { waveEnv } from './environment.js'
 
+/**
+ *
+ * @param value
+ */
 const isDocument = value => typeof value === 'object' && typeof value?.createElement === 'function'
+/**
+ *
+ * @param value
+ */
 const isWindow = value => typeof value === 'object' && typeof value?.document === 'object'
+/**
+ *
+ * @param value
+ */
 const isGlobal = value => isWindow(value) || isDocument(value)
+/**
+ *
+ * @param value
+ */
 const validListenerName = value => (value.match(/_/g) || []).length <= 1
 
 const { isArray } = Array
 
 const events = {
+  /**
+   *
+   * @param eventsConfig
+   */
   venue: (eventsConfig = {}) => {
     // Ensure the environment is set
     if (waveEnv.isEnvNotSet()) return
@@ -42,6 +62,10 @@ const events = {
 
       if (!global) return console.error('Event entries must include a self named global or `pending` primitive')
 
+      /**
+       *
+       * @param rootObject
+       */
       const handler = rootObject => (e) => {
         const { target } = e
         const delegates = _store.events.delegates.get(listenerName)
@@ -108,6 +132,10 @@ const events = {
       }
     }
   },
+  /**
+   *
+   * @param {...any} pendingParams
+   */
   setPending: (...pendingParams) => {
     const globalObject = pendingParams.at(-1)
     const listenerNames = pendingParams.slice(0, -1)
@@ -127,11 +155,19 @@ const events = {
       }
     })
   },
+  /**
+   *
+   * @param {...any} references
+   */
   suspend: (...references) => {
     references.forEach(ref => {
       _store.events.isSuspended.set(ref, true)
     })
   },
+  /**
+   *
+   * @param {...any} references
+   */
   resume: (...references) => {
     references.forEach(ref => {
       _store.events.isSuspended.set(ref, false)
@@ -139,6 +175,10 @@ const events = {
   }
 }
 
+/**
+ *
+ * @param {...any} targetParams
+ */
 const target = (...targetParams) => {
   const targetnParamsLength = targetParams.length
   const handler = targetParams.at(-1)
@@ -156,6 +196,10 @@ const target = (...targetParams) => {
       if (!delegates.includes(handler)) delegates.push(handler)
     })
     return {
+      /**
+       *
+       * @param reference
+       */
       ref: reference => {
         handler.reference = reference
       }
@@ -166,6 +210,10 @@ const target = (...targetParams) => {
     return console.error('Invalid listeners')
   }
 
+  /**
+   *
+   * @param method
+   */
   const suspectMethod = method => (...suspectParams) => {
     const suspectParamsLength = suspectParams.length
     const handler = suspectParams.at(-1)
@@ -202,6 +250,10 @@ const target = (...targetParams) => {
       }
     })
     return {
+      /**
+       *
+       * @param reference
+       */
       ref: reference => {
         console.log('handlerFn', reference)
         handler.reference = reference
@@ -219,6 +271,13 @@ const target = (...targetParams) => {
 }
 
 const bound = {
+  /**
+   *
+   * @param selector
+   * @param event
+   * @param eventHandler
+   * @param options
+   */
   addListener: (selector, event, eventHandler, options) => {
     // Ensure the environment is set
     if (waveEnv.isEnvNotSet()) return
@@ -248,6 +307,11 @@ const bound = {
     // Add event listener
     el.addEventListener(event, eventHandler, options)
   },
+  /**
+   *
+   * @param selector
+   * @param {...any} events
+   */
   removeListener: (selector, ...events) => {
     const boundedElement = query(selector)
     // Missing element

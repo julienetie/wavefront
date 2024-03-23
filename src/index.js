@@ -46,6 +46,11 @@ const caf = window.cancelAnimationFrame
 const sanitize = xssKillah
 const empty = ''
 
+/**
+ *
+ * @param value
+ * @param type
+ */
 const validateInput = (value, type) => {
   const input = document.createElement('input')
   input.type = type
@@ -54,6 +59,11 @@ const validateInput = (value, type) => {
   return input.checkValidity()
 }
 
+/**
+ *
+ * @param strings
+ * @param {...any} values
+ */
 const tag = (strings, ...values) => {
   let result = empty
 

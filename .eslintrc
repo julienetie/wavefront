@@ -1,10 +1,31 @@
 {
-    "extends": "standard",
+    "extends": [
+        "standard",
+        "plugin:jsdoc/recommended-error"
+    ],
     "rules": {
         "no-fallthrough": [
             "off"
         ],
-        "quotes": [2, "single", { "allowTemplateLiterals": true }],
-        "no-void": "off"
-    }
+        "quotes": [
+            2,
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "no-void": "off",
+        "jsdoc/require-jsdoc": [
+            "error",
+            {
+                "require": {
+                    "MethodDefinition": true,
+                    "ArrowFunctionExpression": true,
+                }
+            }
+        ]
+    },
+    "plugins": [
+        "jsdoc"
+    ]
 }

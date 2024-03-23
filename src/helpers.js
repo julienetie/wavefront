@@ -1,4 +1,5 @@
 import _store from './_store.js'
+import { errors, warnings } from './messages.js'
 
 const { body } = document
 
@@ -173,6 +174,18 @@ const isPrimitive = value => value !== Object(value)
  */
 const isPending = value => value.toString() === pending.toString()
 
+/*
+  Critical Errors: For critical errors that prevent the application from functioning correctly or 
+  pose security risks, it's often best to log the error and stop execution of the remainder of the code.
+
+  Non-Critical Errors: For non-critical errors that do not significantly impact the user experience
+  or application functionality, you may choose to log the error and allow execution of the broken code.
+*/
+const msg = {
+  err: (errorType, ...params) => console.error(errors[errorType](...params)),
+  warn: (errorType, ...params) => console.warn(errors[errorType](...params)),
+}
+
 export {
   pending,
   empty,
@@ -185,5 +198,6 @@ export {
   removeDescendentEvents,
   removeChildNodes,
   stencilInto,
-  getAncestors
+  getAncestors,
+  msg
 }

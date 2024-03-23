@@ -1,20 +1,12 @@
-import { query, queryAll, isPrimitive } from './helpers.js'
+import { query, queryAll, isPrimitive, msg } from './helpers.js'
 const { isArray } = Array
 
-/**
- *
- * @param el
- */
 const getAttributes = el => {
   const attributes = {}
   for (const attr of el.attributes) attributes[attr.name] = attr.value
   return attributes
 }
 
-/**
- *
- * @param el
- */
 const getStyleObj = el => {
   const styleString = el.getAttribute('style').slice(0, -1).split('; ') // @todo No safe split needs better regex
   const styleObj = {}
@@ -25,22 +17,26 @@ const getStyleObj = el => {
   return styleObj
 }
 
+
 /**
+ * Description placeholder
  *
- * @param el
- * @param type
+ * @param {*} el
+ * @param {*} type
+ * @returns {(fnOrObj: function | object, callback: function) => any}
  */
 const alterPartial = (el, type) => {
-  if (el === null) console.error(`${el} is not an element`)
+  // Critical error
+  if (el === null) return msg.err('el_1', el)
+
   const isAttr = type === 'attr'
   return (fnOrObj, callback) => {
     const isElArray = isArray(el)
 
-    /**
-     *
-     * @param el
-     */
     const alterElement = el => {
+      // Critical error
+      if (el === null) return msg.err('el_1', el)
+
       // Set by object
       const isFunction = typeof fnOrObj === 'function'
       if (typeof fnOrObj === 'object' || isFunction) {
@@ -57,8 +53,7 @@ const alterPartial = (el, type) => {
 
       // Set style
       if (isAttr && fnOrObj === 'style') {
-        const isFunction = typeof callback === 'function'
-        const returnValue = isFunction ? callback(getStyleObj(el)) : callback
+        const returnValue = typeof callback === 'function' ? callback(getStyleObj(el)) : callback
         Object.assign(el.style, returnValue)
         return
       }
@@ -101,36 +96,33 @@ const alterPartial = (el, type) => {
   }
 }
 
-/**
- *
- * @param selector
- * @param ref
- */
-const alter = (selector, ref) => {
+const alter = (selector) => {
+  // Critical error
+  if (typeof selector !== 'string') return msg.err('type_1', selector, 'string')
+
   const el = query(selector)
+
   return {
     attr: alterPartial(el, 'attr'),
     prop: alterPartial(el, 'prop'),
     classList: el.classList,
     dataset: el.dataset,
-    el
+    el,
   }
 }
 
-/**
- *
- * @param selector
- * @param ref
- */
 const alterAll = (selector, ref) => {
+  // Critical error
+  if (typeof selector !== 'string') return msg.err('type_1', selector, 'string')
+
   const el = queryAll(selector)
   return {
     attr: alterPartial(el, 'attr'),
-    prop: alterPartial(el, 'prop')
+    prop: alterPartial(el, 'prop'),
   }
 }
 
 export {
   alter,
-  alterAll
+  alterAll,
 }

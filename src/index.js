@@ -1,11 +1,11 @@
-/*
-    e Y8b     Y88b Y88 88P'888'Y88 888
-   d8b Y8b     Y88b Y8 P'  888  'Y 888
-  d888b Y8b   b Y88b Y     888     888
- d888888888b  8b Y88b      888     888
-d8888888b Y8b 88b Y88b     888     888
-
-MIT Copyright 2024 © Julien Etienne, Vanslang */
+/**
+ * Copyright © Wavefront, Julien Etienne 2024.
+ *
+ * This source code is subject to the terms of the MIT license, 
+ * which are detailed in the LICENSE file located at the root 
+ * directory of the Wavefront repository.
+ *
+ */
 
 // Alter
 import {

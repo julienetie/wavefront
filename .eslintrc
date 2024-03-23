@@ -23,9 +23,11 @@
                     "ArrowFunctionExpression": true,
                 }
             }
-        ]
+        ],
+        "header/header": [2, "./setup/file-header.js"]
     },
     "plugins": [
-        "jsdoc"
+        "jsdoc",
+        "header"
     ]
 }
